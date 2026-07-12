@@ -124,9 +124,17 @@ body.has-cursor #cursor{ display:block; }
   background:color-mix(in srgb, var(--paper) 86%, transparent);
   backdrop-filter:blur(10px);
 }
-.nav__brand{ font-variation-settings:"wdth" 122, "wght" 850; font-size:20px; letter-spacing:-0.02em; text-transform:uppercase; }
+.nav{ gap:14px; }
+.nav__brand{ font-variation-settings:"wdth" 122, "wght" 850; font-size:20px; letter-spacing:-0.02em; text-transform:uppercase; flex-shrink:0; }
 .nav__brand i{ font-style:normal; color:var(--ultra); }
-.nav__links{ display:flex; gap:26px; align-items:center; }
+.nav__links{
+  display:flex; gap:26px; align-items:center;
+  min-width:0; overflow-x:auto; scrollbar-width:none; -ms-overflow-style:none;
+  margin-left:auto; /* enlaces a la derecha, botón al final */
+}
+.nav__links::-webkit-scrollbar{ display:none; }
+.nav__links .mono{ white-space:nowrap; }
+@media(max-width:560px){ .nav__links{ gap:16px; } }
 .u-link{ position:relative; padding-bottom:2px; }
 .u-link::after{
   content:""; position:absolute; left:0; bottom:0; height:1px; width:100%;
@@ -497,9 +505,9 @@ body.has-cursor #cursor{ display:block; }
     <a href="#proposito" class="mono u-link" data-scroll="proposito">Propósito</a>
     <a href="#historia" class="mono u-link" data-scroll="historia">Historia</a>
     <a href="#" class="mono u-link" data-goto="pf">Portafolio</a>
-    <button class="theme-btn" id="themeBtn" aria-label="Cambiar tema claro/oscuro">☾</button>
     <span class="mono mono--muted nav__clock" id="clock">SJO —:—</span>
   </nav>
+  <button class="theme-btn" id="themeBtn" aria-label="Cambiar tema claro/oscuro">☾</button>
 </header>
  
 <!-- ============================================================
