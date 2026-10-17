@@ -461,16 +461,38 @@ input[type=range]{width:100%;accent-color:var(--azafran);height:26px}
 .voz{flex-direction:column;align-items:stretch;gap:.4rem}
 .voz-fila{display:flex;align-items:center;gap:.65rem}
 .voz-nom{flex:1}
-.voz-golpes{display:grid;grid-template-columns:1fr 1fr;gap:.15rem .5rem;padding:.15rem 0 .1rem 1.75rem}
-.vg{display:flex;align-items:center;gap:.35rem;font-size:.75rem;color:var(--gris-claro)}
-.vg b{font-size:.95rem;line-height:1;width:.9rem;text-align:center}
+/* El ciclo de golpes, dentro del instrumento que se está escribiendo */
+.voz-ciclo{display:block;padding:.3rem 0 .15rem 1.75rem}
+.vc-tit{
+  display:block;font-size:.75rem;line-height:1.35;color:var(--azafran);
+  margin-bottom:.4rem;font-weight:500
+}
+.vc-pasos{display:flex;flex-wrap:wrap;align-items:center;gap:.3rem .25rem}
+.vc{
+  display:inline-flex;align-items:center;gap:.3rem;font-size:.75rem;
+  color:var(--gris-claro);padding:.15rem .35rem;border-radius:3px;
+  border:1px solid transparent;transition:background .15s,border-color .15s,color .15s
+}
+.vc b{font-size:.95rem;line-height:1;min-width:.85rem;text-align:center}
+.vc-activo{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.3);color:#F2F0EA}
+.vc-vacio{opacity:.65}
+.vc-vacio b{color:var(--gris-claro)}
+.vc-fl{font-size:.7rem;color:var(--gris-claro);opacity:.5}
+
+/* La pista al pie de la rueda */
+.pista-rueda{
+  margin:var(--e2) 0 0;font-size:.813rem;line-height:1.5;color:#C8C3BA;
+  text-align:center;max-width:34rem;margin-inline:auto
+}
+.pr-ciclo{white-space:nowrap;letter-spacing:.02em}
+.pr-ciclo b{font-size:1rem}
 .casilla.glifo{
   font-size:.75rem;line-height:1;font-weight:600;
   box-shadow:inset 0 0 0 1px currentColor;border-radius:2px
 }
 #svgTaller .punto.pegado{filter:drop-shadow(0 0 2.5px currentColor)}
 #svgTaller .punto{transition:filter .08s ease}
-@media(max-width:719px){ .voz-golpes{grid-template-columns:1fr} }
+@media(max-width:719px){ .voz-ciclo{padding-left:1.4rem} .pr-ciclo{white-space:normal} }
 </style>
 </head>
 <body>
@@ -634,11 +656,12 @@ input[type=range]{width:100%;accent-color:var(--azafran);height:26px}
     <p class="rotulo">Ahora te toca a vos</p>
     <h2 class="intro-titulo" style="color:#F3F0EA;max-width:24ch">Armá tu propia clave.</h2>
     <p class="parrafo medida" style="margin-bottom:var(--e3)">Tocá los puntos de la rueda para poner y quitar golpes. Elegí primero el instrumento, y dejá la marcha binaria encendida: es la vara con la que se mide si lo que armaste se puede bailar.</p>
-    <p class="parrafo medida" style="margin-bottom:var(--e5)">En el quinto, la conga y la tumbadora cada punto recorre los cuatro golpes de la mano antes de borrarse: <b>○ abierto</b>, <b>□ bajo</b>, <b>△ yema</b> y <b>✕ tapado</b>. Son grabaciones reales de cada golpe, sacadas de las pistas del audiolibro.</p>
+    <p class="parrafo medida" style="margin-bottom:var(--e5)">Los cuatro golpes de mano del quinto, la conga y la tumbadora —abierto, bajo, yema y tapado— son grabaciones reales, recortadas una por una de las pistas del audiolibro.</p>
 
     <div class="lab">
       <div>
         <div class="figura" id="figuraTaller"><svg viewBox="0 0 100 100" id="svgTaller" role="img" aria-label="Rueda editable"></svg></div>
+        <p class="pista-rueda" id="pistaRueda" aria-live="polite"></p>
         <div class="cifrado" id="cifradoTaller"></div>
         <p class="leyenda-cifrado">Cada casilla es una corchea. <span id="notaTaller"></span></p>
       </div>
@@ -1600,6 +1623,7 @@ const taller = {
   metrica: 5,
   voz: "clave",
   marcha: true,
+  ultimo: null,
   bpm: 96,
   sonando: false,
   paso: -1,
@@ -1705,6 +1729,7 @@ function dibujarTaller(){
   svgT.querySelectorAll("[data-toca]").forEach(z => z.addEventListener("click", () => {
     const i = +z.dataset.toca;
     const t = alternar(taller.voz, i);
+    taller.ultimo = { voz: taller.voz, tipo: t };
     if(t){ iniciarCtx(); sonarVoz(taller.voz, ctx.currentTime + 0.01, false, t); }
     pintarVoces(); dibujarTaller(); dibujarCifradoTaller();
   }));
@@ -1842,16 +1867,42 @@ function pintarBotonTaller(){
 }
 
 /* --- controles del taller --- */
+/* Una línea al pie de la rueda que dice qué hace un toque, con el nombre del
+   instrumento que se está escribiendo. Está acá, pegada a la acción, porque
+   en el texto de arriba pasa desapercibida. */
+function pintarPista(){
+  const e = document.getElementById("pistaRueda");
+  if(!e) return;
+  const v = VOCES.find(x => x.id === taller.voz);
+  if(!v) return;
+  const puntos = `<b style="color:${v.color}">${v.nombre}</b>`;
+  e.innerHTML = v.cuero
+    ? `Estás escribiendo ${puntos}. Cada toque sobre el mismo punto cambia el golpe:
+       <span class="pr-ciclo">${GOLPES.map(g => `<b style="color:${v.color}">${g.glifo}</b>`).join(" → ")} → vacío</span>`
+    : `Estás escribiendo ${puntos}. Tocá un punto para poner o quitar el golpe.`;
+}
+
 function pintarVoces(){
   const caja = document.getElementById("voces");
   if(!caja) return;
+  pintarPista();
   caja.innerHTML = VOCES.map(v => {
     const n = patron(v.id).length;
     const activa = v.id === taller.voz;
+    /* En un cuero la leyenda muestra el ciclo entero, porque el recorrido
+       de los cuatro golpes no se adivina tocando. */
+    const ult = taller.ultimo && taller.ultimo.voz === v.id ? taller.ultimo.tipo : null;
+    const pasos = GOLPES.map(g =>
+        `<span class="vc${g.id === ult ? " vc-activo" : ""}" title="${g.ayuda}">` +
+        `<b style="color:${v.color}">${g.glifo}</b>${g.nombre}</span>`)
+      .concat([`<span class="vc vc-vacio">·  quitar</span>`])
+      .join('<span class="vc-fl" aria-hidden="true">→</span>');
     const leyenda = (activa && v.cuero)
-      ? `<span class="voz-golpes">${GOLPES.map(g =>
-           `<span class="vg" title="${g.ayuda}"><b style="color:${v.color}">${g.glifo}</b> ${g.nombre}</span>`).join("")}</span>`
-      : "";
+      ? `<span class="voz-ciclo">
+           <span class="vc-tit">Tocá el mismo punto para ir cambiando de golpe</span>
+           <span class="vc-pasos">${pasos}</span>
+         </span>`
+      : (activa ? `<span class="voz-ciclo"><span class="vc-tit">Tocá un punto para poner o quitar el golpe</span></span>` : "");
     return `<button class="voz${v.cuero ? " voz-cuero" : ""}" data-voz="${v.id}" aria-pressed="${activa}">
       <span class="voz-fila">
         <span class="bolita" style="background:${v.color}"></span>
