@@ -134,6 +134,8 @@ p{margin:0 0 1.1em}
 .aro{fill:none;stroke:rgba(255,255,255,.16);stroke-width:.5}
 .aro-fuerte{stroke:rgba(255,255,255,.42);stroke-width:.8}
 .aro-medio{stroke:rgba(255,255,255,.6);stroke-width:.35}
+/* El aro del instrumento que se está escribiendo, para saber dónde tocar */
+.aro-activo{stroke-width:.75;opacity:.5}
 .radio{stroke:rgba(255,255,255,.12);stroke-width:.4}
 .radio.acento{stroke:rgba(255,255,255,.34);stroke-width:.7}
 .eje-central{stroke:var(--eje);stroke-width:1;opacity:.75}
@@ -493,6 +495,63 @@ input[type=range]{width:100%;accent-color:var(--azafran);height:26px}
 #svgTaller .punto.pegado{filter:drop-shadow(0 0 2.5px currentColor)}
 #svgTaller .punto{transition:filter .08s ease}
 @media(max-width:719px){ .voz-ciclo{padding-left:1.4rem} .pr-ciclo{white-space:normal} }
+
+/* ==========================================================================
+   Teléfono — iOS y Android
+   ========================================================================== */
+
+/* El recuadro azul del toque en iOS y el gris de Android tapan el elemento;
+   el estado :active de abajo lo reemplaza con algo propio. */
+*{-webkit-tap-highlight-color:transparent}
+button:active,.pill-ritmo:active,.interruptor:active,.voz:active,
+.clave-item:active,.capa:active,.pastilla:active,.c-play:active{filter:brightness(1.35)}
+
+/* iPhone con notch: con viewport-fit=cover el contenido se mete debajo de la
+   barra y de las esquinas redondeadas. */
+.banda,.pie{
+  padding-left:max(var(--e3), env(safe-area-inset-left));
+  padding-right:max(var(--e3), env(safe-area-inset-right));
+}
+.portada{
+  padding-left:max(var(--e3), env(safe-area-inset-left));
+  padding-right:max(var(--e3), env(safe-area-inset-right));
+  padding-top:max(var(--e3), env(safe-area-inset-top));
+  padding-bottom:max(var(--e4), env(safe-area-inset-bottom));
+}
+
+/* Un hijo de grid no se encoge por debajo de su contenido salvo que se le
+   diga: sin esto el cifrado empujaba la página a lo ancho en 360 px. */
+.lab > *{min-width:0}
+.cifrado{max-width:100%;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain}
+
+@media(max-width:719px){
+  /* En el teléfono la rueda caía justo sobre el título y los botones.
+     Se agranda para que su banda quede arriba y abajo y el centro, donde
+     está el texto, quede limpio. */
+  .rueda-portada{width:min(176vw,120vh);opacity:.72}
+
+  /* La figura cabía 94vw dentro de un contenedor ya con 20 px de margen */
+  .figura{max-width:min(100%,30rem)}
+
+  /* Apple pide 44 px de blanco, Material 48 dp */
+  .pill-ritmo{min-height:44px;padding:.55rem .9rem}
+  .interruptor{min-height:44px}
+  .nav-pg{width:52px;height:52px}
+  .salto button{min-height:44px;padding:.5rem .85rem}
+  .video-yt,.c-play{min-height:44px;display:inline-flex;align-items:center}
+  .acciones-ritmo{gap:.5rem}
+
+  /* El pulgar tapa media pantalla: la rueda y sus controles respiran */
+  .fila-ritmo{padding:.95rem .2rem}
+  .vc{padding:.3rem .45rem}
+  .pista-rueda{font-size:.875rem}
+}
+
+/* En apaisado el alto manda: la rueda no puede ocupar toda la pantalla */
+@media(max-width:899px) and (orientation:landscape){
+  .figura{max-width:min(62vh,30rem)}
+  .portada{min-height:auto;padding-top:var(--e5);padding-bottom:var(--e5)}
+}
 </style>
 </head>
 <body>
@@ -1465,13 +1524,18 @@ document.addEventListener("keydown", e => {
   if(e.key === "ArrowLeft"){  e.preventDefault(); avanzar(-1); }
 });
 
-let x0 = null;
-pliego.addEventListener("touchstart", e => { x0 = e.touches[0].clientX; }, {passive:true});
+let x0 = null, y0 = null;
+pliego.addEventListener("touchstart", e => {
+  x0 = e.touches[0].clientX; y0 = e.touches[0].clientY;
+}, {passive:true});
 pliego.addEventListener("touchend", e => {
   if(x0 === null) return;
   const dx = e.changedTouches[0].clientX - x0;
-  if(Math.abs(dx) > 42) avanzar(dx < 0 ? 1 : -1);
-  x0 = null;
+  const dy = e.changedTouches[0].clientY - y0;
+  /* Solo pasa página si el gesto fue claramente horizontal: si no, al
+     desplazarse por la página con el dedo encima del libro saltaban hojas. */
+  if(Math.abs(dx) > 42 && Math.abs(dx) > Math.abs(dy) * 1.6) avanzar(dx < 0 ? 1 : -1);
+  x0 = y0 = null;
 });
 pliego.addEventListener("click", e => {
   const caja = pliego.getBoundingClientRect();
@@ -1678,12 +1742,27 @@ function forma(tipo, x, y, color, activa, vz, i){
   return `<circle ${at} cx="${x}" cy="${y}" r="1.55" fill="${color}"/>`;   // golpe único
 }
 
+/* Sector anular de una corchea: va del aro interno al externo y ocupa todo
+   el ancho angular, así que en un teléfono el blanco pasa de 18 px a unos
+   34 × 110. Es transparente: solo captura el toque. */
+function sector(i, n){
+  const mitad = Math.PI / n;               // medio paso angular
+  const a = angulo(i, n);
+  const r0 = 17.5, r1 = RT;
+  const P = (ang, r) => `${(CX + Math.cos(ang) * r).toFixed(2)} ${(CY + Math.sin(ang) * r).toFixed(2)}`;
+  const d = `M${P(a - mitad, r0)} L${P(a - mitad, r1)} A${r1} ${r1} 0 0 1 ${P(a + mitad, r1)} ` +
+            `L${P(a + mitad, r0)} A${r0} ${r0} 0 0 0 ${P(a - mitad, r0)} Z`;
+  return `<path class="zona" data-toca="${i}" d="${d}" fill="transparent"/>`;
+}
+
 function dibujarTaller(){
   if(!svgT) return;
   const m = mT(), n = m.ciclo, p = [];
 
   p.push(`<circle class="aro aro-fuerte" cx="${CX}" cy="${CY}" r="${RT}"/>`);
-  VOCES.forEach(v => p.push(`<circle class="aro" cx="${CX}" cy="${CY}" r="${v.r}"/>`));
+  VOCES.forEach(v => p.push(v.id === taller.voz
+    ? `<circle class="aro aro-activo" cx="${CX}" cy="${CY}" r="${v.r}" stroke="${v.color}"/>`
+    : `<circle class="aro" cx="${CX}" cy="${CY}" r="${v.r}"/>`));
   [19.9, 14.5].forEach(r => p.push(`<circle class="aro aro-medio" cx="${CX}" cy="${CY}" r="${r}"/>`));
 
   for(let i = 0; i < n; i++){
@@ -1717,7 +1796,10 @@ function dibujarTaller(){
       const t = tipoEn(v.id, i);
       p.push(forma(t, x, y, v.color, activa, v.id, i));
       if(activa){
-        p.push(`<circle class="zona" data-toca="${i}" cx="${x}" cy="${y}" r="2.6" fill="transparent"/>`);
+        /* El blanco táctil es el sector entero de esa corchea, no el punto:
+           con seis anillos a 4,6 de distancia un círculo pequeño es
+           imposible de acertar con el dedo. */
+        p.push(sector(i, n));
       }
     }
   });
