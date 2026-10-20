@@ -377,6 +377,50 @@ input[type=range]{width:100%;accent-color:var(--azafran);height:26px}
 .video-nota{font-size:.813rem;color:var(--gris)}
 .video-yt{font-size:.75rem;color:var(--carmin);text-decoration:underline;text-underline-offset:2px;margin-top:.2rem}
 
+/* Carrusel de videos: una diapositiva a la vez, sin que asome la vecina. */
+.carru{margin-top:var(--e4);max-width:34rem}
+.carru-cab{display:flex;align-items:center;justify-content:space-between;gap:1rem;max-width:34rem;margin:0 auto .85rem}
+.carru-cuenta{margin:0;font-size:.813rem;color:var(--gris);font-variant-numeric:tabular-nums}
+.carru-flechas{display:flex;gap:.5rem}
+.carru-fl{
+  width:48px;height:48px;flex:none;border-radius:50%;border:1.5px solid rgba(5,7,6,.35);
+  background:transparent;color:var(--tinta);font-size:1.6rem;line-height:1;
+  display:flex;align-items:center;justify-content:center;cursor:pointer;
+  transition:background .2s ease,color .2s ease,border-color .2s ease,opacity .2s ease
+}
+.carru-fl span{display:block;margin-top:-3px}
+.carru-fl:hover:not(:disabled){background:var(--tinta);border-color:var(--tinta);color:var(--azafran)}
+.carru-fl:disabled{opacity:.25;cursor:default}
+.carru-pista{
+  display:flex;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;
+  scroll-behavior:smooth;scrollbar-width:none;-ms-overflow-style:none;
+  -webkit-overflow-scrolling:touch;overscroll-behavior-x:contain
+}
+.carru-pista::-webkit-scrollbar{display:none}
+.carru-pista:focus-visible{outline:2.5px solid var(--carmin);outline-offset:4px;border-radius:4px}
+.carru-dia{
+  flex:0 0 100%;width:100%;min-width:100%;scroll-snap-align:start;scroll-snap-stop:always;
+  display:flex;flex-direction:column;align-items:center
+}
+.carru-marco{width:100%;max-width:34rem;aspect-ratio:16/9;background:var(--tinta);border-radius:3px;overflow:hidden}
+.carru-marco iframe,.carru-marco .video-tapa{width:100%;height:100%;border:0;display:block}
+.carru-play{width:60px;height:60px;font-size:1.3rem}
+.carru-pie{width:100%;max-width:34rem;margin-top:.75rem;display:flex;flex-direction:column;gap:.15rem}
+.carru-puntos{display:flex;justify-content:center;gap:.25rem;margin-top:1rem}
+.carru-punto{
+  width:28px;height:28px;padding:0;border:0;background:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:center
+}
+.carru-punto i{
+  display:block;width:8px;height:8px;border-radius:99px;background:rgba(5,7,6,.22);
+  transition:width .25s ease,background .25s ease
+}
+.carru-punto[aria-current="true"] i{width:22px;background:var(--carmin)}
+@media (prefers-reduced-motion:reduce){
+  .carru-pista{scroll-behavior:auto}
+  .carru-punto i{transition:none}
+}
+
 /* «Kalö̀te»: ninguna tipografía apila bien la grave sobre la diéresis,
    así que se dibuja aparte y se coloca a mano. */
 .kal .o{position:relative;display:inline-block;line-height:1}
@@ -919,11 +963,19 @@ html{scroll-behavior:smooth;scroll-padding-top:4.6rem}
     <h2 class="intro-titulo medida">Los ritmos ya andan sueltos en canciones.</h2>
     <p class="parrafo medida">Estas son las canciones que el manual cita como ejemplo de cada ritmo. Tocá el play para oírlas sin salir de la página.</p>
 
-    <div id="album" style="margin-top:var(--e4)"></div>
+    <div class="carru" id="carrusel">
+      <div class="carru-cab">
+        <p class="carru-cuenta" id="carruCuenta" aria-live="polite"></p>
+        <div class="carru-flechas">
+          <button class="carru-fl" id="carruPrev" type="button" aria-label="Video anterior"><span aria-hidden="true">‹</span></button>
+          <button class="carru-fl" id="carruSig" type="button" aria-label="Video siguiente"><span aria-hidden="true">›</span></button>
+        </div>
+      </div>
+      <div class="carru-pista" id="carruPista" tabindex="0" role="group" aria-label="Carrusel de videos: usa las flechas del teclado para cambiar"></div>
+      <div class="carru-puntos" id="carruPuntos"></div>
+    </div>
 
     <ul class="canciones" id="listaCanciones"></ul>
-
-    <div id="otrasGrabaciones" style="margin-top:var(--e5)"></div>
   </div>
 </section>
 
@@ -1683,62 +1735,150 @@ document.getElementById("notaLibro").textContent = LIBRO_COMPLETO
     </button>`;
   }
 
-  /* --- el disco --- */
-  const cajaAlbum = document.getElementById("album");
-  if(cajaAlbum){
-    cajaAlbum.innerHTML = `<article class="video video-album">
-      ${tapa(ALBUM.id, ALBUM.titulo)}
-      <div class="video-pie">
-        <b class="video-tit">${ALBUM.titulo}</b>
-        <span class="video-nota">${ALBUM.nota}</span>
-        <a class="video-yt" href="${url(ALBUM.id, ALBUM.lista)}" target="_blank" rel="noopener">Ver en YouTube</a>
-      </div></article>`;
-    const t = cajaAlbum.querySelector(".video-tapa");
-    t.addEventListener("click", () => reproducir(t, ALBUM.id, ALBUM.lista, ALBUM.titulo));
+  /* --- el carrusel: un video a la vez --- */
+  /* Orden: primero el disco completo, luego las grabaciones sueltas y al
+     final las canciones que ya tengan su id de YouTube. */
+  const VIDEOS = [
+    { id:ALBUM.id, lista:ALBUM.lista, titulo:ALBUM.titulo, nota:ALBUM.nota },
+    ...OTRAS_GRABACIONES.map((v, i) => ({
+      id:v.id, lista:v.lista, titulo:`Grabaci\u00f3n ${i + 1}`, nota:"Pendiente de t\u00edtulo" })),
+    ...CANCIONES.filter(c => c.video).map(c => ({
+      id:c.video, lista:c.lista, titulo:c.titulo, nota:`${c.grupo} \u00b7 ${c.ritmo}` }))
+  ];
+
+  const pista   = document.getElementById("carruPista");
+  const puntos  = document.getElementById("carruPuntos");
+  const cuenta  = document.getElementById("carruCuenta");
+  const btnPrev = document.getElementById("carruPrev");
+  const btnSig  = document.getElementById("carruSig");
+
+  if(pista && VIDEOS.length){
+    const quieto = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const marcos = [];
+    let actual = 0, sonando = -1;
+
+    pista.innerHTML = VIDEOS.map((v, i) => `
+      <div class="carru-dia" role="group" aria-roledescription="diapositiva"
+           aria-label="Video ${i + 1} de ${VIDEOS.length}">
+        <div class="carru-marco" data-marco="${i}"></div>
+        <div class="carru-pie">
+          <b class="video-tit">${v.titulo}</b>
+          <span class="video-nota">${kal(v.nota)}</span>
+          <a class="video-yt" href="${url(v.id, v.lista)}" target="_blank" rel="noopener">Ver en YouTube</a>
+        </div>
+      </div>`).join("");
+
+    pista.querySelectorAll("[data-marco]").forEach(m => marcos[+m.dataset.marco] = m);
+
+    /* La miniatura primero: el iframe solo nace cuando alguien lo pide. */
+    function pintarTapa(i){
+      const v = VIDEOS[i];
+      marcos[i].innerHTML = `<button class="video-tapa" type="button" aria-label="Reproducir ${v.titulo}">
+        <img src="https://img.youtube.com/vi/${v.id}/hqdefault.jpg" alt="" loading="lazy">
+        <span class="video-play carru-play" aria-hidden="true">\u25b6</span>
+      </button>`;
+      marcos[i].querySelector("button").addEventListener("click", () => tocarVideo(i));
+    }
+
+    function tocarVideo(i){
+      const v = VIDEOS[i];
+      if(local){ window.open(url(v.id, v.lista), "_blank", "noopener"); return; }
+      if(sonando >= 0 && sonando !== i) pintarTapa(sonando);   /* nunca dos a la vez */
+      const marco = document.createElement("iframe");
+      marco.src = `https://www.youtube-nocookie.com/embed/${v.id}?autoplay=1&rel=0${v.lista ? "&list=" + v.lista : ""}`;
+      marco.title = v.titulo;
+      marco.allow = "accelerometer; autoplay; encrypted-media; picture-in-picture";
+      marco.allowFullscreen = true;
+      marcos[i].innerHTML = "";
+      marcos[i].appendChild(marco);
+      sonando = i;
+    }
+
+    VIDEOS.forEach((v, i) => pintarTapa(i));
+
+    puntos.innerHTML = VIDEOS.map((v, i) =>
+      `<button class="carru-punto" type="button" data-p="${i}" aria-label="Ir al video ${i + 1}"><i></i></button>`).join("");
+    puntos.querySelectorAll("[data-p]").forEach(b =>
+      b.addEventListener("click", () => irA(+b.dataset.p)));
+
+    function pintarEstado(){
+      cuenta.textContent = `Video ${actual + 1} de ${VIDEOS.length}`;
+      btnPrev.disabled = actual === 0;
+      btnSig.disabled  = actual === VIDEOS.length - 1;
+      puntos.querySelectorAll("[data-p]").forEach((b, i) =>
+        b.setAttribute("aria-current", String(i === actual)));
+    }
+
+    function irA(i){
+      actual = Math.max(0, Math.min(VIDEOS.length - 1, i));
+      pista.scrollTo({ left: actual * pista.clientWidth, behavior: quieto.matches ? "auto" : "smooth" });
+      pintarEstado();
+    }
+
+    btnPrev.addEventListener("click", () => irA(actual - 1));
+    btnSig .addEventListener("click", () => irA(actual + 1));
+
+    /* El dedo y el trackpad mueven la pista solos: solo hay que enterarse. */
+    let reloj;
+    pista.addEventListener("scroll", () => {
+      clearTimeout(reloj);
+      reloj = setTimeout(() => {
+        const i = Math.round(pista.scrollLeft / pista.clientWidth);
+        if(i !== actual && i >= 0 && i < VIDEOS.length){ actual = i; pintarEstado(); }
+      }, 90);
+    }, { passive:true });
+
+    pista.addEventListener("keydown", e => {
+      if(e.key === "ArrowRight"){ e.preventDefault(); irA(actual + 1); }
+      if(e.key === "ArrowLeft") { e.preventDefault(); irA(actual - 1); }
+    });
+
+    /* Rueda horizontal del mouse o trackpad. La vertical se deja en paz:
+       secuestrarla atrapa el desplazamiento de la página. */
+    pista.addEventListener("wheel", e => {
+      if(Math.abs(e.deltaX) <= Math.abs(e.deltaY)) return;
+      e.preventDefault();
+      clearTimeout(reloj);
+      reloj = setTimeout(() => irA(actual + (e.deltaX > 0 ? 1 : -1)), 40);
+    }, { passive:false });
+
+    addEventListener("resize", () => {
+      pista.scrollTo({ left: actual * pista.clientWidth, behavior:"auto" });
+    });
+
+    pintarEstado();
+
+    /* Una canción con video lleva a su diapositiva del carrusel. */
+    window.verEnCarrusel = id => {
+      const i = VIDEOS.findIndex(v => v.id === id);
+      if(i < 0) return;
+      document.getElementById("carrusel").scrollIntoView({ behavior: quieto.matches ? "auto" : "smooth", block:"center" });
+      irA(i);
+      tocarVideo(i);
+    };
   }
 
+  
   /* --- las canciones que cita el manual --- */
-  const lista = document.getElementById("listaCanciones");
-  if(lista){
-    lista.innerHTML = CANCIONES.map((c, i) => `
+  const listaC = document.getElementById("listaCanciones");
+  if(listaC){
+    listaC.innerHTML = CANCIONES.map((c, i) => `
       <li class="cancion">
         <span class="c-txt">
           <span class="tit">${c.titulo}</span>
-          <span class="meta"><span class="grupo">${c.grupo}</span> · ${kal(c.ritmo)}</span>
+          <span class="meta"><span class="grupo">${c.grupo}</span> \u00b7 ${kal(c.ritmo)}</span>
         </span>
         ${c.video
-          ? `<button class="c-play" data-i="${i}" aria-label="Reproducir ${c.titulo}"><span aria-hidden="true">▶</span> Escuchar</button>`
+          ? `<button class="c-play" data-v="${c.video}" aria-label="Reproducir ${c.titulo}"><span aria-hidden="true">\u25b6</span> Escuchar</button>`
           : ""}
       </li>`).join("");
 
-    lista.querySelectorAll("[data-i]").forEach(b => b.addEventListener("click", () => {
-      const c = CANCIONES[+b.dataset.i];
-      if(local){ window.open(url(c.video, c.lista), "_blank", "noopener"); return; }
-      const fila = b.closest(".cancion");
-      const hueco = document.createElement("div");
-      hueco.className = "c-marco";
-      fila.after(hueco);
-      b.disabled = true;
-      reproducir(hueco, c.video, c.lista, c.titulo);
+    /* El video no se abre aquí: lleva a su diapositiva del carrusel. */
+    listaC.querySelectorAll("[data-v]").forEach(b => b.addEventListener("click", () => {
+      if(typeof window.verEnCarrusel === "function") window.verEnCarrusel(b.dataset.v);
     }));
   }
 
-  /* --- grabaciones aún sin asignar --- */
-  const otras = document.getElementById("otrasGrabaciones");
-  if(otras && OTRAS_GRABACIONES.length){
-    otras.innerHTML = `
-      <h3 style="font-size:1.1rem;font-family:var(--sans);font-weight:600">Más grabaciones</h3>
-      <p class="nota-pie" style="margin:.3rem 0 var(--e3)">Publicadas en 5 y 7, todavía sin identificar con su ritmo.</p>
-      <div class="videos">${OTRAS_GRABACIONES.map((v, i) => `
-        <article class="video">
-          ${tapa(v.id, "grabación " + (i + 1))}
-          <div class="video-pie">
-            <a class="video-yt" href="${url(v.id, v.lista)}" target="_blank" rel="noopener">Ver en YouTube</a>
-          </div>
-        </article>`).join("")}</div>`;
-    otras.querySelectorAll(".video-tapa").forEach((t, i) => t.addEventListener("click", () =>
-      reproducir(t, OTRAS_GRABACIONES[i].id, OTRAS_GRABACIONES[i].lista, "Grabación en 5 y 7")));
-  }
 })();
 
 /* ========================================================================== */
