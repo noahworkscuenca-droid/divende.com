@@ -552,11 +552,138 @@ button:active,.pill-ritmo:active,.interruptor:active,.voz:active,
   .figura{max-width:min(62vh,30rem)}
   .portada{min-height:auto;padding-top:var(--e5);padding-bottom:var(--e5)}
 }
+
+/* ==========================================================================
+   Barra de navegación
+   ========================================================================== */
+html{scroll-behavior:smooth;scroll-padding-top:4.6rem}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+.saltar{
+  position:absolute;left:-9999px;top:0;z-index:60;
+  background:var(--tinta);color:var(--azafran);padding:.7rem 1.1rem;border-radius:0 0 4px 0
+}
+.saltar:focus{left:0}
+
+.barra{
+  position:sticky;top:0;z-index:50;
+  background:var(--azafran);border-bottom:1.5px solid var(--tinta)
+}
+.barra-int{
+  max-width:1180px;margin:0 auto;
+  padding:0 max(var(--e3), env(safe-area-inset-left)) 0 max(var(--e3), env(safe-area-inset-right));
+  display:flex;align-items:center;justify-content:space-between;gap:var(--e3);min-height:3.4rem
+}
+.marca{
+  font-family:var(--serif);font-size:1.0625rem;color:var(--tinta);
+  white-space:nowrap;letter-spacing:-.01em;flex:none
+}
+.marca i{font-style:italic}
+.barra-enl{
+  display:flex;list-style:none;margin:0;padding:0;gap:.25rem;align-items:center
+}
+.barra-enl a{
+  display:inline-flex;align-items:center;min-height:44px;padding:0 .7rem;
+  font-size:.875rem;font-weight:500;color:var(--tinta);
+  border-bottom:2px solid transparent;white-space:nowrap
+}
+.barra-enl a:hover{border-bottom-color:rgba(5,7,6,.35)}
+.barra-enl a.aqui{border-bottom-color:var(--tinta)}
+.barra :focus-visible{outline-color:var(--tinta);outline-offset:-2px}
+
+@media(max-width:759px){
+  html{scroll-padding-top:6.4rem}
+  .barra-int{flex-direction:column;align-items:stretch;gap:0;padding-top:.35rem;min-height:0}
+  .marca{font-size:1rem;padding:.1rem 0 .15rem}
+  .barra-enl{
+    overflow-x:auto;gap:.1rem;
+    scrollbar-width:none;-webkit-overflow-scrolling:touch;
+    border-top:1px solid rgba(5,7,6,.18)
+  }
+  .barra-enl::-webkit-scrollbar{display:none}
+  .barra-enl a{min-height:42px;padding:0 .6rem;font-size:.813rem}
+}
+
+/* ==========================================================================
+   Pestañas de la rueda
+   ========================================================================== */
+.cab-claves{
+  display:flex;align-items:flex-start;justify-content:space-between;
+  gap:var(--e3);flex-wrap:wrap;margin-bottom:var(--e3)
+}
+.pestanas{display:flex;gap:.3rem;flex:none;padding-top:.35rem}
+.pest{
+  min-height:44px;padding:.55rem 1.05rem;border-radius:999px;
+  font-size:.938rem;font-weight:600;color:#E6E2DA;
+  border:1.5px solid rgba(255,255,255,.3);transition:background .16s,color .16s,border-color .16s
+}
+.pest:hover{background:rgba(255,255,255,.08)}
+.pest-activa{background:var(--azafran);color:var(--tinta);border-color:var(--azafran)}
+.pest-activa:hover{background:var(--azafran-claro)}
+
+/* Más opciones */
+.mas-opciones{
+  border-top:1px solid rgba(255,255,255,.16);padding-top:var(--e2);margin-top:.2rem
+}
+.mas-opciones summary{
+  cursor:pointer;list-style:none;min-height:44px;display:flex;align-items:center;gap:.4rem;
+  font-size:.813rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--gris-claro)
+}
+.mas-opciones summary::-webkit-details-marker{display:none}
+.mas-opciones summary:hover{color:#E6E2DA}
+.mo-signo{font-size:1rem;transition:transform .18s ease;display:inline-block}
+.mas-opciones[open] .mo-signo{transform:rotate(45deg)}
+.mo-cuerpo{display:flex;flex-direction:column;gap:var(--e3);padding-top:var(--e2)}
+.mo-cuerpo .grupo-ctrl{border-top:0;padding-top:0}
+.pastilla[disabled]{opacity:.35;cursor:not-allowed}
+
+@media(max-width:759px){
+  .cab-claves{flex-direction:column;gap:var(--e2)}
+  .pestanas{width:100%}
+  .pest{flex:1;justify-content:center;display:inline-flex;align-items:center}
+}
+
+/* Introducción a dos columnas */
+.intro-dos{display:grid;gap:var(--e4);align-items:start}
+@media(min-width:900px){.intro-dos{grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:var(--e5)}}
+.intro-dos .intro-titulo{font-size:clamp(1.9rem,4.6vw,3rem)}
+.intro-lado .parrafo{font-size:1rem;margin-bottom:var(--e3)}
+.fichas{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:var(--e4)}
+.ficha{
+  display:inline-flex;align-items:center;padding:.4rem .75rem;border-radius:999px;
+  border:1px solid rgba(0,0,0,.22);font-size:.813rem;color:#3B342A
+}
+.dos-familias{display:grid;gap:var(--e3);border-top:1px solid rgba(0,0,0,.14);padding-top:var(--e3)}
+@media(min-width:560px){.dos-familias{grid-template-columns:1fr 1fr}}
+.dos-familias h3{font-size:1.25rem;margin-bottom:.2rem}
+.dos-familias p{font-size:.813rem;color:var(--gris);margin:0}
+
+.pill-rueda{border-color:rgba(0,0,0,.3);font-weight:600}
+.pill-rueda span{margin-right:.22em;font-size:.86em}
+.pill-rueda:hover{background:var(--azafran);border-color:var(--azafran);color:var(--tinta)}
+@media(max-width:759px){
+  .acciones-ritmo{flex-wrap:wrap}
+  .fila-ritmo .txt{min-width:100%}
+}
 </style>
 </head>
 <body>
+<a class="saltar" href="#libro">Saltar al contenido</a>
+
+<nav class="barra" aria-label="Secciones">
+  <div class="barra-int">
+    <a class="marca" href="#inicio">Manual en <i>5 y 7</i></a>
+    <ul class="barra-enl">
+      <li><a href="#libro">Libro</a></li>
+      <li><a href="#ritmos">Ritmos</a></li>
+      <li><a href="#claves">Claves</a></li>
+      <li><a href="#canciones">Canciones</a></li>
+    </ul>
+  </div>
+</nav>
+
 <!-- ============ PORTADA ============ -->
-<header class="portada">
+<header class="portada" id="inicio">
   <svg class="rueda-portada" viewBox="0 0 200 200" aria-hidden="true">
     <g class="gira" id="ruedaPortada" fill="none" stroke="#FFF6DE" stroke-width=".55" opacity=".9"></g>
   </svg>
@@ -569,7 +696,7 @@ button:active,.pill-ritmo:active,.interruptor:active,.voz:active,
     <p class="subtitulo"><span class="kal">Kal<span class="o">ö</span>te</span> de Monte y Convite de Diriá</p>
     <p class="descriptor">Creación de ritmos bailables latinoamericanos en métricas irregulares de 5 y 7.</p>
     <div class="acciones">
-      <a class="btn btn-solido" href="#laboratorio">Tocar los ritmos</a>
+      <a class="btn btn-solido" href="#claves">Tocar los ritmos</a>
       <a class="btn btn-linea" href="#libro">Hojear el libro</a>
     </div>
   </div>
@@ -584,30 +711,29 @@ button:active,.pill-ritmo:active,.interruptor:active,.voz:active,
 <!-- ============ INTRODUCCIÓN ============ -->
 <section class="banda" id="introduccion">
   <div class="envoltura">
-    <p class="rotulo">Introducción</p>
-    <h2 class="intro-titulo medida">Casi toda la música bailable de América Latina cabe en métricas binarias o ternarias. <em>Este manual las saca de ahí.</em></h2>
-    <div class="medida parrafo">
-      <p>La idea nació de explorar las posibilidades rítmicas de la música popular latinoamericana creando ritmos nuevos en métricas irregulares —compás de amalgama— a partir de ritmos bailables ya existentes, dejando de lado las métricas binarias y ternarias.</p>
-      <p>Hay muchas canciones latinoamericanas en estas métricas, pero casi ningún género construido sobre ellas. El caso más conocido es el merengue caraqueño, en 5/8. En otras culturas, en cambio, son terreno común:</p>
-    </div>
-
-    <div class="tres-culturas medida" style="max-width:52rem">
+    <div class="intro-dos">
       <div>
-        <h3>Árabe</h3>
-        <ul><li>Awis · 11/4</li><li>Samai / Samaal · 10/8</li><li>Karsilama · 9/8</li></ul>
+        <p class="rotulo">Por qué 5 y 7</p>
+        <h2 class="intro-titulo">Casi toda la música bailable de América Latina cabe en métricas binarias o ternarias. <em>Este manual las saca de ahí.</em></h2>
       </div>
-      <div>
-        <h3>Hindú</h3>
-        <ul><li>Chautala · 12 tiempos</li><li>Rupaktala · 7 tiempos</li><li>Jhaptala · 10 tiempos</li></ul>
+      <div class="intro-lado">
+        <p class="parrafo">Hay canciones latinoamericanas en estas métricas, pero casi ningún género construido sobre ellas. En otras culturas son terreno común:</p>
+        <div class="fichas">
+          <span class="ficha">Árabe · 11/4, 10/8, 9/8</span>
+          <span class="ficha">Hindú · 7, 10, 12 tiempos</span>
+          <span class="ficha">Flamenco · 12 tiempos</span>
+        </div>
+        <div class="dos-familias">
+          <div>
+            <h3><span class="kal">Kal<span class="o">ö</span>te</span> de Monte</h3>
+            <p>Ritmos en 5 · bribri, «fiesta en la que se baila»</p>
+          </div>
+          <div>
+            <h3>Convite de Diriá</h3>
+            <p>Ritmos en 7 · chorotega, «colina pequeña»</p>
+          </div>
+        </div>
       </div>
-      <div>
-        <h3>Flamenco</h3>
-        <ul><li>Soleá · 12 tiempos</li><li>Seguiriya · 12 tiempos</li><li>Bulerías · 12 tiempos</li></ul>
-      </div>
-    </div>
-
-    <div class="medida parrafo" style="margin-top:var(--e4)">
-      <p>De ahí salieron dos familias. Los ritmos en 5 se agrupan bajo <b><span class="kal">Kal<span class="o">ö</span>te</span> de Monte</b> —palabra bribri que significa «fiesta en la que se baila»— y los ritmos en 7 bajo <b>Convite de Diriá</b>: convite, la vieja invitación costarricense a una fiesta; Diriá, voz chorotega para «colina pequeña».</p>
     </div>
   </div>
 </section>
@@ -644,19 +770,19 @@ button:active,.pill-ritmo:active,.interruptor:active,.voz:active,
       <div class="familia">
         <h3><span class="kal">Kal<span class="o">ö</span>te</span> de Monte</h3>
         <p class="glosa">Bribri: «fiesta en la que se baila». Ritmos en 5.</p>
-        <div class="fila-ritmo"><span class="cifra">1</span><span class="txt"><b>Quinta de clave completa</b><span>Escritura circular 02</span></span><span class="acciones-ritmo"><button class="pill-ritmo" data-ir="54">Ver en el libro</button><a class="pill-ritmo pill-audio" href="https://kn1ghted.github.io/audiolibro/kalote/quinta-completa" target="_blank" rel="noopener">Oír las pistas</a></span></div>
-        <div class="fila-ritmo"><span class="cifra">1,5</span><span class="txt"><b>Quinta de clave abierta</b><span>Escritura circular 03</span></span><span class="acciones-ritmo"><button class="pill-ritmo" data-ir="64">Ver en el libro</button><a class="pill-ritmo pill-audio" href="https://kn1ghted.github.io/audiolibro/kalote/quinta-abierta" target="_blank" rel="noopener">Oír las pistas</a></span></div>
-        <div class="fila-ritmo"><span class="cifra">2</span><span class="txt"><b>Quinto</b><span>Variación 5 de 4 y variación 4 de 5</span></span><span class="acciones-ritmo"><button class="pill-ritmo" data-ir="76">Ver en el libro</button><a class="pill-ritmo pill-audio" href="https://kn1ghted.github.io/audiolibro/kalote/quinto" target="_blank" rel="noopener">Oír las pistas</a></span></div>
-        <div class="fila-ritmo"><span class="cifra">3</span><span class="txt"><b>Quintí</b><span>Doce variantes, de 4:2 a la cáscara de timbal</span></span><span class="acciones-ritmo"><button class="pill-ritmo" data-ir="94">Ver en el libro</button><a class="pill-ritmo pill-audio" href="https://kn1ghted.github.io/audiolibro/kalote/quinti" target="_blank" rel="noopener">Oír las pistas</a></span></div>
-        <div class="fila-ritmo"><span class="cifra">4</span><span class="txt"><b>Quinté</b><span>Escritura circular 16</span></span><span class="acciones-ritmo"><button class="pill-ritmo" data-ir="174">Ver en el libro</button><a class="pill-ritmo pill-audio" href="https://kn1ghted.github.io/audiolibro/kalote/quinte" target="_blank" rel="noopener">Oír las pistas</a></span></div>
-        <div class="fila-ritmo"><span class="cifra">5</span><span class="txt"><b>Quintú</b><span>Escritura circular 17</span></span><span class="acciones-ritmo"><button class="pill-ritmo" data-ir="184">Ver en el libro</button><a class="pill-ritmo pill-audio" href="https://kn1ghted.github.io/audiolibro/kalote/quintu" target="_blank" rel="noopener">Oír las pistas</a></span></div></div>
+        <div class="fila-ritmo"><span class="cifra">1</span><span class="txt"><b>Quinta de clave completa</b><span>Escritura circular 02</span></span><span class="acciones-ritmo"><button class="pill-ritmo pill-rueda" data-metrica-ir="5" data-clave-ir="completa33"><span aria-hidden="true">▶</span> En la rueda</button><button class="pill-ritmo" data-ir="54">Ver en el libro</button><a class="pill-ritmo pill-audio" href="https://kn1ghted.github.io/audiolibro/kalote/quinta-completa" target="_blank" rel="noopener">Oír las pistas</a></span></div>
+        <div class="fila-ritmo"><span class="cifra">1,5</span><span class="txt"><b>Quinta de clave abierta</b><span>Escritura circular 03</span></span><span class="acciones-ritmo"><button class="pill-ritmo pill-rueda" data-metrica-ir="5" data-clave-ir="abierta32"><span aria-hidden="true">▶</span> En la rueda</button><button class="pill-ritmo" data-ir="64">Ver en el libro</button><a class="pill-ritmo pill-audio" href="https://kn1ghted.github.io/audiolibro/kalote/quinta-abierta" target="_blank" rel="noopener">Oír las pistas</a></span></div>
+        <div class="fila-ritmo"><span class="cifra">2</span><span class="txt"><b>Quinto</b><span>Variación 5 de 4 y variación 4 de 5</span></span><span class="acciones-ritmo"><button class="pill-ritmo pill-rueda" data-metrica-ir="5" data-clave-ir="completa33"><span aria-hidden="true">▶</span> En la rueda</button><button class="pill-ritmo" data-ir="76">Ver en el libro</button><a class="pill-ritmo pill-audio" href="https://kn1ghted.github.io/audiolibro/kalote/quinto" target="_blank" rel="noopener">Oír las pistas</a></span></div>
+        <div class="fila-ritmo"><span class="cifra">3</span><span class="txt"><b>Quintí</b><span>Doce variantes, de 4:2 a la cáscara de timbal</span></span><span class="acciones-ritmo"><button class="pill-ritmo pill-rueda" data-metrica-ir="5" data-clave-ir="mont422"><span aria-hidden="true">▶</span> En la rueda</button><button class="pill-ritmo" data-ir="94">Ver en el libro</button><a class="pill-ritmo pill-audio" href="https://kn1ghted.github.io/audiolibro/kalote/quinti" target="_blank" rel="noopener">Oír las pistas</a></span></div>
+        <div class="fila-ritmo"><span class="cifra">4</span><span class="txt"><b>Quinté</b><span>Escritura circular 16</span></span><span class="acciones-ritmo"><button class="pill-ritmo pill-rueda" data-metrica-ir="5" data-clave-ir="completa33"><span aria-hidden="true">▶</span> En la rueda</button><button class="pill-ritmo" data-ir="174">Ver en el libro</button><a class="pill-ritmo pill-audio" href="https://kn1ghted.github.io/audiolibro/kalote/quinte" target="_blank" rel="noopener">Oír las pistas</a></span></div>
+        <div class="fila-ritmo"><span class="cifra">5</span><span class="txt"><b>Quintú</b><span>Escritura circular 17</span></span><span class="acciones-ritmo"><button class="pill-ritmo pill-rueda" data-metrica-ir="5" data-clave-ir="c34"><span aria-hidden="true">▶</span> En la rueda</button><button class="pill-ritmo" data-ir="184">Ver en el libro</button><a class="pill-ritmo pill-audio" href="https://kn1ghted.github.io/audiolibro/kalote/quintu" target="_blank" rel="noopener">Oír las pistas</a></span></div></div>
       <div class="familia">
         <h3>Convite de Diriá</h3>
         <p class="glosa">Convite: invitación a la fiesta. Diriá, en chorotega: «colina pequeña». Ritmos en 7.</p>
-        <div class="fila-ritmo"><span class="cifra">6</span><span class="txt"><b>Clave completa en 7</b><span>Escritura circular 19</span></span><span class="acciones-ritmo"><button class="pill-ritmo" data-ir="202">Ver en el libro</button><a class="pill-ritmo pill-audio" href="https://kn1ghted.github.io/audiolibro/diria/completa-7" target="_blank" rel="noopener">Oír las pistas</a></span></div>
-        <div class="fila-ritmo"><span class="cifra">7</span><span class="txt"><b>Clave abierta en 7</b><span>Escritura circular 20</span></span><span class="acciones-ritmo"><button class="pill-ritmo" data-ir="216">Ver en el libro</button><a class="pill-ritmo pill-audio" href="https://kn1ghted.github.io/audiolibro/diria/abierta-7" target="_blank" rel="noopener">Oír las pistas</a></span></div>
-        <div class="fila-ritmo"><span class="cifra">8</span><span class="txt"><b>Séptima</b><span>4 - 3 y 3 - 4, de clave completa y abierta</span></span><span class="acciones-ritmo"><button class="pill-ritmo" data-ir="226">Ver en el libro</button><a class="pill-ritmo pill-audio" href="https://kn1ghted.github.io/audiolibro/diria/septima" target="_blank" rel="noopener">Oír las pistas</a></span></div>
-        <div class="fila-ritmo"><span class="cifra">9</span><span class="txt"><b>Séptimo</b><span>4 - 3 y 3 - 4, de clave completa y abierta</span></span><span class="acciones-ritmo"><button class="pill-ritmo" data-ir="260">Ver en el libro</button><a class="pill-ritmo pill-audio" href="https://kn1ghted.github.io/audiolibro/diria/septimo" target="_blank" rel="noopener">Oír las pistas</a></span></div></div>
+        <div class="fila-ritmo"><span class="cifra">6</span><span class="txt"><b>Clave completa en 7</b><span>Escritura circular 19</span></span><span class="acciones-ritmo"><button class="pill-ritmo pill-rueda" data-metrica-ir="7" data-clave-ir="completa7"><span aria-hidden="true">▶</span> En la rueda</button><button class="pill-ritmo" data-ir="202">Ver en el libro</button><a class="pill-ritmo pill-audio" href="https://kn1ghted.github.io/audiolibro/diria/completa-7" target="_blank" rel="noopener">Oír las pistas</a></span></div>
+        <div class="fila-ritmo"><span class="cifra">7</span><span class="txt"><b>Clave abierta en 7</b><span>Escritura circular 20</span></span><span class="acciones-ritmo"><button class="pill-ritmo pill-rueda" data-metrica-ir="7" data-clave-ir="abierta7"><span aria-hidden="true">▶</span> En la rueda</button><button class="pill-ritmo" data-ir="216">Ver en el libro</button><a class="pill-ritmo pill-audio" href="https://kn1ghted.github.io/audiolibro/diria/abierta-7" target="_blank" rel="noopener">Oír las pistas</a></span></div>
+        <div class="fila-ritmo"><span class="cifra">8</span><span class="txt"><b>Séptima</b><span>4 - 3 y 3 - 4, de clave completa y abierta</span></span><span class="acciones-ritmo"><button class="pill-ritmo pill-rueda" data-metrica-ir="7" data-clave-ir="c43_7"><span aria-hidden="true">▶</span> En la rueda</button><button class="pill-ritmo" data-ir="226">Ver en el libro</button><a class="pill-ritmo pill-audio" href="https://kn1ghted.github.io/audiolibro/diria/septima" target="_blank" rel="noopener">Oír las pistas</a></span></div>
+        <div class="fila-ritmo"><span class="cifra">9</span><span class="txt"><b>Séptimo</b><span>4 - 3 y 3 - 4, de clave completa y abierta</span></span><span class="acciones-ritmo"><button class="pill-ritmo pill-rueda" data-metrica-ir="7" data-clave-ir="c34_7"><span aria-hidden="true">▶</span> En la rueda</button><button class="pill-ritmo" data-ir="260">Ver en el libro</button><a class="pill-ritmo pill-audio" href="https://kn1ghted.github.io/audiolibro/diria/septimo" target="_blank" rel="noopener">Oír las pistas</a></span></div></div>
       </div>
     </div>
 
@@ -664,28 +790,28 @@ button:active,.pill-ritmo:active,.interruptor:active,.voz:active,
   </div>
 </section>
 
-<!-- ============ LABORATORIO ============ -->
-<section class="banda plato" id="laboratorio">
+<!-- ============ CLAVES (rueda única: escuchar + armar) ============ -->
+<section class="banda plato" id="claves">
   <div class="envoltura">
-    <p class="rotulo">Escritura circular</p>
-    <h2 class="intro-titulo" style="color:#F3F0EA;max-width:22ch">La rueda gira, la clave suena.</h2>
-    <p class="parrafo medida" style="margin-bottom:var(--e5)">Elegí una métrica y una clave compuesta. La marcha con la que caminamos es un pulso binario: al dividir los ritmos de 5 y 7 en dos partes los llevamos a ese lenguaje binario, donde el baile se vuelve natural.</p>
+    <div class="cab-claves">
+      <div>
+        <p class="rotulo">Escritura circular</p>
+        <h2 class="intro-titulo" style="color:#F3F0EA;max-width:22ch">La rueda gira, la clave suena.</h2>
+      </div>
+      <div class="pestanas" role="tablist" aria-label="Modo de la rueda">
+        <button class="pest" id="pestEscuchar" role="tab" aria-selected="true" aria-controls="panelRueda" data-pest="escuchar">Escuchar</button>
+        <button class="pest" id="pestArmar" role="tab" aria-selected="false" aria-controls="panelRueda" data-pest="armar">Armá la tuya</button>
+      </div>
+    </div>
 
-    <div class="lab">
+    <p class="parrafo medida" id="introClaves" style="margin-bottom:var(--e5)">Elegí una métrica y una clave compuesta. La marcha con la que caminamos es un pulso binario: al dividir los ritmos de 5 y 7 en dos partes los llevamos a ese lenguaje binario, donde el baile se vuelve natural.</p>
+
+    <div class="lab" id="panelRueda" role="tabpanel" aria-labelledby="pestEscuchar">
       <div>
         <div class="figura" id="figura"><svg viewBox="0 0 100 100" id="svgFigura" role="img" aria-label="Figura circular del ritmo seleccionado"></svg></div>
+        <p class="pista-rueda" id="pistaRueda" aria-live="polite"></p>
         <div class="cifrado" id="cifrado"></div>
         <p class="leyenda-cifrado">Cada casilla es una corchea. La barra marca el cambio de compás. <span id="notaCiclo"></span></p>
-
-        <a class="tarjeta-audiolibro" href="https://kn1ghted.github.io/audiolibro/" target="_blank" rel="noopener">
-          <span class="ta-tit">Reproductor completo</span>
-          <span class="ta-txt">Los nueve ritmos con una pista por instrumento —click, clave, catá, chequeré, quinto, conga, tumbadora, campana— cada una con su forma de onda y su botón de silencio. Se aíslan y se mezclan una por una.</span>
-          <span class="ta-pie">kn1ghted.github.io/audiolibro ↗</span>
-          <span class="ta-vista">
-            <img src="data:image/webp;base64,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" alt="Reproductor del audiolibro: una pista por instrumento, cada una con su forma de onda y su botón de silencio." loading="lazy">
-            <span class="ta-lupa" aria-hidden="true">▶</span>
-          </span>
-        </a>
       </div>
 
       <div class="controles">
@@ -700,16 +826,6 @@ button:active,.pill-ritmo:active,.interruptor:active,.voz:active,
         </div>
 
         <div class="grupo-ctrl">
-          <p class="rotulo">Fuente del sonido</p>
-          <div class="metricas" role="group" aria-label="Fuente del sonido">
-            <button class="pastilla" data-fuente="sintesis" aria-pressed="true">Digital</button>
-            <button class="pastilla" data-fuente="grabacion" aria-pressed="false">Natural</button>
-          </div>
-          <p class="pie-ctrl">La versión natural viene del <a id="verAudiolibro" href="https://kn1ghted.github.io/audiolibro/" target="_blank" rel="noopener">audiolibro</a>: son los mismos músicos del manual. La rueda se sincroniza con la pista.</p>
-          <p class="aviso-audio" id="avisoAudio" hidden></p>
-        </div>
-
-        <div class="grupo-ctrl">
           <p class="rotulo">Métrica</p>
           <div class="metricas" role="group" aria-label="Métrica">
             <button class="pastilla" data-metrica="5" aria-pressed="true">5 · <span class="kal">Kal<span class="o">ö</span>te</span></button>
@@ -717,28 +833,63 @@ button:active,.pill-ritmo:active,.interruptor:active,.voz:active,
           </div>
         </div>
 
-        <div class="grupo-ctrl">
+        <!-- Escuchar -->
+        <div class="grupo-ctrl solo-escuchar">
           <p class="rotulo">Clave compuesta</p>
           <div class="lista-claves" id="listaClaves" role="group" aria-label="Clave compuesta"></div>
         </div>
 
-        <div class="grupo-ctrl">
-          <p class="rotulo">Capas</p>
-          <div class="capas" id="capas"></div>
-          <div class="interruptores" id="cajaClick" hidden>
-            <button class="interruptor" id="btnClick" aria-pressed="true">Click de referencia</button>
+        <!-- Armá la tuya -->
+        <div class="grupo-ctrl solo-armar" hidden>
+          <p class="rotulo">Instrumento que estás escribiendo</p>
+          <div class="voces" id="voces" role="group" aria-label="Instrumento"></div>
+        </div>
+        <div class="grupo-ctrl solo-armar" hidden>
+          <p class="rotulo">Punto de partida</p>
+          <div class="interruptores" id="plantillas"></div>
+          <div class="interruptores" style="margin-top:.4rem">
+            <button class="interruptor" id="btnVaciar">Borrar todo</button>
           </div>
         </div>
-
-        <div class="grupo-ctrl">
-          <p class="rotulo">Trazos internos</p>
+        <div class="grupo-ctrl solo-armar" hidden>
+          <p class="rotulo">Marcha binaria</p>
           <div class="interruptores">
-            <button class="interruptor" data-trazo="espejo" aria-pressed="false">Golpes en espejo</button>
-            <button class="interruptor" data-trazo="opuesto" aria-pressed="false">Golpes opuestos</button>
-            <button class="interruptor" data-trazo="dos" aria-pressed="true">Numeración en dos compases</button>
+            <button class="interruptor" id="btnMarchaTaller" aria-pressed="true">Sonando de referencia</button>
           </div>
+          <p class="pie-ctrl">El 1 del compás y su mitad exacta. Si tu clave calza contra eso, se baila.</p>
         </div>
 
+        <details class="mas-opciones">
+          <summary><span class="mo-signo" aria-hidden="true">＋</span> Más opciones</summary>
+          <div class="mo-cuerpo">
+            <div class="grupo-ctrl">
+              <p class="rotulo">Fuente del sonido</p>
+              <div class="metricas" role="group" aria-label="Fuente del sonido">
+                <button class="pastilla" data-fuente="sintesis" aria-pressed="true">Digital</button>
+                <button class="pastilla" data-fuente="grabacion" aria-pressed="false">Natural</button>
+              </div>
+              <p class="pie-ctrl">La versión natural viene del <a id="verAudiolibro" href="https://kn1ghted.github.io/audiolibro/" target="_blank" rel="noopener">audiolibro</a>: son los mismos músicos del manual, con una pista por instrumento. La rueda se sincroniza con ella.</p>
+              <p class="aviso-audio" id="avisoAudio" hidden></p>
+            </div>
+
+            <div class="grupo-ctrl solo-escuchar">
+              <p class="rotulo">Capas</p>
+              <div class="capas" id="capas"></div>
+              <div class="interruptores" id="cajaClick" hidden>
+                <button class="interruptor" id="btnClick" aria-pressed="true">Click de referencia</button>
+              </div>
+            </div>
+
+            <div class="grupo-ctrl">
+              <p class="rotulo">Trazos internos</p>
+              <div class="interruptores">
+                <button class="interruptor" data-trazo="espejo" aria-pressed="false">Golpes en espejo</button>
+                <button class="interruptor" data-trazo="opuesto" aria-pressed="false">Golpes opuestos</button>
+                <button class="interruptor" data-trazo="dos" aria-pressed="true">Numeración en dos compases</button>
+              </div>
+            </div>
+          </div>
+        </details>
       </div>
     </div>
 
@@ -756,66 +907,6 @@ button:active,.pill-ritmo:active,.interruptor:active,.voz:active,
         <div class="simbolo"><span class="gl" style="color:var(--eje)">│</span><span>La <b>línea amarilla</b> del medio marca el inicio de cada compás.</span></div>
         <div class="simbolo"><span class="gl" style="color:var(--tiempo)">╱</span><span><b>Golpes en espejo</b>: cada golpe y el que le queda justo enfrente, al otro lado del centro.</span></div>
         <div class="simbolo"><span class="gl" style="color:var(--eje)">◡</span><span><b>Golpes opuestos</b>: los que se reflejan a un lado y otro del eje del compás.</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ TALLER ============ -->
-<section class="banda taller-zona plato" id="taller">
-  <div class="envoltura">
-    <p class="rotulo">Ahora te toca a vos</p>
-    <h2 class="intro-titulo" style="color:#F3F0EA;max-width:24ch">Armá tu propia clave.</h2>
-    <p class="parrafo medida" style="margin-bottom:var(--e3)">Tocá los puntos de la rueda para poner y quitar golpes. Elegí primero el instrumento, y dejá la marcha binaria encendida: es la vara con la que se mide si lo que armaste se puede bailar.</p>
-    <p class="parrafo medida" style="margin-bottom:var(--e5)">Los cuatro golpes de mano del quinto, la conga y la tumbadora —abierto, bajo, yema y tapado— son grabaciones reales, recortadas una por una de las pistas del audiolibro.</p>
-
-    <div class="lab">
-      <div>
-        <div class="figura" id="figuraTaller"><svg viewBox="0 0 100 100" id="svgTaller" role="img" aria-label="Rueda editable"></svg></div>
-        <p class="pista-rueda" id="pistaRueda" aria-live="polite"></p>
-        <div class="cifrado" id="cifradoTaller"></div>
-        <p class="leyenda-cifrado">Cada casilla es una corchea. <span id="notaTaller"></span></p>
-      </div>
-
-      <div class="controles">
-        <div class="transporte">
-          <button class="btn-tocar" id="btnTaller" data-sonando="0" aria-pressed="false">
-            <span id="iconoTaller">▶</span><span id="textoTaller">Tocar</span>
-          </button>
-          <div class="tempo">
-            <label for="tempoTaller"><span>Tempo</span><output id="salidaTempoTaller">96</output></label>
-            <input type="range" id="tempoTaller" min="40" max="180" value="96" step="1">
-          </div>
-        </div>
-
-        <div class="grupo-ctrl">
-          <p class="rotulo">Métrica</p>
-          <div class="metricas" role="group" aria-label="Métrica del taller">
-            <button class="pastilla" data-tmetrica="5" aria-pressed="true">5 · Kalö̀te</button>
-            <button class="pastilla" data-tmetrica="7" aria-pressed="false">7 · Convite</button>
-          </div>
-        </div>
-
-        <div class="grupo-ctrl">
-          <p class="rotulo">Instrumento que estás escribiendo</p>
-          <div class="voces" id="voces" role="group" aria-label="Instrumento"></div>
-        </div>
-
-        <div class="grupo-ctrl">
-          <p class="rotulo">Marcha binaria</p>
-          <div class="interruptores">
-            <button class="interruptor" id="btnMarchaTaller" aria-pressed="true">Sonando de referencia</button>
-          </div>
-          <p class="pie-ctrl">El 1 del compás y su mitad exacta. Si tu clave calza contra eso, se baila.</p>
-        </div>
-
-        <div class="grupo-ctrl">
-          <p class="rotulo">Punto de partida</p>
-          <div class="interruptores" id="plantillas"></div>
-          <div class="interruptores" style="margin-top:.4rem">
-            <button class="interruptor" id="btnVaciar">Borrar todo</button>
-          </div>
-        </div>
       </div>
     </div>
   </div>
@@ -1250,15 +1341,11 @@ function programar(){
   const durCorchea = 30 / estado.bpm;
   while(siguienteTiempo < ctx.currentTime + MIRA){
     const paso = pasoProg % m.ciclo;
-    CAPAS.forEach(c => {
-      if(estado.capas[c.id] && golpesDe(c.id).includes(paso)) sonar(c.id, siguienteTiempo, paso === 0);
-    });
+    vocesDelPaso(paso, siguienteTiempo);
     const cuando = siguienteTiempo;
     setTimeout(() => {
       if(!estado.sonando) return;
-      estado.paso = paso;
-      moverAguja(paso, true);
-      marcarCifrado(paso);
+      pintarPaso(paso);
     }, Math.max(0, (cuando - ctx.currentTime) * 1000));
     siguienteTiempo += durCorchea;
     pasoProg++;
@@ -1317,7 +1404,7 @@ function avisoAudio(txt){
 }
 
 function tocar(){
-  if(estado.fuente === "grabacion"){ tocarGrabacion(); return; }
+  if(estado.fuente === "grabacion" && !armando()){ tocarGrabacion(); return; }
   iniciarCtx();
   if(ctx.state === "suspended") ctx.resume();
   estado.sonando = true;
@@ -1333,8 +1420,8 @@ function parar(){
   idTemporizador = null;
   pararGrabacion();
   estado.paso = 0;
-  moverAguja(0, false);
-  marcarCifrado(-1);
+  if(armando()){ moverAgujaTaller(0, false); marcarCifradoTaller(-1); }
+  else { moverAguja(0, false); marcarCifrado(-1); }
   pintarBotonTocar();
 }
 
@@ -1361,7 +1448,7 @@ function pintarClaves(){
     const sonaba = estado.sonando;
     if(sonaba) parar();
     estado.claveId = b.dataset.clave;
-    pintarClaves(); dibujarFigura(); dibujarCifrado(); pintarFuente();
+    pintarClaves(); dibujarRueda(); dibujarCifradoActual(); pintarFuente();
     if(sonaba && (estado.fuente === "sintesis" || claveActual().grab)) tocar();
   }));
 }
@@ -1374,7 +1461,7 @@ function pintarCapas(){
     </button>`).join("");
   caja.querySelectorAll("[data-capa]").forEach(b => b.addEventListener("click", () => {
     estado.capas[b.dataset.capa] = !estado.capas[b.dataset.capa];
-    pintarCapas(); dibujarFigura(); dibujarCifrado();
+    pintarCapas(); dibujarRueda(); dibujarCifradoActual();
   }));
 }
 
@@ -1417,7 +1504,8 @@ document.querySelectorAll("[data-metrica]").forEach(b => b.addEventListener("cli
   estado.metrica = +b.dataset.metrica;
   estado.claveId = metricaActual().claves[0].id;
   document.querySelectorAll("[data-metrica]").forEach(o => o.setAttribute("aria-pressed", String(+o.dataset.metrica === estado.metrica)));
-  pintarClaves(); dibujarFigura(); dibujarCifrado(); pintarFuente();
+  pintarClaves(); pintarVoces(); pintarPlantillas();
+  dibujarRueda(); dibujarCifradoActual(); pintarFuente();
   if(estado.sonando){ parar(); tocar(); }
 }));
 
@@ -1425,7 +1513,7 @@ document.querySelectorAll("[data-trazo]").forEach(b => b.addEventListener("click
   const t = b.dataset.trazo;
   estado.trazos[t] = !estado.trazos[t];
   b.setAttribute("aria-pressed", String(estado.trazos[t]));
-  dibujarFigura();
+  dibujarRueda();
 }));
 
 /* ==========================================================================
@@ -1654,7 +1742,7 @@ document.getElementById("notaLibro").textContent = LIBRO_COMPLETO
 })();
 
 /* ========================================================================== */
-pintarClaves(); pintarCapas(); pintarFuente(); dibujarFigura(); dibujarCifrado(); pintarLibro();
+pintarClaves(); pintarCapas(); pintarFuente(); pintarLibro();
 
 /* ==========================================================================
    10. Taller — la rueda editable
@@ -1697,6 +1785,20 @@ const taller = {
   }
 };
 
+/* La pestaña abierta. El resto del estado que las dos vistas comparten
+   —métrica, tempo, si suena y en qué paso va— vive en `estado`, y `taller`
+   lo lee de ahí: así hay un solo reloj y un solo botón de Tocar. */
+const vista = { pestana: "escuchar" };
+const armando = () => vista.pestana === "armar";
+
+["metrica","bpm","sonando","paso"].forEach(k => {
+  delete taller[k];
+  Object.defineProperty(taller, k, {
+    get: () => estado[k],
+    set: v => { estado[k] = v; }
+  });
+});
+
 const mT = () => METRICAS[taller.metrica];
 
 /* Cada voz guarda { posición: tipo de golpe }. En los cueros el tipo es uno
@@ -1717,7 +1819,7 @@ function alternar(id, i){
   return m[i];
 }
 
-const svgT = document.getElementById("svgTaller");
+const svgT = document.getElementById("svgFigura");   // la misma rueda
 const RT = 46.5;
 
 /* Dibuja un golpe con la forma que le toca. Vacío: un punto tenue, más
@@ -1813,7 +1915,7 @@ function dibujarTaller(){
     const t = alternar(taller.voz, i);
     taller.ultimo = { voz: taller.voz, tipo: t };
     if(t){ iniciarCtx(); sonarVoz(taller.voz, ctx.currentTime + 0.01, false, t); }
-    pintarVoces(); dibujarTaller(); dibujarCifradoTaller();
+    pintarVoces(); dibujarRueda(); dibujarCifradoActual();
   }));
   moverAgujaTaller(taller.paso < 0 ? 0 : taller.paso, false);
 }
@@ -1835,7 +1937,7 @@ function moverAgujaTaller(paso, marcar){
 
 /* --- cifrado del taller --- */
 function dibujarCifradoTaller(){
-  const caja = document.getElementById("cifradoTaller");
+  const caja = document.getElementById("cifrado");
   if(!caja) return;
   const m = mT(), n = m.ciclo, barra = n / 2;
   const filas = VOCES.filter(v => patron(v.id).length || v.id === taller.voz).map(v => {
@@ -1851,11 +1953,11 @@ function dibujarCifradoTaller(){
     return `<div class="cifrado-fila"><span class="cifrado-nom">${v.nombre}</span><span class="cifrado-pista">${casillas}</span></div>`;
   });
   caja.innerHTML = filas.join("");
-  document.getElementById("notaTaller").textContent = m.nota;
+  document.getElementById("notaCiclo").textContent = m.nota;
 }
 
 function marcarCifradoTaller(paso){
-  const caja = document.getElementById("cifradoTaller");
+  const caja = document.getElementById("cifrado");
   if(!caja) return;
   caja.querySelectorAll(".casilla.aqui").forEach(e => e.classList.remove("aqui"));
   caja.querySelectorAll(`.casilla[data-i="${paso}"]`).forEach(e => e.classList.add("aqui"));
@@ -1894,59 +1996,29 @@ function sonarVoz(id, t, acento, tipo){
   }
 }
 
-/* --- reloj del taller --- */
-let idTaller = null, sigT = 0, pasoProgT = 0;
-
-function programarTaller(){
-  const m = mT();
-  const dur = 30 / taller.bpm;
-  while(sigT < ctx.currentTime + MIRA){
-    const paso = pasoProgT % m.ciclo;
-    VOCES.forEach(v => {
-      const t = tipoEn(v.id, paso);
-      if(t) sonarVoz(v.id, sigT, paso === 0, t);
+/* --- reloj: uno solo para las dos pestañas --- */
+function vocesDelPaso(paso, t){
+  const m = metricaActual();
+  if(!armando()){
+    CAPAS.forEach(c => {
+      if(estado.capas[c.id] && golpesDe(c.id).includes(paso)) sonar(c.id, t, paso === 0);
     });
-    if(taller.marcha && m.marcha.includes(paso)) sonarVoz("click", sigT, paso === 0);
-    const cuando = sigT;
-    setTimeout(() => {
-      if(!taller.sonando) return;
-      taller.paso = paso;
-      moverAgujaTaller(paso, true);
-      marcarCifradoTaller(paso);
-    }, Math.max(0, (cuando - ctx.currentTime) * 1000));
-    sigT += dur;
-    pasoProgT++;
+  } else {
+    VOCES.forEach(v => {
+      const g = tipoEn(v.id, paso);
+      if(g) sonarVoz(v.id, t, paso === 0, g);
+    });
+    if(taller.marcha && m.marcha.includes(paso)) sonarVoz("click", t, paso === 0);
   }
 }
 
-function tocarTaller(){
-  iniciarCtx();
-  if(ctx.state === "suspended") ctx.resume();
-  taller.sonando = true;
-  pasoProgT = 0;
-  sigT = ctx.currentTime + 0.06;
-  idTaller = setInterval(programarTaller, TIC);
-  pintarBotonTaller();
+function pintarPaso(paso){
+  estado.paso = paso;
+  if(armando()){ moverAgujaTaller(paso, true); marcarCifradoTaller(paso); }
+  else { moverAguja(paso, true); marcarCifrado(paso); }
 }
 
-function pararTaller(){
-  taller.sonando = false;
-  clearInterval(idTaller);
-  idTaller = null;
-  taller.paso = 0;
-  moverAgujaTaller(0, false);
-  marcarCifradoTaller(-1);
-  pintarBotonTaller();
-}
 
-function pintarBotonTaller(){
-  const b = document.getElementById("btnTaller");
-  if(!b) return;
-  b.dataset.sonando = taller.sonando ? "1" : "0";
-  b.setAttribute("aria-pressed", String(taller.sonando));
-  document.getElementById("iconoTaller").textContent = taller.sonando ? "■" : "▶";
-  document.getElementById("textoTaller").textContent = taller.sonando ? "Parar" : "Tocar";
-}
 
 /* --- controles del taller --- */
 /* Una línea al pie de la rueda que dice qué hace un toque, con el nombre del
@@ -1995,7 +2067,7 @@ function pintarVoces(){
   }).join("");
   caja.querySelectorAll("[data-voz]").forEach(b => b.addEventListener("click", () => {
     taller.voz = b.dataset.voz;
-    pintarVoces(); dibujarTaller(); dibujarCifradoTaller();
+    pintarVoces(); dibujarRueda(); dibujarCifradoActual();
   }));
 }
 
@@ -2014,45 +2086,30 @@ function pintarPlantillas(){
        el peso del patrón; desde ahí se modela tocando cada punto. */
     taller.datos[taller.metrica][taller.voz] =
       Object.fromEntries(golpes.map(i => [i, cuero ? "circulo" : "golpe"]));
-    pintarVoces(); dibujarTaller(); dibujarCifradoTaller();
+    pintarVoces(); dibujarRueda(); dibujarCifradoActual();
   }));
 }
 
 if(svgT){
-  document.getElementById("btnTaller").addEventListener("click", () => taller.sonando ? pararTaller() : tocarTaller());
-
-  document.getElementById("tempoTaller").addEventListener("input", e => {
-    taller.bpm = +e.target.value;
-    document.getElementById("salidaTempoTaller").textContent = taller.bpm;
-  });
-
-  document.querySelectorAll("[data-tmetrica]").forEach(b => b.addEventListener("click", () => {
-    taller.metrica = +b.dataset.tmetrica;
-    document.querySelectorAll("[data-tmetrica]").forEach(o =>
-      o.setAttribute("aria-pressed", String(+o.dataset.tmetrica === taller.metrica)));
-    pintarVoces(); pintarPlantillas(); dibujarTaller(); dibujarCifradoTaller();
-    if(taller.sonando){ pararTaller(); tocarTaller(); }
-  }));
-
   document.getElementById("btnMarchaTaller").addEventListener("click", e => {
     taller.marcha = !taller.marcha;
     e.currentTarget.setAttribute("aria-pressed", String(taller.marcha));
-    dibujarTaller();
+    dibujarRueda();
   });
 
   document.getElementById("btnVaciar").addEventListener("click", () => {
     VOCES.forEach(v => { taller.datos[taller.metrica][v.id] = {}; });
-    pintarVoces(); dibujarTaller(); dibujarCifradoTaller();
+    pintarVoces(); dibujarRueda(); dibujarCifradoActual();
   });
 
   // arranca con la clave completa 3:3 puesta, para que haya algo que oír
   taller.datos[5].clave = Object.fromEntries(METRICAS[5].claves[0].golpes.map(i => [i, "golpe"]));
   taller.datos[7].clave = Object.fromEntries(METRICAS[7].claves[0].golpes.map(i => [i, "golpe"]));
 
-  pintarVoces(); pintarPlantillas(); dibujarTaller(); dibujarCifradoTaller(); pintarBotonTaller();
+  pintarVoces(); pintarPlantillas();
 
   // la rueda entra girando cuando la sección aparece
-  const zona = document.getElementById("taller");
+  const zona = document.getElementById("claves");
   if("IntersectionObserver" in window){
     const obs = new IntersectionObserver(es => es.forEach(e => {
       if(e.isIntersecting){ zona.classList.add("entro"); obs.disconnect(); }
@@ -2062,6 +2119,82 @@ if(svgT){
     zona.classList.add("entro");
   }
 }
+
+/* ==========================================================================
+   11. Las dos pestañas de la rueda
+   ========================================================================== */
+function dibujarRueda(){ armando() ? dibujarTaller() : dibujarFigura(); }
+function dibujarCifradoActual(){ armando() ? dibujarCifradoTaller() : dibujarCifrado(); }
+
+function pintarPestanas(){
+  document.querySelectorAll("[data-pest]").forEach(b => {
+    const act = b.dataset.pest === vista.pestana;
+    b.setAttribute("aria-selected", String(act));
+    b.classList.toggle("pest-activa", act);
+  });
+  document.querySelectorAll(".solo-escuchar").forEach(e => { e.hidden = armando(); });
+  document.querySelectorAll(".solo-armar").forEach(e => { e.hidden = !armando(); });
+  document.getElementById("panelRueda")
+    .setAttribute("aria-labelledby", armando() ? "pestArmar" : "pestEscuchar");
+  document.getElementById("introClaves").textContent = armando()
+    ? "Tocá los puntos de la rueda para poner y quitar golpes. En el quinto, la conga y la tumbadora cada toque recorre los cuatro golpes de la mano. Dejá la marcha binaria encendida: es la vara con la que se mide si lo que armaste se puede bailar."
+    : "Elegí una métrica y una clave compuesta. La marcha con la que caminamos es un pulso binario: al dividir los ritmos de 5 y 7 en dos partes los llevamos a ese lenguaje binario, donde el baile se vuelve natural.";
+  document.getElementById("pistaRueda").hidden = !armando();
+  /* La grabación es de las claves del libro: en "Armá la tuya" no hay
+     ninguna pista que reproducir, así que se vuelve a la versión digital. */
+  if(armando() && estado.fuente === "grabacion"){ estado.fuente = "sintesis"; }
+  document.querySelectorAll("[data-fuente]").forEach(b => {
+    b.disabled = armando() && b.dataset.fuente === "grabacion";
+  });
+  pintarFuente();
+  if(armando()) pintarPista();
+}
+
+function cambiarPestana(p){
+  if(vista.pestana === p) return;
+  if(estado.sonando) parar();
+  vista.pestana = p;
+  pintarPestanas();
+  dibujarRueda(); dibujarCifradoActual();
+}
+
+document.querySelectorAll("[data-pest]").forEach(b =>
+  b.addEventListener("click", () => cambiarPestana(b.dataset.pest)));
+
+pintarPestanas();
+dibujarRueda(); dibujarCifradoActual();
+
+/* ==========================================================================
+   12. La barra marca la sección que se está viendo
+   ========================================================================== */
+(function barra(){
+  const enl = [...document.querySelectorAll(".barra-enl a")];
+  const porId = Object.fromEntries(enl.map(a => [a.getAttribute("href").slice(1), a]));
+  const secs = Object.keys(porId).map(id => document.getElementById(id)).filter(Boolean);
+  if(!secs.length || !("IntersectionObserver" in window)) return;
+
+  const marcar = id => enl.forEach(a => a.classList.toggle("aqui", a.getAttribute("href") === "#" + id));
+  const obs = new IntersectionObserver(es => {
+    es.forEach(e => { if(e.isIntersecting) marcar(e.target.id); });
+  }, { rootMargin: "-45% 0px -50% 0px", threshold: 0 });
+  secs.forEach(s => obs.observe(s));
+})();
+
+/* Desde la lista de ritmos: abre esa clave en "Escuchar" y la toca. */
+document.querySelectorAll("[data-clave-ir]").forEach(b => b.addEventListener("click", () => {
+  const met = +b.dataset.metricaIr, cl = b.dataset.claveIr;
+  if(estado.sonando) parar();
+  if(vista.pestana !== "escuchar"){ vista.pestana = "escuchar"; pintarPestanas(); }
+  estado.metrica = met;
+  document.querySelectorAll("[data-metrica]").forEach(o =>
+    o.setAttribute("aria-pressed", String(+o.dataset.metrica === met)));
+  pintarClaves();
+  if(METRICAS[met].claves.some(c => c.id === cl)) estado.claveId = cl;
+  pintarClaves(); pintarVoces(); pintarPlantillas();
+  dibujarRueda(); dibujarCifradoActual(); pintarFuente();
+  document.getElementById("claves").scrollIntoView({behavior:"smooth", block:"start"});
+  setTimeout(tocar, 650);
+}));
 
 </script>
 </body>
