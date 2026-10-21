@@ -19,6 +19,7 @@
   (function () {
     var k = null; try { k = localStorage.getItem('divende-estilo'); } catch (e) {}
     var ok = ['noche', 'caricatura', 'editorial', 'terminal'];
+    if (k === 'caricatura') { location.replace('/caricatura/'); return; }
     if (k && ok.indexOf(k) > -1) { document.documentElement.dataset.estilo = k; document.documentElement.classList.add('visto'); }
   })();
 </script>
@@ -807,6 +808,7 @@ html[data-estilo="terminal"] .sw-btn{background:#050805;font-size:22px;font-weig
   };
   if (!root.classList.contains('visto')) document.body.style.overflow = 'hidden';
   $$('[data-pick]').forEach((b) => b.addEventListener('click', () => {
+    if (b.dataset.pick === 'caricatura') { try { localStorage.setItem('divende-estilo', 'caricatura'); } catch (e) {} location.href = '/caricatura/'; return; }
     const inIntro = !!b.closest('#intro');
     setEstilo(b.dataset.pick, !inIntro);
     if (inIntro) { closeIntro(); window.scrollTo(0, 0); }

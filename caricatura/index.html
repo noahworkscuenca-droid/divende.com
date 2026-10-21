@@ -1,0 +1,974 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Divende · Diseño creativo</title>
+<meta name="description" content="Identidad visual, piezas para redes, menús y webs con personalidad. El lado creativo de Divende, el estudio de Noah Cuenca en San José, Costa Rica.">
+<meta property="og:title" content="Divende · Diseño creativo">
+<meta property="og:image" content="https://divende.com/assets/divende-v.png">
+<meta name="theme-color" content="#F3EEDF">
+<link rel="icon" type="image/png" href="/favicon.png">
+<script>try{localStorage.setItem('divende-estilo','caricatura')}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Spectral:ital,wght@0,600;0,800;1,400&family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,400&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+html,body{margin:0}
+/* Layout: una mesa de dibujo; la carpeta de trabajos es el centro y todo lo demás son papeles, stickers y viñetas alrededor */
+:root{
+  color-scheme:light;
+  --paper:#F3EEDF; --paper2:#E9E1CC; --card:#FBF8EE; --ink:#1B1F14; --mut:#4A4D3E;
+  --olive:#9AA63A; --olive2:#B3BE4E; --mustard:#F2A93B; --pink:#F49AC1; --teal:#33B09B; --plum:#8E1450; --night:#121410;
+  --fD:'Fredoka',ui-rounded,system-ui,sans-serif; --fM:'Space Mono',ui-monospace,monospace;
+  --bw:3px; --sh:5px 5px 0 var(--ink); --shL:9px 9px 0 var(--ink);
+  --pw:clamp(150px,19vw,240px);
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--fD);font-size:18px;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+button{font:inherit;color:inherit}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--plum);outline-offset:3px}
+.wrap{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.in{max-width:1240px;margin:0 auto}
+.tag{display:inline-block;padding:4px 10px;border:2.5px solid var(--ink);border-radius:10px;background:var(--card);font:700 12px/1.3 var(--fM);letter-spacing:.06em;text-transform:uppercase}
+h1,h2,h3{margin:0;font-family:var(--fD);font-weight:700;letter-spacing:-.02em;text-wrap:balance}
+.outl{color:var(--olive);-webkit-text-stroke:var(--bw) var(--ink);paint-order:stroke fill}
+.btn{display:inline-flex;align-items:center;gap:8px;min-height:52px;padding:0 24px;border:var(--bw) solid var(--ink);border-radius:18px;background:var(--card);box-shadow:var(--sh);font-weight:600;font-size:18px;cursor:pointer;text-decoration:none;transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--ink)}
+.btn:active{transform:translate(3px,3px);box-shadow:2px 2px 0 var(--ink)}
+.btn.pri{background:var(--mustard)}
+
+/* ---------- Nav ---------- */
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--paper)}
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;padding-block:12px;background:var(--paper);border-bottom:var(--bw) solid var(--ink)}
+.nav .in{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{display:flex;align-items:center;gap:12px;padding:10px 16px;border:var(--bw) solid var(--ink);border-radius:18px;background:var(--card);box-shadow:var(--sh);text-decoration:none}
+.brand i{width:14px;height:14px;border-radius:50%;background:var(--olive);border:2.5px solid var(--ink)}
+.brand b{font-size:20px}
+.brand .tag{background:var(--mustard);font-size:10px;padding:2px 7px}
+.nav nav{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+.nav nav a{padding:9px 14px;border:var(--bw) solid var(--ink);border-radius:14px;background:var(--card);box-shadow:3px 3px 0 var(--ink);font-weight:600;font-size:15px;text-decoration:none}
+.nav nav a:hover{background:var(--olive)}
+
+/* ---------- Hero ---------- */
+.hero{position:relative;padding-block:50px 120px;overflow:hidden}
+.hero .in{position:relative;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:40px;align-items:center}
+.hero h1{margin-top:18px;font-size:clamp(46px,7vw,100px);line-height:.95}
+.hero h1 .w{display:inline-block;transition:transform .25s cubic-bezier(.3,1.8,.5,1)}
+.hero h1 .w:hover{transform:rotate(-4deg) scale(1.06)}
+.hero p{max-width:34ch;margin:22px 0 0;font-size:21px;font-weight:500;color:var(--mut)}
+.hero .acts{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px}
+.stage{position:relative;aspect-ratio:1;max-width:100%}
+.stage .v{position:absolute;inset:12% 8% 18%;display:flex;align-items:center;justify-content:center;animation:bob 2.8s ease-in-out infinite}
+.stage .v img{width:100%;filter:drop-shadow(4px 0 0 var(--ink)) drop-shadow(-4px 0 0 var(--ink)) drop-shadow(0 4px 0 var(--ink)) drop-shadow(0 -4px 0 var(--ink)) drop-shadow(9px 9px 0 var(--ink))}
+.stage .floor{position:absolute;left:14%;right:14%;bottom:9%;display:flex;align-items:center;gap:8px}
+.stage .floor i{display:block;height:5px;width:22px;border-radius:3px;background:var(--ink)}
+.stage .floor b{flex:1;height:16px;border-radius:50%;background:var(--ink);animation:shadow 2.8s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-14px) rotate(-2deg)}}
+@keyframes shadow{50%{transform:scaleX(.86)}}
+.stk{position:absolute;pointer-events:none;transition:translate .3s ease-out}
+.drip{display:block;width:100%;height:70px;margin-top:-1px}
+
+/* ---------- Carpeta / mesa ---------- */
+.trab{position:relative;background:var(--paper2);border-top:var(--bw) solid var(--ink);padding-block:70px 90px}
+.trab-h{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:16px;margin-bottom:26px}
+.trab-h h2{font-size:clamp(38px,5vw,64px);line-height:1}
+.trab-h p{margin:8px 0 0;max-width:46ch;color:var(--mut);font-weight:500}
+.desk{position:relative;height:min(760px,92vh);min-height:560px;border:var(--bw) solid var(--ink);border-radius:26px;background:var(--card);background-image:linear-gradient(rgba(27,31,20,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(27,31,20,.07) 1px,transparent 1px);background-size:44px 44px;box-shadow:var(--shL);overflow:hidden;transition:height .7s cubic-bezier(.6,0,.2,1)}
+.dark{position:absolute;inset:0;background:var(--night);background-image:linear-gradient(rgba(255,255,255,.09) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.09) 1px,transparent 1px);background-size:44px 44px;clip-path:circle(0% at var(--fx,50%) var(--fy,50%));transition:clip-path .8s cubic-bezier(.7,0,.2,1)}
+.desk.caos .dark{clip-path:circle(150% at var(--fx,50%) var(--fy,50%))}
+
+.folder{position:absolute;left:50%;top:46%;width:clamp(180px,24vw,260px);aspect-ratio:1.3;translate:-50% -50%;border:0;background:none;padding:0;cursor:pointer;z-index:6;transition:transform .45s cubic-bezier(.6,-.4,.4,1.4),opacity .3s}
+.folder .back,.folder .flap,.folder .sheet{position:absolute;border:var(--bw) solid var(--ink)}
+.folder .back{inset:12% 0 0 0;border-radius:6px 14px 14px 14px;background:var(--plum)}
+.folder .back::before{content:"";position:absolute;left:-3px;top:-24px;width:42%;height:24px;border:var(--bw) solid var(--ink);border-bottom:0;border-radius:10px 14px 0 0;background:var(--plum)}
+.folder .sheet{left:8%;right:10%;top:4%;bottom:14%;border-radius:4px;background:var(--mustard);transform:rotate(-4deg);transition:transform .35s}
+.folder .sheet.s2{background:var(--teal);transform:rotate(5deg);left:16%;right:6%;top:8%}
+.folder .flap{inset:30% -2% 0 -2%;border-radius:10px 10px 14px 14px;background:#B01C68;transform-origin:50% 100%;transition:transform .45s cubic-bezier(.3,1.6,.5,1)}
+.folder .flap b{position:absolute;left:12%;top:18%;font:700 15px var(--fM);color:#FBF8EE;letter-spacing:.04em}
+.folder:hover .sheet{transform:rotate(-8deg) translateY(-14px)}
+.folder:hover .sheet.s2{transform:rotate(9deg) translateY(-10px)}
+.folder:hover .flap{transform:perspective(500px) rotateX(-18deg)}
+.folder.shake{animation:shake .38s}
+@keyframes shake{20%{transform:rotate(-6deg)}40%{transform:rotate(5deg)}60%{transform:rotate(-4deg)}80%{transform:rotate(2deg)}}
+.desk.abierta .folder{transform:scale(.2) rotate(30deg);opacity:0;pointer-events:none}
+.hint{position:absolute;left:calc(50% + clamp(60px,10vw,120px));top:calc(46% + clamp(70px,9vw,110px));display:flex;align-items:flex-start;gap:6px;font-weight:600;font-size:20px;transform:rotate(8deg);z-index:6;transition:opacity .3s}
+.hint svg{flex:none;margin-top:-26px}
+.desk.abierta .hint{opacity:0}
+
+.paper{position:absolute;left:0;top:0;width:var(--pw);aspect-ratio:4/5;padding:0;border:var(--bw) solid var(--ink);border-radius:8px;background:var(--card);box-shadow:var(--sh);cursor:pointer;z-index:3;opacity:0;
+  transform:translate(calc(var(--x,0px) - 50%),calc(var(--y,0px) - 50%)) rotate(var(--r,0deg)) scale(var(--s,.25));
+  transition:transform .9s cubic-bezier(.25,1.45,.45,1) var(--d,0s),opacity .3s var(--d,0s),box-shadow .2s;touch-action:none;overflow:hidden;text-align:left}
+.desk.abierta .paper{opacity:1}
+.paper.drag{transition:none;z-index:8;box-shadow:12px 14px 0 var(--ink);cursor:grabbing}
+.desk.caos .paper:hover{box-shadow:9px 9px 0 var(--ink)}
+.paper .cov{position:absolute;inset:0 0 22% 0;border-bottom:var(--bw) solid var(--ink);overflow:hidden}
+.paper .lbl{position:absolute;left:10px;right:10px;bottom:0;height:22%;display:flex;flex-direction:column;justify-content:center;line-height:1.1}
+.paper .lbl b{font-size:clamp(13px,1.3vw,17px)}
+.paper .lbl small{font:400 10px var(--fM);letter-spacing:.05em;text-transform:uppercase;color:var(--mut)}
+.tape{position:absolute;left:50%;top:-8px;width:70px;height:22px;translate:-50% 0;rotate:-4deg;background:rgba(242,169,59,.55);z-index:2}
+
+.deco{position:absolute;left:0;top:0;z-index:2;pointer-events:none;opacity:0;transform:translate(calc(var(--x) - 50%),calc(var(--y) - 50%)) rotate(var(--r)) scale(0);transition:transform .7s cubic-bezier(.25,1.6,.45,1) var(--d,0s),opacity .2s var(--d,0s)}
+.desk.caos .deco{opacity:1;transform:translate(calc(var(--x) - 50%),calc(var(--y) - 50%)) rotate(var(--r)) scale(1)}
+.deco.wig{animation:wig 2.4s ease-in-out infinite}
+@keyframes wig{50%{rotate:8deg}}
+.desk.caos .paper.idle{animation:float 3.2s ease-in-out infinite}
+@keyframes float{50%{translate:0 -6px}}
+
+.chat{position:absolute;left:50%;bottom:22px;z-index:9;width:min(440px,calc(100% - 32px));translate:-50% 0;padding:16px 18px 14px;border-radius:22px;background:#0B0C09;color:#FBF8EE;border:var(--bw) solid var(--ink);box-shadow:6px 6px 0 var(--mustard);opacity:0;transform:translateY(30px) scale(.9);transition:transform .45s cubic-bezier(.3,1.6,.5,1),opacity .25s;pointer-events:none}
+.chat.on{opacity:1;transform:none;pointer-events:auto}
+.chat p{margin:0;font-weight:600;font-size:18px;text-align:center}
+.chat .row{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:12px}
+.chat button{min-height:42px;padding:0 16px;border:2.5px solid #FBF8EE;border-radius:14px;background:transparent;color:#FBF8EE;font-weight:600;cursor:pointer}
+.chat button.pri{background:var(--mustard);color:var(--ink);border-color:var(--mustard)}
+.chat .wave{display:flex;justify-content:center;gap:3px;height:22px;margin-top:12px}
+.chat .wave i{width:5px;border-radius:3px;animation:wave 1s ease-in-out infinite}
+@keyframes wave{50%{transform:scaleY(.35)}}
+.slots{position:absolute;left:0;right:0;top:0;padding:28px;display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:28px;visibility:hidden;pointer-events:none}
+.slots i{aspect-ratio:4/5.6}
+
+/* ---------- Detalle ---------- */
+.sheetbg{position:fixed;inset:0;z-index:60;background:rgba(18,20,16,.55);opacity:0;transition:opacity .35s}
+.sheetbg.on{opacity:1}
+.big{position:fixed;z-index:61;top:max(16px,env(safe-area-inset-top,0px));bottom:max(16px,env(safe-area-inset-bottom,0px));left:max(16px,env(safe-area-inset-left,0px));right:max(16px,env(safe-area-inset-right,0px));max-width:1100px;margin:0 auto;border:var(--bw) solid var(--ink);border-radius:16px;background:var(--card);box-shadow:12px 12px 0 var(--ink);overflow:auto;transform-origin:0 0}
+.big .grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);min-height:100%}
+.big .art{position:relative;min-height:340px;border-right:var(--bw) solid var(--ink);overflow:hidden}
+.big .art .cov{position:absolute;inset:0}
+.big .txt{padding:clamp(22px,4vw,48px);opacity:0;transform:translateY(16px);transition:opacity .4s .25s,transform .5s .25s}
+.big.on .txt{opacity:1;transform:none}
+.big h3{margin-top:12px;font-size:clamp(34px,4vw,54px);line-height:1}
+.big p{max-width:48ch;color:var(--mut);font-weight:500}
+.big ul{margin:16px 0 0;padding:0;list-style:none;display:grid;gap:8px}
+.big li{display:flex;gap:10px;font-weight:500}
+.big li::before{content:"";flex:none;width:12px;height:12px;margin-top:7px;border:2.5px solid var(--ink);border-radius:50%;background:var(--olive)}
+.big .sw{display:flex;gap:8px;margin-top:22px}
+.big .sw i{width:44px;height:44px;border:2.5px solid var(--ink);border-radius:12px}
+.big .meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.big .pend{margin-top:18px;padding:10px 14px;border:2.5px dashed var(--ink);border-radius:12px;font-size:15px;font-weight:500;background:#FFF3D9}
+.big .acts{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+.big .x{position:absolute;right:14px;top:14px;z-index:3;width:46px;height:46px;border:var(--bw) solid var(--ink);border-radius:50%;background:var(--mustard);box-shadow:3px 3px 0 var(--ink);font-size:20px;font-weight:700;cursor:pointer}
+
+/* ---------- Portadas ---------- */
+.cv-div{background:#FBF8EE;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6%}
+.cv-div img{width:52%}
+.cv-div b{font:600 clamp(14px,2.4vw,30px)/1 'Schibsted Grotesk',var(--fD);letter-spacing:-.03em;color:#16151F}
+.cv-div small{font:400 clamp(8px,1vw,12px) var(--fM);color:#5A5869;letter-spacing:.08em;text-transform:uppercase}
+.cv-man{background:#FAB10A;color:#050706;display:flex;flex-direction:column;justify-content:space-between;padding:9%}
+.cv-man .n{font:800 clamp(40px,9vw,120px)/.8 Spectral,Georgia,serif;letter-spacing:-.04em}
+.cv-man .t{font:600 clamp(11px,1.5vw,20px)/1.1 Spectral,serif}
+.cv-man .t i{display:block;font-weight:400;font-size:.8em}
+.cv-man .dots{display:flex;gap:5%}.cv-man .dots i{width:11%;aspect-ratio:1;border-radius:50%;border:2px solid #050706}.cv-man .dots i.on{background:#050706}
+.cv-caf{background:#3B2A20;color:#F4E9D8;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4%;text-align:center}
+.cv-caf .cup{width:34%;aspect-ratio:1;border-radius:50%;border:3px solid #F4E9D8;position:relative}
+.cv-caf .cup::after{content:"";position:absolute;inset:22%;border-radius:50%;background:#C98B4E}
+.cv-caf b{font:600 clamp(14px,2.2vw,28px)/1 Fraunces,Georgia,serif}
+.cv-caf small{font:400 clamp(8px,1vw,12px) var(--fM);letter-spacing:.12em;text-transform:uppercase;opacity:.8}
+.cv-fil{background:#F4F1EC;display:grid;grid-template-columns:22% 1fr}
+.cv-fil .pole{background:repeating-linear-gradient(135deg,#C7262E 0 12%,#F4F1EC 12% 24%,#1E3A8A 24% 36%,#F4F1EC 36% 48%);border-right:3px solid #111}
+.cv-fil div{display:flex;flex-direction:column;justify-content:center;padding:0 10%;color:#111}
+.cv-fil b{font:400 clamp(26px,5vw,64px)/.85 'Bebas Neue',var(--fD);letter-spacing:.01em}
+.cv-fil small{font:400 clamp(8px,1vw,12px) var(--fM);letter-spacing:.12em;text-transform:uppercase}
+.cv-mon{background:linear-gradient(180deg,#B9C9B5 0%,#6F8F6A 45%,#2F4A33 100%);position:relative;display:flex;align-items:flex-end;padding:9%}
+.cv-mon::before,.cv-mon::after{content:"";position:absolute;left:-20%;right:-20%;height:26%;border-radius:50%;background:rgba(240,244,236,.55);filter:blur(6px)}
+.cv-mon::before{top:24%;animation:fog 7s ease-in-out infinite}
+.cv-mon::after{top:46%;opacity:.6;animation:fog 9s ease-in-out infinite reverse}
+@keyframes fog{50%{transform:translateX(10%)}}
+.cv-mon b{position:relative;z-index:1;font:600 clamp(16px,2.6vw,34px)/1 Fraunces,Georgia,serif;color:#F4F1EA}
+.cv-mon b i{display:block;margin-top:4px;font:400 italic .5em Fraunces,serif}
+.cv-mon .q{position:absolute;right:14%;top:16%;width:12%;aspect-ratio:1;border-radius:50%;background:#B3122E;border:2px solid #F4F1EA;z-index:1}
+
+/* ---------- Servicios ---------- */
+.serv{padding-block:100px 60px}
+.serv h2,.proc h2,.cta h2{font-size:clamp(38px,5vw,64px);line-height:1}
+.sub{margin:10px 0 0;max-width:52ch;color:var(--mut);font-weight:500}
+.stickers{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:26px;margin-top:40px}
+.sticker{position:relative;padding:22px;border:var(--bw) solid var(--ink);border-radius:26px;background:var(--card);box-shadow:var(--sh);transform:rotate(var(--r));transition:transform .3s cubic-bezier(.3,1.7,.5,1),box-shadow .3s}
+.sticker:hover{transform:rotate(0) translateY(-8px) scale(1.03);box-shadow:var(--shL)}
+.sticker .ic{width:60px;height:60px;display:flex;align-items:center;justify-content:center;border:var(--bw) solid var(--ink);border-radius:18px;background:var(--c)}
+.sticker h3{margin-top:16px;font-size:23px;line-height:1.1}
+.sticker p{margin:8px 0 0;font-size:16px;color:var(--mut);font-weight:500}
+.sticker .ej{margin-top:12px;font:400 11px var(--fM);letter-spacing:.06em;text-transform:uppercase}
+
+/* ---------- Proceso (tira cómica) ---------- */
+.proc{padding-block:60px 100px}
+.strip{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin-top:40px;border:var(--bw) solid var(--ink);border-radius:20px;background:var(--card);box-shadow:var(--shL);overflow:hidden}
+.panel{position:relative;min-height:360px;padding:20px;border-right:var(--bw) solid var(--ink);display:flex;flex-direction:column;justify-content:space-between;gap:16px}
+.panel:last-child{border-right:0}
+.panel .cap{align-self:flex-start;padding:4px 10px;border:2.5px solid var(--ink);background:var(--mustard);font:700 12px var(--fM);letter-spacing:.05em;text-transform:uppercase}
+.panel .bub{margin:0;color:var(--ink);align-self:flex-start;max-width:100%;font:700 clamp(21px,2vw,26px)/1.15 var(--fD);letter-spacing:-.01em;text-wrap:balance}
+.panel .bub span{background:linear-gradient(transparent 58%,rgba(154,166,58,.55) 58%,rgba(154,166,58,.55) 92%,transparent 92%);box-decoration-break:clone;-webkit-box-decoration-break:clone;padding:0 2px}
+.fan{overflow:visible;max-width:100%}
+.fan .card{outline:none;cursor:pointer;transition:transform .35s cubic-bezier(.3,1.6,.5,1)}
+.fan .card:focus-visible rect{stroke:var(--plum)}
+.fan .sym{transition:transform .7s cubic-bezier(.6,0,.25,1.3),opacity .4s}
+.fan .chk{opacity:0;transition:opacity .2s}
+.fan .card.pick .chk{opacity:1}
+.rvbox{width:min(160px,100%);aspect-ratio:1;border:var(--bw) solid var(--ink);border-radius:16px;overflow:hidden;box-shadow:4px 4px 0 var(--ink);background:#FFFFFF}
+.rvbox{position:relative}
+.rvbox canvas{display:block;width:100%;height:100%}
+.rvtint{position:absolute;left:0;right:0;top:0;height:86%;pointer-events:none;mix-blend-mode:color;background:linear-gradient(90deg,#E8559A 0 33%,#F2A93B 39% 61%,#1FA88F 67% 100%);-webkit-mask:linear-gradient(#000 82%,transparent);mask:linear-gradient(#000 82%,transparent)}
+.panel .scene{flex:1;display:flex;align-items:flex-end;justify-content:center;min-height:120px}
+.panel p{margin:0;font-size:15px;color:var(--mut);font-weight:500}
+.panel.pop{animation:pop .5s cubic-bezier(.3,1.7,.5,1) both}
+@keyframes pop{from{transform:scale(.94) rotate(-1deg)}to{transform:none}}
+
+/* ---------- CTA ---------- */
+.cta{position:relative;background:var(--mustard);border-top:var(--bw) solid var(--ink);padding-block:100px 70px;overflow:hidden}
+.cta h2{font-size:clamp(48px,6.6vw,104px);overflow-wrap:anywhere;line-height:.9;color:var(--card);-webkit-text-stroke:5px var(--ink);paint-order:stroke fill;text-shadow:8px 8px 0 var(--ink)}
+.cta p{max-width:44ch;margin:24px 0 0;font-size:21px;font-weight:500}
+.mail{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-top:28px}
+.mail code{padding:12px 16px;border:var(--bw) solid var(--ink);border-radius:14px;background:var(--card);font:700 18px var(--fM);user-select:all}
+.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;margin-top:70px;font-size:14px;font-weight:500}
+.cta-in{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:40px;align-items:center}
+.key{margin:0}
+.keybox{display:block;width:100%;aspect-ratio:1443/863;padding:0;border:var(--bw) solid var(--ink);border-radius:24px;background:var(--paper);box-shadow:var(--shL);overflow:hidden;cursor:pointer;transition:transform .15s}
+.keybox:active{transform:translate(3px,3px)}
+.keybox span{display:block;width:100%;height:100%}
+.key figcaption{margin-top:14px;font-weight:600;text-align:center}
+@media (max-width:820px){.cta-in{grid-template-columns:1fr}}
+.rano{position:fixed;left:max(8px,env(safe-area-inset-left,0px));bottom:max(4px,env(safe-area-inset-bottom,0px));z-index:55;width:150px;aspect-ratio:360/390;cursor:grab;touch-action:none;user-select:none;-webkit-user-select:none}
+.rano.drag{cursor:grabbing}
+.rano{transition:transform .45s cubic-bezier(.34,1.4,.64,1)}
+.rano.peek:not(.talk):not(.drag){transform:translateY(62%)}
+
+.rano:focus-visible{outline:3px solid var(--plum);outline-offset:4px;border-radius:20px}
+.rano svg{display:block;width:100%;height:100%}
+.rano-bub{position:absolute;left:38%;bottom:96%;width:max-content;max-width:230px;padding:8px 12px;border:3px solid var(--ink);border-radius:16px;background:var(--card);box-shadow:4px 4px 0 var(--ink);font:600 15px/1.3 var(--fD);color:var(--ink);opacity:0;transform:translateY(6px) scale(.9);transform-origin:0 100%;transition:opacity .2s,transform .26s cubic-bezier(.34,1.56,.64,1);pointer-events:none}
+.rano-bub.on{opacity:1;transform:none}
+.rano-bub::after{content:"";position:absolute;left:14px;bottom:-9px;width:13px;height:13px;background:var(--card);border-right:3px solid var(--ink);border-bottom:3px solid var(--ink);transform:rotate(45deg)}
+.rano-fx{position:absolute;inset:0;pointer-events:none}
+.rano-p{position:absolute;animation:ranoP 1.3s cubic-bezier(.16,1,.3,1) forwards}
+@keyframes ranoP{0%{transform:translateY(0) scale(.4) rotate(-8deg);opacity:0}20%,75%{opacity:1}100%{transform:translateY(-80px) scale(1.15) rotate(12deg);opacity:0}}
+.rsnd{position:fixed;right:max(18px,env(safe-area-inset-right,0px));bottom:calc(max(18px,env(safe-area-inset-bottom,0px)) + 58px);z-index:55;height:34px;padding:0 10px;border:2.5px solid var(--ink);border-radius:12px;background:var(--card);box-shadow:3px 3px 0 var(--ink);font:600 13px var(--fD);cursor:pointer}
+@media (max-width:820px){.rano{width:100px}.rsnd{height:30px;font-size:12px}.rano-bub{max-width:180px;font-size:14px}}
+.menuP{position:fixed;inset:0;z-index:70;overflow-y:auto;background:#0F1016;color:#EEEDF6;font-family:'Schibsted Grotesk',system-ui,sans-serif;clip-path:circle(0% at var(--mx,80%) var(--my,80%));transition:clip-path .8s cubic-bezier(.7,0,.2,1)}
+.menuP.on{clip-path:circle(150% at var(--mx,80%) var(--my,80%))}
+.mp-top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:18px}
+.mp-logo{display:inline-flex;align-items:center;gap:10px;font-weight:900;font-size:26px;letter-spacing:-.04em}.mp-logo img{height:28px}
+.mp-x{min-height:42px;padding:0 16px;border:1.5px solid #4A4960;border-radius:999px;background:transparent;color:#EEEDF6;font:600 15px 'Schibsted Grotesk',sans-serif;cursor:pointer}
+.mp-h{max-width:1240px;margin:0 auto;padding-block:10px 0}
+.mp-k{font:500 13px 'JetBrains Mono',ui-monospace,monospace;letter-spacing:.1em;text-transform:uppercase;color:#3CC2D6}
+.mp-h h2{margin-top:10px;font:800 clamp(36px,5vw,64px)/1 'Schibsted Grotesk',sans-serif;letter-spacing:-.045em}
+.mp-h p{margin:12px 0 0;color:#9C9AB0}
+.mp-cards{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;padding-block:28px 20px}
+.mc{display:flex;flex-direction:column;min-height:360px;padding:0;text-align:left;cursor:pointer;overflow:hidden;transition:transform .2s}
+.mc:hover{transform:translateY(-6px)}
+.mc .art{flex:1;display:flex;align-items:center;justify-content:center;min-height:150px}
+.mc .txt{display:flex;flex-direction:column;gap:6px;padding:0 20px 22px}
+.mc b{font-size:22px;line-height:1.05}
+.mc-car{border:3px solid #1B1F14;border-radius:22px;background:radial-gradient(circle at 50% 30%,#F8F4E8,#E9E1CC);color:#1B1F14;box-shadow:6px 6px 0 #9AA63A;font-family:Fredoka,sans-serif;outline:3px solid #F2A93B;outline-offset:4px}
+.mc-car .art{font:700 100px/1 Fredoka,sans-serif;color:#9AA63A;-webkit-text-stroke:5px #1B1F14;paint-order:stroke fill;text-shadow:6px 6px 0 #1B1F14}
+.mc-car .tag2{align-self:flex-start;padding:3px 8px;border:2px solid #1B1F14;border-radius:8px;background:#F2A93B;font:700 11px 'Space Mono',monospace}
+.mc-edi{border:1px solid #121212;border-radius:4px;background:#F1EDE4;color:#121212;font-family:Fraunces,Georgia,serif}
+.mc-edi .art{font:italic 400 110px/1 Fraunces,serif}.mc-edi .art i{color:#C8322B}
+.mc-edi .tag2{font:400 11px 'Space Mono',monospace;letter-spacing:.14em;color:#C8322B}.mc-edi b{font-weight:400}
+.mc-ter{border:1px solid #1F4A27;border-radius:10px;background:radial-gradient(ellipse at center,#0F1A10,#050805 85%);color:#8CFF9E;font-family:'Space Mono',monospace;text-shadow:0 0 6px rgba(140,255,158,.45)}
+.mc-ter .art{font-size:90px}.mc-ter .tag2{font-size:13px;color:#4F9E5C}.mc-ter b{font-size:20px}
+.mc-noc{border:1px solid #2A2B38;border-radius:22px;background:#1A1B25;color:#EEEDF6}
+.mc-noc .art img{height:120px;width:auto}.mc-noc .tag2{font:500 11px 'JetBrains Mono',monospace;letter-spacing:.12em;color:#3CC2D6}
+.mc .txt>span:last-child{font-size:14px;opacity:.8}
+.mp-note{max-width:1240px;margin:0 auto;padding-block:0 30px;color:#C3B3FA;min-height:1.5em}
+@media (max-width:900px){.mp-cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.mp-cards{grid-template-columns:1fr}.mc{min-height:0;flex-direction:row;align-items:center}.mc .art{flex:none;width:96px;min-height:110px;font-size:52px!important}.mc-noc .art img{height:60px}.mc .txt{padding:14px 14px 14px 0}}
+.swbtn{position:fixed;right:max(18px,env(safe-area-inset-right,0px));bottom:max(18px,env(safe-area-inset-bottom,0px));z-index:50;display:inline-flex;align-items:center;gap:8px;height:48px;padding:0 18px;border:var(--bw) solid var(--ink);border-radius:18px;background:var(--card);box-shadow:var(--sh);font-weight:600;cursor:pointer}
+.swmsg{position:fixed;right:max(18px,env(safe-area-inset-right,0px));bottom:calc(max(18px,env(safe-area-inset-bottom,0px)) + 102px);z-index:50;max-width:260px;padding:10px 14px;border:var(--bw) solid var(--ink);border-radius:14px;background:var(--card);box-shadow:var(--sh);font-size:15px;font-weight:500}
+
+@media (max-width:820px){
+  .hero .in{grid-template-columns:1fr}
+  .stage{max-width:360px;margin:0 auto}
+  .nav nav a:not(.keep){display:none}
+  .strip{grid-template-columns:1fr}
+  .panel{border-right:0;border-bottom:var(--bw) solid var(--ink);min-height:0}
+  .panel:last-child{border-bottom:0}
+  .big .grid{grid-template-columns:1fr}
+  .big .art{min-height:280px;border-right:0;border-bottom:var(--bw) solid var(--ink)}
+  .desk{min-height:620px}
+  .hint{left:auto;right:6%;top:calc(46% + 90px)}
+  .slots{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;padding:18px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+
+</head>
+<body>
+<header class="nav wrap">
+  <div class="in">
+    <a class="brand" href="#top"><i></i><b>divende</b><span class="tag">diseño</span></a>
+    <nav aria-label="Secciones">
+      <a href="#trabajos" class="keep">Trabajos</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#proceso">Proceso</a>
+      <a href="#contacto" style="background:var(--mustard)">Hablemos</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero wrap">
+  <div class="in">
+    <div>
+      <span class="tag" style="background:var(--olive)">Identidad visual &amp; diseño creativo</span>
+      <h1><span class="w">Diseño</span> <span class="w">marcas</span> <span class="w">que</span> <span class="w">la</span> <span class="w">gente</span> <span class="w outl">recuerda.</span></h1>
+      <p>Identidades con personalidad, piezas para redes, menús y webs visuales. Todo empieza abriendo esta carpeta.</p>
+      <div class="acts">
+        <a class="btn pri" href="#trabajos">Abrir la carpeta ↓</a>
+        <a class="btn" href="#servicios">Qué diseño</a>
+      </div>
+    </div>
+    <div class="stage" id="stage" aria-hidden="true">
+      <div class="v"><img src="/assets/divende-v.webp" alt=""></div>
+      <div class="floor"><i></i><b></b><i></i></div>
+      <svg class="stk" data-k="1.4" style="right:3%;top:4%" width="64" height="64" viewBox="0 0 64 64"><path d="M32 4l7 21 21 7-21 7-7 21-7-21-21-7 21-7z" fill="#F2A93B" stroke="#1B1F14" stroke-width="3.5" stroke-linejoin="round"/></svg>
+      <svg class="stk" data-k="2" style="right:0;bottom:22%" width="80" height="40" viewBox="0 0 80 40"><path d="M4 30C14 4 24 4 30 22s16 18 22 0 18-14 24 4" fill="none" stroke="#33B09B" stroke-width="5" stroke-linecap="round"/></svg>
+    </div>
+  </div>
+</section>
+<svg class="drip" viewBox="0 0 1440 70" preserveAspectRatio="none" aria-hidden="true" style="background:var(--paper)"><path d="M0 0H1440V20C1380 20 1370 62 1330 62S1290 22 1220 22 1160 50 1120 50 1080 18 1000 18 960 66 900 66 850 20 760 20 720 44 680 44 640 16 560 16 520 58 470 58 420 20 340 20 300 40 260 40 220 14 150 14 110 54 60 54 30 20 0 20Z" fill="#E9E1CC" stroke="#1B1F14" stroke-width="3" transform="scale(1,-1) translate(0,-70)"/></svg>
+
+<section class="trab wrap" id="trabajos" style="border-top:0;margin-top:-4px">
+  <div class="in">
+    <div class="trab-h">
+      <div>
+        <span class="tag" style="background:var(--pink)">Proyectos seleccionados</span>
+        <h2 style="margin-top:12px">La carpeta</h2>
+        <p>Hacé clic y mirá qué sale. Vos decidís si la dejamos en orden o con caos creativo.</p>
+      </div>
+      <button class="btn" id="reset" hidden>Guardar todo en la carpeta</button>
+    </div>
+    <div class="desk" id="desk">
+      <div class="dark"></div>
+      <div class="slots" id="slots"></div>
+      <button class="folder" id="folder" aria-label="Abrir la carpeta de trabajos de diseño">
+        <span class="back"></span><span class="sheet"></span><span class="sheet s2"></span>
+        <span class="flap"><b>diseño/</b></span>
+      </button>
+      <div class="hint" aria-hidden="true"><svg width="54" height="46" viewBox="0 0 54 46"><path d="M50 40C30 42 12 30 8 8M8 8l-4 12M8 8l12 5" fill="none" stroke="#1B1F14" stroke-width="3" stroke-linecap="round"/></svg>¡tocá acá!</div>
+      <div id="papers"></div>
+      <div class="chat" id="chat" role="status">
+        <p id="chatQ">¿Ordenamos el escritorio?</p>
+        <div class="row" id="chatRow">
+          <button class="pri" id="bOrden">¡Sí, ordenalo!</button>
+          <button id="bCaos">Me gusta el desorden</button>
+        </div>
+        <div class="wave" aria-hidden="true" id="wave"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="serv wrap" id="servicios">
+  <div class="in">
+    <span class="tag" style="background:var(--teal)">Servicios</span>
+    <h2 style="margin-top:12px">Lo que puedo diseñar para vos</h2>
+    <p class="sub">Enfoque 100% visual. Si tu proyecto además requiere desarrollo de software a medida, podés cambiar a la vista Terminal.</p>
+    <div class="stickers">
+      <article class="sticker" style="--r:-2deg;--c:var(--olive)"><div class="ic"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#1B1F14" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 1 0 9 9c0-1.7-1.3-2-2.5-2H16a2 2 0 0 1-2-2V6.5C14 4.3 13.7 3 12 3zM7.5 11.5h.01M9.5 7.5h.01M14.5 15.5h.01"/></svg></div><h3>Marca e identidad</h3><p>Logotipos, paletas de color y sistemas visuales listos para destacar en cualquier formato.</p><div class="ej">Ver caso Divende</div></article>
+      <article class="sticker" style="--r:2deg;--c:var(--pink)"><div class="ic"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#1B1F14" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="3"/><circle cx="12" cy="12" r="3.5"/><path d="M16.5 7.5h.01"/></svg></div><h3>Contenido para redes</h3><p>Gráficas, portadas y plantillas con carácter propio que frenan el scroll al instante.</p><div class="ej">Plantillas listas para usar</div></article>
+      <article class="sticker" style="--r:-1deg;--c:var(--mustard)"><div class="ic"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#1B1F14" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12v18H6zM9 8h6M9 12h6M9 16h4"/></svg></div><h3>Menús y material físico</h3><p>Menús claros, afiches y piezas impresas pensadas para lucir en el local o en el punto de venta.</p><div class="ej">Criterio gastronómico real</div></article>
+      <article class="sticker" style="--r:1.5deg;--c:var(--teal)"><div class="ic"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#1B1F14" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h18v14H3zM3 9h18M7 7h.01M10 7h.01"/></svg></div><h3>Diseño web y UI</h3><p>Interfaces limpias, atractivas y fáciles de usar, pensadas para celulares y computadoras.</p><div class="ej">Ver caso interactivo</div></article>
+    </div>
+  </div>
+</section>
+
+<section class="proc wrap" id="proceso">
+  <div class="in">
+    <span class="tag" style="background:var(--mustard)">Proceso</span>
+    <h2 style="margin-top:12px">Tres pasos para darle vida a tu marca</h2>
+    <div class="strip" id="strip">
+      <div class="panel"><span class="cap">1 · La charla</span><p class="bub"><span>Contame tu negocio y a quién le vendés.</span></p><div class="scene"><svg width="210" height="120" viewBox="0 0 210 120" aria-hidden="true"><svg x="14" y="4" width="84" height="82" viewBox="96 82 168 164" overflow="hidden"><g><path d="M 136 92 C 110 92, 102 118, 114 138 C 106 148, 108 164, 116 176 C 104 206, 102 254, 112 278 C 120 294, 146 296, 180 296 C 214 296, 240 294, 248 278 C 258 254, 256 206, 244 176 C 252 164, 254 148, 246 138 C 258 118, 250 92, 224 92 C 208 92, 200 103, 190 106 C 184 108, 176 108, 170 106 C 160 103, 152 92, 136 92 Z" fill="#1B1F14" stroke="#1B1F14" stroke-width="15" stroke-linejoin="round"/><path d="M 136 92 C 110 92, 102 118, 114 138 C 106 148, 108 164, 116 176 C 104 206, 102 254, 112 278 C 120 294, 146 296, 180 296 C 214 296, 240 294, 248 278 C 258 254, 256 206, 244 176 C 252 164, 254 148, 246 138 C 258 118, 250 92, 224 92 C 208 92, 200 103, 190 106 C 184 108, 176 108, 170 106 C 160 103, 152 92, 136 92 Z" fill="#9CA93A"/><ellipse cx="180" cy="232" rx="44" ry="40" fill="#B9C752" opacity=".55"/><circle cx="143" cy="123" r="17.5" fill="#1B1F14"/><circle cx="229" cy="123" r="17.5" fill="#1B1F14"/><ellipse cx="149" cy="115" rx="5.2" ry="3.2" fill="#FAF6EB"/><ellipse cx="235" cy="115" rx="5.2" ry="3.2" fill="#FAF6EB"/><ellipse cx="173" cy="133" rx="3.4" ry="2.3" fill="#1B1F14"/><ellipse cx="187" cy="133" rx="3.4" ry="2.3" fill="#1B1F14"/><path d="M 128 153 Q 180 172 232 153" fill="none" stroke="#1B1F14" stroke-width="7.2" stroke-linecap="round"/></g></svg><svg x="112" y="4" width="84" height="82" viewBox="96 82 168 164" overflow="hidden"><g transform="translate(360 0) scale(-1 1)"><path d="M 136 92 C 110 92, 102 118, 114 138 C 106 148, 108 164, 116 176 C 104 206, 102 254, 112 278 C 120 294, 146 296, 180 296 C 214 296, 240 294, 248 278 C 258 254, 256 206, 244 176 C 252 164, 254 148, 246 138 C 258 118, 250 92, 224 92 C 208 92, 200 103, 190 106 C 184 108, 176 108, 170 106 C 160 103, 152 92, 136 92 Z" fill="#1B1F14" stroke="#1B1F14" stroke-width="15" stroke-linejoin="round"/><path d="M 136 92 C 110 92, 102 118, 114 138 C 106 148, 108 164, 116 176 C 104 206, 102 254, 112 278 C 120 294, 146 296, 180 296 C 214 296, 240 294, 248 278 C 258 254, 256 206, 244 176 C 252 164, 254 148, 246 138 C 258 118, 250 92, 224 92 C 208 92, 200 103, 190 106 C 184 108, 176 108, 170 106 C 160 103, 152 92, 136 92 Z" fill="#33B09B"/><ellipse cx="180" cy="232" rx="44" ry="40" fill="#7FD3C4" opacity=".55"/><circle cx="143" cy="123" r="17.5" fill="#1B1F14"/><circle cx="229" cy="123" r="17.5" fill="#1B1F14"/><ellipse cx="149" cy="115" rx="5.2" ry="3.2" fill="#FAF6EB"/><ellipse cx="235" cy="115" rx="5.2" ry="3.2" fill="#FAF6EB"/><ellipse cx="173" cy="133" rx="3.4" ry="2.3" fill="#1B1F14"/><ellipse cx="187" cy="133" rx="3.4" ry="2.3" fill="#1B1F14"/><path d="M 128 153 Q 180 172 232 153" fill="none" stroke="#1B1F14" stroke-width="7.2" stroke-linecap="round"/></g></svg><rect x="6" y="84" width="198" height="11" rx="5" fill="#1B1F14"/><rect x="94" y="64" width="22" height="20" rx="4" fill="#F2A93B" stroke="#1B1F14" stroke-width="3"/><path d="M116 69q8 0 8 6t-8 6" fill="none" stroke="#1B1F14" stroke-width="3"/><path d="M98 56q3-6 0-12M108 56q3-6 0-12" fill="none" stroke="#1B1F14" stroke-width="2.5" stroke-linecap="round" opacity=".6"/></svg></div><p>Definimos objetivos y tono antes de trazar la primera línea.</p></div>
+      <div class="panel"><span class="cap">2 · Propuestas</span><p class="bub"><span>Te presento opciones claras. Vos elegís el rumbo.</span></p><div class="scene"><div class="rvbox" aria-label="Una mano sostiene tres tarjetas y los dibujos van pasando de una a otra" role="img"><canvas id="rvCards" width="360" height="360"></canvas><span class="rvtint" aria-hidden="true"></span></div></div><p>Evaluamos caminos visuales juntos antes de pasar a la versión final.</p></div>
+      <div class="panel"><span class="cap">3 · Entrega</span><p class="bub"><span>Todo listo en tu bandeja de entrada.</span></p><div class="scene"><svg width="150" height="110" viewBox="0 0 150 110" aria-hidden="true"><rect x="30" y="34" width="90" height="62" rx="6" fill="#8E1450" stroke="#1B1F14" stroke-width="3.5"/><rect x="30" y="26" width="38" height="14" rx="4" fill="#8E1450" stroke="#1B1F14" stroke-width="3.5"/><path d="M58 64l12 12 24-26" fill="none" stroke="#FBF8EE" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 20l4 8 8 4-8 4-4 8-4-8-8-4 8-4z" fill="#F2A93B" stroke="#1B1F14" stroke-width="2.5" stroke-linejoin="round"/></svg></div><p>Archivos listos para imprenta, redes y web en todos los formatos que necesitás.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta wrap" id="contacto">
+  <div class="in cta-in">
+    <div>
+      <h2>¿Tenés un proyecto en mente? Démosle forma.</h2>
+      <p>Contame qué necesitás y te respondo con una propuesta inicial, clara y sin compromiso.</p>
+      <div class="mail"><code id="mail">hola@divende.com</code><button class="btn" id="copy">Copiar correo</button></div>
+    </div>
+    <figure class="key">
+      <button class="keybox" id="keybox" aria-label="Apretar la tecla para volver al menú principal"><span id="keyanim" aria-hidden="true"></span></button>
+      <figcaption id="keycap">Presioná para cambiar de ambiente.</figcaption>
+    </figure>
+  </div>
+  <div class="in"><div class="foot"><span>© 2026 Noah Cuenca · Divende</span><span>San José, Costa Rica</span></div></div>
+</section>
+</main>
+
+<div id="menuP" class="menuP" role="dialog" aria-modal="true" aria-labelledby="menuT" hidden>
+  <div class="mp-top wrap"><span class="mp-logo"><img src="/assets/divende-v.webp" alt="">divende</span><button class="mp-x" id="mpX">Seguir en Caricatura</button></div>
+  <div class="wrap mp-h"><div class="mp-k">Selector de ambiente</div><h2 id="menuT">¿Qué perfil estás buscando?</h2><p>Elegí el enfoque que mejor se alinee con tu proyecto.</p></div>
+  <div class="wrap mp-cards">
+    <button class="mc mc-car" data-st="caricatura"><span class="art">Aa</span><span class="txt"><span class="tag2">CARICATURA · ACTIVA</span><b>Creativo &amp; con carácter</b><span>Identidad visual, piezas gráficas e ilustración.</span></span></button>
+    <button class="mc mc-edi" data-st="editorial"><span class="art">A<i>a</i></span><span class="txt"><span class="tag2">EDITORIAL</span><b>Sobrio <i>&amp; estructurado</i></b><span>Publicaciones, reportes y webs corporativas.</span></span></button>
+    <button class="mc mc-ter" data-st="terminal"><span class="art">&gt;_</span><span class="txt"><span class="tag2">&gt; modo --terminal</span><b>DESARROLLO &amp; AUTOMATIZACIÓN</b><span>Software a medida, lógica de negocio y herramientas web.</span></span></button>
+    <button class="mc mc-noc" data-st="noche"><span class="art"><img src="/assets/divende-v.webp" alt=""></span><span class="txt"><span class="tag2">NOCHE · EL ESTUDIO</span><b>Panorama completo</b><span>El universo completo de proyectos, diseño y código.</span></span></button>
+  </div>
+  <p class="wrap mp-note" id="mpNote" aria-live="polite"></p>
+</div>
+<div id="rano"></div>
+<button class="rsnd" id="rsnd" aria-pressed="false">Sonido: off</button>
+<button class="swbtn" id="swbtn">⇄ Cambiar estilo</button>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie_svg.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@rive-app/canvas-lite@2.44.0/rive.js"></script>
+<script>/* Dedi — Personaje #01 de Divende (rig IK con resortes, adaptado del estudio de animación de Noah).
+   Uso: const r = Rano(contenedor, { onTap }); r.wave(); r.croak(); r.think(); r.celebrate(); r.say(texto) */
+function Rano(host, opts) {
+  opts = opts || {};
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var INK = '#171E12', SKIN = '#9CA93A', BELLY = '#B9C752', SHADE = '#7E8A2A', PAPER = '#FAF6EB';
+  var TORSO = 'M 136 92 C 110 92, 102 118, 114 138 C 106 148, 108 164, 116 176 C 104 206, 102 254, 112 278 C 120 294, 146 296, 180 296 C 214 296, 240 294, 248 278 C 258 254, 256 206, 244 176 C 252 164, 254 148, 246 138 C 258 118, 250 92, 224 92 C 208 92, 200 103, 190 106 C 184 108, 176 108, 170 106 C 160 103, 152 92, 136 92 Z';
+  var S = 'stroke="' + INK + '" stroke-linecap="round" stroke-linejoin="round"';
+  host.classList.add('rano');
+  host.innerHTML =
+    '<div class="rano-bub" aria-live="polite"><span></span></div><div class="rano-fx"></div>' +
+    '<svg viewBox="0 0 360 390" aria-hidden="true" style="overflow:visible;filter:url(#rano-boil)">' +
+    '<defs><filter id="rano-boil" x="-15%" y="-15%" width="130%" height="130%"><feTurbulence type="fractalNoise" baseFrequency="0.025" numOctaves="2" seed="2" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1.15" xChannelSelector="R" yChannelSelector="G"/></filter></defs>' +
+    '<g><ellipse data-r="shadow" cx="180" cy="348" rx="78" ry="11" fill="' + INK + '"/><path d="M 74 348 L 286 348 M 92 353 L 268 353 M 56 348 L 65 348 M 295 349 L 306 349" ' + S + ' stroke-width="5.5"/></g>' +
+    '<g data-r="master">' +
+      '<path data-r="legLo" fill="none" ' + S + ' stroke-width="26"/><path data-r="legRo" fill="none" ' + S + ' stroke-width="26"/>' +
+      '<path d="' + TORSO + '" fill="' + INK + '" ' + S + ' stroke-width="15"/>' +
+      '<path data-r="legLf" fill="none" stroke="' + SKIN + '" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/><path data-r="legRf" fill="none" stroke="' + SKIN + '" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>' +
+      '<path d="' + TORSO + '" fill="' + SKIN + '"/>' +
+      '<path d="M 116 268 C 135 284, 225 284, 244 268 C 240 288, 218 294, 180 294 C 142 294, 120 288, 116 268 Z" fill="' + SHADE + '" opacity=".45"/>' +
+      '<ellipse cx="180" cy="232" rx="44" ry="40" fill="' + BELLY + '" opacity=".55"/>' +
+      '<g fill="' + INK + '"><circle cx="136" cy="242" r="3.2"/><circle cx="142" cy="252" r="2.2"/><circle cx="220" cy="236" r="3.5"/><circle cx="215" cy="248" r="2.8"/><circle cx="224" cy="251" r="2.4"/></g>' +
+      '<g data-r="face">' +
+        '<circle cx="137" cy="124" r="21" fill="' + SHADE + '" opacity=".3"/><circle cx="223" cy="124" r="21" fill="' + SHADE + '" opacity=".3"/>' +
+        '<g data-r="pupL"><circle cx="137" cy="123" r="17.5" fill="' + INK + '"/><ellipse cx="143" cy="115" rx="5.2" ry="3.2" transform="rotate(24 143 115)" fill="' + PAPER + '"/><circle cx="131" cy="130" r="2.2" fill="' + PAPER + '" opacity=".85"/></g>' +
+        '<g data-r="pupR"><circle cx="223" cy="123" r="17.5" fill="' + INK + '"/><ellipse cx="229" cy="115" rx="5.2" ry="3.2" transform="rotate(24 229 115)" fill="' + PAPER + '"/><circle cx="217" cy="130" r="2.2" fill="' + PAPER + '" opacity=".85"/></g>' +
+        '<g data-r="lids" opacity="0"><circle cx="137" cy="123" r="19" fill="' + SKIN + '" ' + S + ' stroke-width="4.5"/><path d="M 118 124 Q 137 132 156 124" fill="none" ' + S + ' stroke-width="5.5"/><circle cx="223" cy="123" r="19" fill="' + SKIN + '" ' + S + ' stroke-width="4.5"/><path d="M 204 124 Q 223 132 242 124" fill="none" ' + S + ' stroke-width="5.5"/></g>' +
+        '<path data-r="browL" d="M 118 98 Q 137 92 154 98" fill="none" ' + S + ' stroke-width="5.2" opacity="0"/><path data-r="browR" d="M 206 98 Q 223 92 242 98" fill="none" ' + S + ' stroke-width="5.2" opacity="0"/>' +
+        '<ellipse cx="173" cy="133" rx="3.4" ry="2.3" fill="' + INK + '"/><ellipse cx="187" cy="133" rx="3.4" ry="2.3" fill="' + INK + '"/>' +
+        '<path data-r="mouth" d="M 125 159 Q 180 147 235 159" fill="none" ' + S + ' stroke-width="7.2"/>' +
+        '<ellipse data-r="sac" cx="180" cy="166" rx="0" ry="0" fill="' + BELLY + '" ' + S + ' stroke-width="0" opacity="0"/>' +
+      '</g>' +
+      '<g>' +
+        '<path data-r="armLo" fill="none" ' + S + ' stroke-width="27"/><circle data-r="handLo" r="14" fill="' + INK + '"/><ellipse cx="121" cy="184" rx="12" ry="13" fill="' + SKIN + '"/><path data-r="armLf" fill="none" stroke="' + SKIN + '" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/><circle data-r="handLf" r="7.8" fill="' + SKIN + '"/>' +
+        '<path data-r="armRo" fill="none" ' + S + ' stroke-width="27"/><circle data-r="handRo" r="14" fill="' + INK + '"/><ellipse cx="239" cy="184" rx="12" ry="13" fill="' + SKIN + '"/><path data-r="armRf" fill="none" stroke="' + SKIN + '" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/><circle data-r="handRf" r="7.8" fill="' + SKIN + '"/>' +
+        '<path data-r="crease" fill="none" ' + S + ' stroke-width="5" opacity="0"/>' +
+      '</g>' +
+      '<g data-r="arcs" opacity="0"><path d="M 296 112 Q 318 136 304 164" fill="none" ' + S + ' stroke-width="4.5"/><path d="M 308 102 Q 334 132 318 170" fill="none" ' + S + ' stroke-width="4.5"/></g>' +
+    '</g></svg>';
+
+  var q = function (k) { return host.querySelector('[data-r="' + k + '"]'); };
+  var E = {}; ['shadow', 'master', 'legLo', 'legRo', 'legLf', 'legRf', 'face', 'pupL', 'pupR', 'lids', 'browL', 'browR', 'mouth', 'sac', 'armLo', 'armLf', 'handLo', 'handLf', 'armRo', 'armRf', 'handRo', 'handRf', 'crease', 'arcs'].forEach(function (k) { E[k] = q(k); });
+  var bub = host.querySelector('.rano-bub'), bubTxt = bub.firstChild, fx = host.querySelector('.rano-fx'), turb = host.querySelector('feTurbulence');
+
+  function Spring(v, k, d) { this.value = v; this.target = v; this.v = 0; this.k = k || .2; this.d = d || .74; }
+  Spring.prototype.step = function () { this.v = (this.v + (this.target - this.value) * this.k) * this.d; this.value += this.v; return this.value; };
+  Spring.prototype.kick = function (f) { this.v += f; };
+  var sp = function (v, k, d) { return new Spring(v, k, d); };
+  var R = {
+    t: 0, walk: null, wph: 0, mx: innerWidth / 2, my: innerHeight / 2, wave: 0, croak: 0, cel: 0, think: 0,
+    sx: sp(1, .22, .72), sy: sp(1, .22, .72), jy: sp(0, .17, .74), tilt: sp(0, .18, .74),
+    fX: sp(0, .2, .75), fY: sp(0, .2, .75), pX: sp(0, .28, .72), pY: sp(0, .28, .72), pS: sp(1, .22, .7),
+    hLX: sp(94), hLY: sp(256), eLX: sp(84), eLY: sp(218), hRX: sp(266), hRY: sp(256), eRX: sp(276), eRY: sp(218)
+  };
+
+  /* Sonido sintetizado, apagado por defecto: solo suena si la persona lo activa */
+  var audio = { on: false, ctx: null };
+  function ac() { if (!audio.on) return null; if (!audio.ctx) { var C = window.AudioContext || window.webkitAudioContext; if (!C) return null; audio.ctx = new C(); } if (audio.ctx.state === 'suspended') audio.ctx.resume(); return audio.ctx; }
+  function tone(type, f0, f1, dur, vol, delay) { var c = ac(); if (!c) return; var t = c.currentTime + (delay || 0), o = c.createOscillator(), g = c.createGain(); o.type = type; o.frequency.setValueAtTime(f0, t); o.frequency.exponentialRampToValueAtTime(f1, t + dur * .6); g.gain.setValueAtTime(vol, t); g.gain.exponentialRampToValueAtTime(.003, t + dur); o.connect(g); g.connect(c.destination); o.start(t); o.stop(t + dur); }
+  var sfx = {
+    pop: function () { tone('triangle', 310, 590, .15, .14); },
+    croak: function () { tone('sawtooth', 85, 155, .2, .11); tone('sawtooth', 95, 175, .2, .11, .22); },
+    fan: function () { [523.25, 659.25, 783.99, 1046.5].forEach(function (f, i) { tone('triangle', f, f, i === 3 ? .5 : .15, .16, i * .085); }); }
+  };
+
+  var bt = null;
+  function say(text, ms) {
+    bubTxt.textContent = text; bub.classList.add('on'); host.classList.add('talk');
+    clearTimeout(bt); bt = setTimeout(function () { bub.classList.remove('on'); host.classList.remove('talk'); }, ms || 2600);
+  }
+  function particle(type, ox, oy) {
+    if (reduce) return;
+    var el = document.createElement('div'); el.className = 'rano-p';
+    el.style.left = (48 + ox / 3.6 + (Math.random() * 8 - 4)) + '%'; el.style.top = (30 + oy / 3.9) + '%';
+    el.innerHTML = type === 'star' ? '<svg width="30" height="30" viewBox="0 0 36 36"><path d="M18 3Q18 18 33 18Q18 18 18 33Q18 18 3 18Q18 18 18 3Z" fill="#EAA92A" stroke="#171E12" stroke-width="3" stroke-linejoin="round"/></svg>'
+      : type === 'flame' ? '<svg width="30" height="30" viewBox="0 0 38 38"><path d="M19 4C25 12 31 18 28 27C26 33 12 33 10 27C7 19 14 13 19 4Z" fill="#E05328" stroke="#171E12" stroke-width="3" stroke-linejoin="round"/><path d="M19 14C22 18 24 22 22 27C20 30 16 30 15 27C13 22 16 18 19 14Z" fill="#EAA92A"/></svg>'
+      : '<svg width="28" height="28" viewBox="0 0 34 34"><path d="M11 11C11 5 23 5 23 12C23 17 17 17 17 22" stroke="#171E12" stroke-width="4.5" stroke-linecap="round" fill="none"/><circle cx="17" cy="28" r="2.8" fill="#171E12"/></svg>';
+    fx.appendChild(el); setTimeout(function () { el.remove(); }, 1300);
+  }
+  function clear() { R.wave = R.cel = R.think = 0; E.arcs.setAttribute('opacity', 0); E.browL.setAttribute('opacity', 0); E.browR.setAttribute('opacity', 0); }
+
+  var api = {
+    say: say,
+    wave: function (t) { clear(); sfx.pop(); R.wave = 90; R.pS.kick(.24); R.sx.kick(.06); R.sy.kick(-.05); if (t) say(t); },
+    croak: function (t) { sfx.croak(); R.croak = 52; R.pS.kick(.26); R.sx.kick(.09); R.sy.kick(-.07); if (t) say(t, 1800); },
+    celebrate: function (t) { clear(); sfx.fan(); R.cel = 105; R.pS.kick(.35); if (!reduce) { R.sx.value = 1.15; R.sy.value = .85; R.jy.kick(-24); } for (var i = 0; i < 6; i++) (function (i) { setTimeout(function () { particle(i % 2 ? 'flame' : 'star', Math.random() * 140 - 70, -35); }, i * 105); })(i); if (t) say(t, 2600); },
+    think: function (t) { clear(); sfx.pop(); R.think = 110; particle('q', 55, -55); if (t) say(t, 2400); },
+    sound: function (on) { audio.on = on; if (on) ac(); },
+    /* Camina en horizontal hasta la posición left indicada (px) */
+    walkTo: function (x, done) { if (reduce) { host.style.left = x + 'px'; if (done) done(); return; } R.walk = { x: x, done: done }; host.classList.remove('peek'); },
+    peek: function (on) { host.classList.toggle('peek', !!on); },
+    busy: function () { return !!(R.walk || drag || R.cel || R.wave); },
+    moved: function () { return userMoved; }
+  };
+
+  addEventListener('pointermove', function (e) { R.mx = e.clientX; R.my = e.clientY; }, { passive: true });
+
+  /* Arrastrar por la pantalla; un toque corto llama a onTap */
+  var drag = null, userMoved = false;
+  host.addEventListener('pointerdown', function (e) {
+    var r = host.getBoundingClientRect();
+    drag = { x: e.clientX, y: e.clientY, l: r.left, t: r.top, at: Date.now(), moved: false };
+    try { host.setPointerCapture(e.pointerId); } catch (x) {}
+    R.sx.kick(-.06); R.sy.kick(.07);
+  });
+  host.addEventListener('pointermove', function (e) {
+    if (!drag) return;
+    var dx = e.clientX - drag.x, dy = e.clientY - drag.y;
+    if (!drag.moved && Math.hypot(dx, dy) > 6) { drag.moved = true; userMoved = true; R.walk = null; host.classList.add('drag'); host.classList.remove('peek'); }
+    if (drag.moved) {
+      var w = host.offsetWidth, h = host.offsetHeight;
+      var nl = Math.max(0, Math.min(innerWidth - w, drag.l + dx)), nt = Math.max(0, Math.min(innerHeight - h, drag.t + dy));
+      host.style.left = nl + 'px'; host.style.top = nt + 'px'; host.style.right = 'auto'; host.style.bottom = 'auto';
+      R.tilt.target = Math.max(-15, Math.min(15, (e.movementX || 0) * .7));
+    }
+  });
+  host.addEventListener('pointerup', function () {
+    if (!drag) return; var d = drag; drag = null; host.classList.remove('drag');
+    R.sx.kick(.1); R.sy.kick(-.09);
+    if (!d.moved && Date.now() - d.at < 300 && opts.onTap) opts.onTap(api);
+  });
+  host.tabIndex = 0; host.setAttribute('role', 'button'); host.setAttribute('aria-label', 'Dedi, la mascota de Divende. Tocalo para que reaccione.');
+  host.addEventListener('keydown', function (e) { if ((e.key === 'Enter' || e.key === ' ') && opts.onTap) { e.preventDefault(); opts.onTap(api); } });
+
+  /* Parpadeo y trazo que vibra */
+  setInterval(function () { if (Math.random() < .58) { E.lids.setAttribute('opacity', 1); setTimeout(function () { E.lids.setAttribute('opacity', 0); }, 110); } }, 2700);
+  if (!reduce) { var seed = 1; setInterval(function () { seed = seed % 6 + 1; turb.setAttribute('seed', seed); }, 165); }
+
+  var f = function (n) { return n.toFixed(1); };
+  function loop() {
+    R.t += .05; var t = R.t;
+    var br = reduce ? 0 : Math.sin(t * 1.15);
+    var tSX = 1 + br * .013, tSY = 1 - br * .013, tJY = br * -2, tT = drag && drag.moved ? R.tilt.target : 0;
+    var hLX = 94 - br * 2.5, hLY = 256 + Math.cos(t * 1.15) * 2, eLX = 84, eLY = 218;
+    var hRX = 266 + br * 2.5, hRY = 256 + Math.cos(t * 1.15) * 2, eRX = 276, eRY = 218;
+    var mouth = 'M 125 159 Q 180 147 235 159';
+    var walking = false;
+    if (R.walk && !drag) {
+      var cur = host.offsetLeft, dxw = R.walk.x - cur;
+      if (Math.abs(dxw) > 3) {
+        walking = true; var st = Math.sign(dxw) * Math.min(Math.abs(dxw), 3.4);
+        host.style.left = (cur + st) + 'px'; host.style.right = 'auto';
+        R.wph += .25; var sb = Math.abs(Math.sin(R.wph));
+        tJY = -sb * 15; tT = Math.sin(R.wph) * 4.2 + st * .9; tSX = 1 - sb * .035; tSY = 1 + sb * .04;
+        var sw = Math.sin(R.wph) * 18;
+        hLX = 90 - sw * .45; hLY = 250 - Math.abs(sw) * .65; eLX = 80 - sw * .25;
+        hRX = 270 + sw * .45; hRY = 250 - Math.abs(sw) * .65; eRX = 280 + sw * .25;
+      } else { var dn = R.walk.done; R.walk = null; R.wph = 0; if (dn) dn(); }
+    }
+    E.crease.setAttribute('opacity', 0);
+
+    if (R.wave > 0) {
+      R.wave--; var w = Math.sin((90 - R.wave) * .36), wx = w * 20;
+      eRX = 284 + w * 4; eRY = 178; hRX = 298 + wx; hRY = 118 + Math.abs(wx) * .25; tT = -3.8 + w * 1.5;
+      mouth = 'M 128 153 Q 180 172 232 153'; E.arcs.setAttribute('opacity', R.wave ? 1 : 0);
+    }
+    if (R.cel > 0) {
+      R.cel--; var p = (105 - R.cel) / 105, cw = Math.sin(p * Math.PI * 4.5);
+      if (!reduce) { if (p < .45) { var a = Math.sin(p / .45 * Math.PI); tJY = -a * 42; tSX = 1 - a * .08; tSY = 1 + a * .11; } else { tJY = -Math.abs(cw) * 14; tT = cw * 5.2; } }
+      eLX = 76; eLY = 168; hLX = 64 - cw * 12; hLY = 112 - Math.abs(cw) * 8;
+      eRX = 284; eRY = 168; hRX = 296 + cw * 12; hRY = 112 - Math.abs(cw) * 8;
+      mouth = 'M 126 151 Q 180 176 234 151';
+    }
+    if (R.think > 0) {
+      R.think--; var tap = Math.sin(R.think * .26) * 3;
+      eLX = 80; eLY = 216; hLX = 92; hLY = 254; eRX = 284; eRY = 222; hRX = 198 + tap; hRY = 178 + Math.abs(tap) * .8; tT = 3.8;
+      E.browL.setAttribute('opacity', R.think ? 1 : 0); E.browR.setAttribute('opacity', R.think ? 1 : 0);
+      E.browL.setAttribute('d', 'M 118 104 Q 137 102 154 104'); E.browR.setAttribute('d', 'M 206 94 Q 223 84 242 94');
+      mouth = 'M 142 158 Q 178 150 214 160';
+    }
+    if (R.croak > 0) {
+      R.croak--; var nn = 1 - R.croak / 52, ci = Math.min(1, Math.max(.15, Math.abs(Math.sin(nn * Math.PI * 2))) * .75 + Math.sin(nn * Math.PI) * .45);
+      eLX -= ci * 8; hLX -= ci * 6; eRX += ci * 8; hRX += ci * 6;
+      E.mouth.setAttribute('opacity', 0);
+      E.sac.setAttribute('rx', f(14 + ci * 28)); E.sac.setAttribute('ry', f(8 + ci * 16)); E.sac.setAttribute('stroke-width', R.croak ? 6.8 : 0); E.sac.setAttribute('opacity', R.croak ? 1 : 0);
+      if (!R.croak) E.mouth.setAttribute('opacity', 1);
+    } else { E.sac.setAttribute('opacity', 0); E.mouth.setAttribute('opacity', 1); E.mouth.setAttribute('d', mouth); }
+
+    R.sx.target = tSX; R.sy.target = tSY; R.jy.target = tJY; R.tilt.target = tT;
+    R.hLX.target = hLX; R.hLY.target = hLY; R.eLX.target = eLX; R.eLY.target = eLY;
+    R.hRX.target = hRX; R.hRY.target = hRY; R.eRX.target = eRX; R.eRY.target = eRY;
+    var sx = R.sx.step(), sy = R.sy.step(), jy = R.jy.step(), tl = R.tilt.step();
+    var a1 = R.hLX.step(), a2 = R.hLY.step(), a3 = R.eLX.step(), a4 = R.eLY.step();
+    var b1 = R.hRX.step(), b2 = R.hRY.step(), b3 = R.eRX.step(), b4 = R.eRY.step();
+    var cL = 'M 116 184 Q ' + f(a3) + ' ' + f(a4) + ' ' + f(a1) + ' ' + f(a2), cR = 'M 244 184 Q ' + f(b3) + ' ' + f(b4) + ' ' + f(b1) + ' ' + f(b2);
+    E.armLo.setAttribute('d', cL); E.armLf.setAttribute('d', cL); E.armRo.setAttribute('d', cR); E.armRf.setAttribute('d', cR);
+    [E.handLo, E.handLf].forEach(function (h) { h.setAttribute('cx', f(a1)); h.setAttribute('cy', f(a2)); });
+    [E.handRo, E.handRf].forEach(function (h) { h.setAttribute('cx', f(b1)); h.setAttribute('cy', f(b2)); });
+    if (b1 < 230) { E.crease.setAttribute('d', 'M ' + f(b3 - 16) + ' ' + f(b4 - 6) + ' L ' + f(b3 - 28) + ' ' + f(b4 - 12)); E.crease.setAttribute('opacity', 1); }
+    var sL = walking ? Math.sin(R.wph) * 15 : 0, uL = walking ? Math.max(0, -Math.cos(R.wph) * 14) : 0;
+    var sR = -sL, uR = walking ? Math.max(0, Math.cos(R.wph) * 14) : 0;
+    var lL = 'M 152 276 Q ' + f(150 + sL * .5) + ' 310 ' + f(148 + sL) + ' ' + f(338 - uL) + ' M ' + f(148 + sL) + ' ' + f(338 - uL) + ' L ' + f(126 + sL * 1.15) + ' ' + f(344 - uL * .6);
+    var lR = 'M 208 276 Q ' + f(210 + sR * .5) + ' 310 ' + f(212 + sR) + ' ' + f(338 - uR) + ' M ' + f(212 + sR) + ' ' + f(338 - uR) + ' L ' + f(234 + sR * 1.15) + ' ' + f(344 - uR * .6);
+    E.legLo.setAttribute('d', lL); E.legLf.setAttribute('d', lL); E.legRo.setAttribute('d', lR); E.legRf.setAttribute('d', lR);
+    E.master.setAttribute('transform', 'translate(180,344) translate(0,' + jy.toFixed(2) + ') rotate(' + tl.toFixed(2) + ') scale(' + sx.toFixed(3) + ',' + sy.toFixed(3) + ') translate(-180,-344)');
+    E.shadow.setAttribute('rx', f(Math.max(46, 78 + jy * .5)));
+
+    var r = host.getBoundingClientRect(), hx = r.left + r.width / 2, hy = r.top + r.height * .32;
+    var dx = R.mx - hx, dy = R.my - hy, ang = Math.atan2(dy, dx), df = Math.min(1, Math.hypot(dx, dy) / 220);
+    if (R.think > 0) { R.pX.target = 3.5; R.pY.target = -5.5; R.fX.target = 2.2; R.fY.target = -2.8; }
+    else { R.pX.target = Math.cos(ang) * 7.5 * df; R.pY.target = Math.sin(ang) * 6.5 * df; R.fX.target = Math.cos(ang) * 4.2 * df; R.fY.target = Math.sin(ang) * 3 * df; }
+    var px = R.pX.step(), py = R.pY.step(), fxx = R.fX.step(), fyy = R.fY.step(), ps = R.pS.step();
+    E.face.setAttribute('transform', 'translate(' + fxx.toFixed(2) + ',' + fyy.toFixed(2) + ')');
+    E.pupL.setAttribute('transform', 'translate(' + px.toFixed(2) + ',' + py.toFixed(2) + ') translate(137,123) scale(' + ps.toFixed(3) + ') translate(-137,-123)');
+    E.pupR.setAttribute('transform', 'translate(' + px.toFixed(2) + ',' + py.toFixed(2) + ') translate(223,123) scale(' + ps.toFixed(3) + ') translate(-223,-123)');
+    requestAnimationFrame(loop);
+  }
+  requestAnimationFrame(loop);
+  return api;
+}
+</script>
+<script type="application/json" id="tecla">{"nm":"Main Scene","ddd":0,"h":863,"w":1443,"meta":{"g":"@lottiefiles/creator 1.72.0"},"layers":[{"ty":3,"nm":"Null Collect  1","sr":1,"st":0,"op":168,"ip":0,"hd":false,"ln":"85","ddd":0,"bm":0,"hasMask":false,"ao":0,"ks":{"a":{"a":0,"k":[108.7,129.5,129.5]},"s":{"a":1,"k":[{"o":{"x":0.333,"y":0},"i":{"x":0.219,"y":1},"s":[100,100,100],"t":20},{"o":{"x":0.333,"y":0},"i":{"x":0.667,"y":1},"s":[113.3,113.3,100],"t":46.804},{"o":{"x":0.333,"y":0.5760941247002399},"i":{"x":0.5822802757793765,"y":1},"s":[113.3,113.3,100.088],"t":74.999},{"s":[100,100,100],"t":119.999}]},"sk":{"a":0,"k":0},"p":{"a":0,"k":[739.441,356.959]},"r":{"a":0,"k":0},"sa":{"a":0,"k":0},"o":{"a":0,"k":100}},"ind":1},{"ty":4,"nm":"Ellipse 71179","sr":1,"st":62,"op":120,"ip":62,"hd":false,"ln":"55","ddd":0,"bm":0,"hasMask":false,"ao":0,"ks":{"a":{"a":0,"k":[0,0]},"s":{"a":1,"k":[{"o":{"x":0.167,"y":0.167},"i":{"x":0.833,"y":0.833},"s":[100,100,100],"t":62},{"o":{"x":0.167,"y":0.167},"i":{"x":0.833,"y":0.833},"s":[100,100,100],"t":70},{"s":[30,30,100],"t":120}]},"sk":{"a":0,"k":0},"p":{"a":1,"k":[{"o":{"x":0.167,"y":0.167},"i":{"x":0.833,"y":0.833},"s":[60.789,392.894,0],"t":62},{"o":{"x":0.167,"y":0.167},"i":{"x":0.833,"y":0.833},"s":[60.789,392.894,0],"t":70},{"s":[66.475,577.671,0],"t":120}]},"r":{"a":1,"k":[{"o":{"x":0.333,"y":0},"i":{"x":0.667,"y":1},"s":[0],"t":62},{"o":{"x":0.333,"y":0},"i":{"x":0.154,"y":1},"s":[0],"t":70},{"s":[76],"t":120}]},"sa":{"a":0,"k":0},"o":{"a":0,"k":100}},"shapes":[{"ty":"gr","bm":0,"hd":false,"nm":"Ellipse 71178","it":[{"ty":"el","bm":0,"hd":false,"nm":"Ellipse Path 1","d":1,"p":{"a":0,"k":[0,0]},"s":{"a":0,"k":[24.935,21.504]}},{"ty":"st","bm":0,"hd":false,"nm":"Stroke 1","lc":1,"lj":1,"ml":4,"o":{"a":0,"k":100},"w":{"a":0,"k":3},"c":{"a":0,"k":[0.10588235294117647,0.12156862745098039,0.0784313725490196]}},{"ty":"op","bm":0,"hd":false,"nm":"Stroke align: Inside","a":{"a":0,"k":10},"lj":2,"ml":{"a":0,"k":1}},{"ty":"fl","bm":0,"hd":false,"nm":"Fill 1","c":{"a":0,"k":[1,0.5529,0]},"r":1,"o":{"a":0,"k":100}},{"ty":"tr","a":{"a":0,"k":[0,0]},"s":{"a":0,"k":[100,100]},"sk":{"a":0,"k":0},"p":{"a":0,"k":[0,0]},"r":{"a":0,"k":0},"sa":{"a":0,"k":0},"o":{"a":0,"k":100}}]}],"ind":2,"parent":1},{"ty":4,"nm":"Ellipse 71180","sr":1,"st":63,"op":121,"ip":63,"hd":false,"ln":"57","ddd":0,"bm":0,"hasMask":false,"ao":0,"ks":{"a":{"a":0,"k":[0,0]},"s":{"a":1,"k":[{"o":{"x":0.167,"y":0.167},"i":{"x":0.833,"y":0.833},"s":[100,100,100],"t":63},{"o":{"x":0.333,"y":0},"i":{"x":0.154,"y":1},"s":[100,100,100],"t":71},{"s":[39,39,100],"t":121}]},"sk":{"a":0,"k":0},"p":{"a":1,"k":[{"o":{"x":0.167,"y":0.167},"i":{"x":0.833,"y":0.833},"s":[-76.647,151.451,0],"t":63},{"o":{"x":0.167,"y":0.167},"i":{"x":0.833,"y":0.833},"s":[-76.647,151.451,0],"t":71},{"s":[-241.525,90.332,0],"t":121}]},"r":{"a":1,"k":[{"o":{"x":0.167,"y":0.167},"i":{"x":0.833,"y":0.833},"s":[0],"t":63},{"s":[0],"t":71}]},"sa":{"a":0,"k":0},"o":{"a":0,"k":100}},"shapes":[{"ty":"gr","bm":0,"hd":false,"nm":"Ellipse 71178","it":[{"ty":"el","bm":0,"hd":false,"nm":"Ellipse Path 1","d":1,"p":{"a":0,"k":[0,0]},"s":{"a":0,"k":[24.935,21.504]}},{"ty":"st","bm":0,"hd":false,"nm":"Stroke 1","lc":1,"lj":1,"ml":4,"o":{"a":0,"k":100},"w":{"a":0,"k":3},"c":{"a":0,"k":[0.10588235294117647,0.12156862745098039,0.0784313725490196]}},{"ty":"op","bm":0,"hd":false,"nm":"Stroke align: Inside","a":{"a":0,"k":10},"lj":2,"ml":{"a":0,"k":1}},{"ty":"fl","bm":0,"hd":false,"nm":"Fill 1","c":{"a":0,"k":[0.9882,0.7333,0.9843]},"r":1,"o":{"a":0,"k":100}},{"ty":"tr","a":{"a":0,"k":[0,0]},"s":{"a":0,"k":[100,100]},"sk":{"a":0,"k":0},"p":{"a":0,"k":[0,0]},"r":{"a":0,"k":0},"sa":{"a":0,"k":0},"o":{"a":0,"k":100}}]}],"ind":3,"parent":1},{"ty":4,"nm":"Ellipse 71178","sr":1,"st":65,"op":123,"ip":65,"hd":false,"ln":"34","ddd":0,"bm":0,"hasMask":false,"ao":0,"ks":{"a":{"a":0,"k":[0,0]},"s":{"a":1,"k":[{"o":{"x":0.167,"y":0.167},"i":{"x":0.833,"y":0.833},"s":[100,100,100],"t":65},{"s":[100,100,100],"t":73}]},"sk":{"a":0,"k":0},"p":{"a":1,"k":[{"o":{"x":0.167,"y":0.167},"i":{"x":0.833,"y":0.833},"s":[401.448,228.594,0],"t":65},{"o":{"x":0.167,"y":0.167},"i":{"x":0.833,"y":0.833},"s":[401.448,228.594,0],"t":73},{"s":[715.569,170.318,0],"t":123}]},"r":{"a":1,"k":[{"o":{"x":0.333,"y":0},"i":{"x":0.667,"y":1},"s":[0],"t":65},{"o":{"x":0.333,"y":0},"i":{"x":0.154,"y":1},"s":[0],"t":73},{"s":[194],"t":123}]},"sa":{"a":0,"k":0},"o":{"a":0,"k":100}},"shapes":[{"ty":"gr","bm":0,"hd":false,"nm":"Ellipse 71178","it":[{"ty":"el","bm":0,"hd":false,"nm":"Ellipse Path 1","d":1,"p":{"a":0,"k":[0,0]},"s":{"a":0,"k":[24.935,21.504]}},{"ty":"st","bm":0,"hd":false,"nm":"Stroke 1","lc":1,"lj":1,"ml":4,"o":{"a":0,"k":100},"w":{"a":0,"k":3},"c":{"a":0,"k":[0.10588235294117647,0.12156862745098039,0.0784313725490196]}},{"ty":"op","bm":0,"hd":false,"nm":"Stroke align: Inside","a":{"a":0,"k":10},"lj":2,"ml":{"a":0,"k":1}},{"ty":"fl","bm":0,"hd":false,"nm":"Fill 1","c":{"a":0,"k":[1,0.5529,0]},"r":1,"o":{"a":0,"k":100}},{"ty":"tr","a":{"a":0,"k":[0,0]},"s":{"a":0,"k":[100,100]},"sk":{"a":0,"k":0},"p":{"a":0,"k":[0,0]},"r":{"a":0,"k":0},"sa":{"a":0,"k":0},"o":{"a":0,"k":100}}]}],"ind":4,"parent":1},{"ty":4,"nm":"Vector 4540 (Stroke)","sr":1,"st":62,"op":120,"ip":62,"hd":false,"ln":"33","ddd":0,"bm":0,"hasMask":false,"ao":0,"ks":{"a":{"a":0,"k":[0,0]},"s":{"a":1,"k":[{"o":{"x":0.167,"y":0.167},"i":{"x":0.833,"y":0.833},"s":[100,100,100],"t":62},{"o":{"x":0.333,"y":0},"i":{"x":0.154,"y":1},"s":[100,100,100],"t":70},{"s":[30,30,100],"t":120}]},"sk":{"a":0,"k":0},"p":{"a":1,"k":[{"o":{"x":0.167,"y":0.167},"i":{"x":0.833,"y":0.833},"s":[383.899,331.987,0],"t":62},{"o":{"x":0.167,"y":0.167},"i":{"x":0.833,"y":0.833},"s":[383.899,331.987,0],"t":70},{"s":[568.676,424.376,0],"t":120}]},"r":{"a":1,"k":[{"o":{"x":0.167,"y":0.167},"i":{"x":0.833,"y":0.833},"s":[0],"t":62},{"o":{"x":0.167,"y":0.167},"i":{"x":0.833,"y":0.833},"s":[0],"t":70},{"s":[132],"t":120}]},"sa":{"a":0,"k":0},"o":{"a":0,"k":100}},"shapes":[{"ty":"gr","bm":0,"hd":false,"nm":"Vector 4540 (Stroke)","it":[{"ty":"sh","bm":0,"hd":false,"nm":"Path 1","d":1,"ks":{"a":0,"k":{"c":true,"i":[[3.463,0.945],[10.655,-6.022],[-1.767,-3.125],[-3.125,1.766],[-7.096,-1.935],[-0.944,3.463]],"o":[[-10.744,-2.93],[-3.125,1.767],[1.766,3.125],[7.995,-4.519],[3.463,0.945],[0.945,-3.463]],"v":[[15.394,-7.698],[-16.883,-3.031],[-19.342,5.827],[-10.486,8.287],[11.973,4.844],[19.954,0.284]]}}},{"ty":"st","bm":0,"hd":false,"nm":"Stroke 1","lc":2,"lj":2,"ml":4,"o":{"a":0,"k":100},"w":{"a":0,"k":3},"c":{"a":0,"k":[0.10588235294117647,0.12156862745098039,0.0784313725490196]}},{"ty":"fl","bm":0,"hd":false,"nm":"Fill 1","c":{"a":0,"k":[1,0.4314,0.4745]},"r":1,"o":{"a":0,"k":100}},{"ty":"tr","a":{"a":0,"k":[0,0]},"s":{"a":0,"k":[100,100]},"sk":{"a":0,"k":0},"p":{"a":0,"k":[0,0]},"r":{"a":0,"k":0},"sa":{"a":0,"k":0},"o":{"a":0,"k":100}}]}],"ind":5,"parent":1},{"ty":4,"nm":"Star 24","sr":1,"st":63,"op":121,"ip":63,"hd":false,"ln":"54","ddd":0,"bm":0,"hasMask":false,"ao":0,"ks":{"a":{"a":0,"k":[0,0]},"s":{"a":1,"k":[{"o":{"x":0.167,"y":0.167},"i":{"x":0.833,"y":0.833},"s":[118.45,118.45,100],"t":63},{"o":{"x":0.167,"y":0.167},"i":{"x":0.833,"y":0.833},"s":[118.45,118.45,100],"t":71},{"s":[20,20,100],"t":121}]},"sk":{"a":0,"k":0},"p":{"a":1,"k":[{"o":{"x":0.167,"y":0.167},"i":{"x":0.833,"y":0.833},"s":[322.767,372.279,0],"t":63},{"o":{"x":0.167,"y":0.167},"i":{"x":0.833,"y":0.833},"s":[322.767,372.279,0],"t":71},{"s":[435.054,504.465,0],"t":121}]},"r":{"a":1,"k":[{"o":{"x":0.333,"y":0},"i":{"x":0.667,"y":1},"s":[0],"t":63},{"o":{"x":0.333,"y":0},"i":{"x":0.154,"y":1},"s":[0],"t":71},{"s":[45],"t":121}]},"sa":{"a":0,"k":0},"o":{"a":0,"k":100}},"shapes":[{"ty":"gr","bm":0,"hd":false,"nm":"Star 23","it":[{"ty":"sr","bm":0,"hd":false,"nm":"Polystar Path 1","d":1,"ir":{"a":0,"k":14.342},"is":{"a":0,"k":0},"pt":{"a":0,"k":7},"p":{"a":0,"k":[0,0]},"or":{"a":0,"k":21.502},"os":{"a":0,"k":0},"r":{"a":0,"k":0},"sy":1},{"ty":"st","bm":0,"hd":false,"nm":"Stroke 1","lc":1,"lj":1,"ml":4,"o":{"a":0,"k":100},"w":{"a":0,"k":3},"c":{"a":0,"k":[0.10588235294117647,0.12156862745098039,0.0784313725490196]}},{"ty":"op","bm":0,"hd":false,"nm":"Stroke align: Inside","a":{"a":0,"k":10},"lj":2,"ml":{"a":0,"k":1}},{"ty":"fl","bm":0,"hd":false,"nm":"Fill 1","c":{"a":0,"k":[1,0.5529,0]},"r":1,"o":{"a":0,"k":100}},{"ty":"rd","bm":0,"hd":false,"nm":"Round Corners 1","r":{"a":0,"k":4}},{"ty":"tr","a":{"a":0,"k":[0,0]},"s":{"a":0,"k":[100,100]},"sk":{"a":0,"k":0},"p":{"a":0,"k":[0,0]},"r":{"a":0,"k":0},"sa":{"a":0,"k":0},"o":{"a":0,"k":100}}]}],"ind":6,"parent":1},{"ty":4,"nm":"Star 23","sr":1,"st":63,"op":121,"ip":63,"hd":false,"ln":"53","ddd":0,"bm":0,"hasMask":false,"ao":0,"ks":{"a":{"a":0,"k":[0,0]},"s":{"a":1,"k":[{"o":{"x":0.167,"y":0.167},"i":{"x":0.833,"y":0.833},"s":[100,100,100],"t":63},{"o":{"x":0.333,"y":0},"i":{"x":0.154,"y":1},"s":[100,100,100],"t":71},{"s":[42,42,100],"t":121}]},"sk":{"a":0,"k":0},"p":{"a":1,"k":[{"o":{"x":0.167,"y":0.167},"i":{"x":0.833,"y":0.833},"s":[-56.908,362.61,0],"t":63},{"o":{"x":0.333,"y":0},"i":{"x":0.154,"y":1},"s":[-56.908,362.61,0],"t":71},{"s":[-342.602,507.589,0],"t":121}]},"r":{"a":1,"k":[{"o":{"x":0.333,"y":0},"i":{"x":0.667,"y":1},"s":[0],"t":63},{"o":{"x":0.333,"y":0},"i":{"x":0.154,"y":1},"s":[0],"t":71},{"s":[102],"t":121}]},"sa":{"a":0,"k":0},"o":{"a":0,"k":100}},"shapes":[{"ty":"gr","bm":0,"hd":false,"nm":"Star 23","it":[{"ty":"sr","bm":0,"hd":false,"nm":"Polystar Path 1","d":1,"ir":{"a":0,"k":14.342},"is":{"a":0,"k":0},"pt":{"a":0,"k":7},"p":{"a":0,"k":[0,0]},"or":{"a":0,"k":21.502},"os":{"a":0,"k":0},"r":{"a":0,"k":0},"sy":1},{"ty":"st","bm":0,"hd":false,"nm":"Stroke 1","lc":1,"lj":1,"ml":4,"o":{"a":0,"k":100},"w":{"a":0,"k":3},"c":{"a":0,"k":[0.10588235294117647,0.12156862745098039,0.0784313725490196]}},{"ty":"op","bm":0,"hd":false,"nm":"Stroke align: Inside","a":{"a":0,"k":10},"lj":2,"ml":{"a":0,"k":1}},{"ty":"fl","bm":0,"hd":false,"nm":"Fill 1","c":{"a":0,"k":[1,0.4314,0.4745]},"r":1,"o":{"a":0,"k":100}},{"ty":"rd","bm":0,"hd":false,"nm":"Round Corners 1","r":{"a":0,"k":4}},{"ty":"tr","a":{"a":0,"k":[0,0]},"s":{"a":0,"k":[100,100]},"sk":{"a":0,"k":0},"p":{"a":0,"k":[0,0]},"r":{"a":0,"k":0},"sa":{"a":0,"k":0},"o":{"a":0,"k":100}}]}],"ind":7,"parent":1},{"ty":4,"nm":"Vector 4535 (Stroke) 2","sr":1,"st":65,"op":123,"ip":65,"hd":false,"ln":"58","ddd":0,"bm":0,"hasMask":false,"ao":0,"ks":{"a":{"a":0,"k":[0,0]},"s":{"a":1,"k":[{"o":{"x":0.333,"y":0},"i":{"x":0.667,"y":1},"s":[82.3,82.3,100],"t":65},{"o":{"x":0.333,"y":0},"i":{"x":0.833,"y":1},"s":[82.3,82.3,100],"t":73},{"s":[20,20,100],"t":123}]},"sk":{"a":0,"k":0},"p":{"a":1,"k":[{"o":{"x":0.167,"y":0.167},"i":{"x":0.833,"y":0.833},"s":[390.987,269.791,0],"t":65},{"o":{"x":0.333,"y":0},"i":{"x":0.154,"y":1},"s":[390.987,269.791,0],"t":73},{"s":[558.707,286.847,0],"t":123}]},"r":{"a":1,"k":[{"o":{"x":0.333,"y":0},"i":{"x":0.667,"y":1},"s":[-36],"t":65},{"o":{"x":0.333,"y":0},"i":{"x":0.154,"y":1},"s":[-36],"t":73},{"s":[53],"t":123}]},"sa":{"a":0,"k":0},"o":{"a":0,"k":100}},"shapes":[{"ty":"gr","bm":0,"hd":false,"nm":"Vector 4535 (Stroke)","it":[{"ty":"sh","bm":0,"hd":false,"nm":"Path 1","d":1,"ks":{"a":0,"k":{"c":true,"i":[[1.979,5.319],[3.623,-1.348],[-1.348,-3.623],[1.105,-2.095],[5.311,-0.909],[1.065,3.424],[3.691,-1.148],[-1.149,-3.691],[-15.375,2.63],[-3.278,6.216]],"o":[[-1.348,-3.623],[-3.624,1.348],[0.728,1.956],[-0.97,1.838],[-10.339,1.768],[-1.149,-3.691],[-3.691,1.148],[3.671,11.801],[8.974,-1.535],[3.142,-5.959]],"v":[[25.496,-13.148],[16.495,-17.267],[12.375,-8.265],[11.974,-1.677],[3.471,3.361],[-13.185,-3.241],[-21.948,-7.845],[-26.552,0.918],[5.831,17.161],[24.357,4.854]]}}},{"ty":"st","bm":0,"hd":false,"nm":"Stroke 1","lc":2,"lj":2,"ml":4,"o":{"a":0,"k":100},"w":{"a":0,"k":3},"c":{"a":0,"k":[0.10588235294117647,0.12156862745098039,0.0784313725490196]}},{"ty":"fl","bm":0,"hd":false,"nm":"Fill 1","c":{"a":0,"k":[0.9882,0.7333,0.9843]},"r":1,"o":{"a":0,"k":100}},{"ty":"tr","a":{"a":0,"k":[0,0]},"s":{"a":0,"k":[100,100]},"sk":{"a":0,"k":0},"p":{"a":0,"k":[0,0]},"r":{"a":0,"k":0},"sa":{"a":0,"k":0},"o":{"a":0,"k":100}}]}],"ind":8,"parent":1},{"ty":4,"nm":"Vector 4535 (Stroke)","sr":1,"st":63,"op":121,"ip":63,"hd":false,"ln":"32","ddd":0,"bm":0,"hasMask":false,"ao":0,"ks":{"a":{"a":0,"k":[0,0]},"s":{"a":1,"k":[{"o":{"x":0.167,"y":0.167},"i":{"x":0.833,"y":0.833},"s":[100,100,100],"t":63},{"o":{"x":0.333,"y":0},"i":{"x":0.154,"y":1},"s":[100,100,100],"t":71},{"s":[66,66,100],"t":121}]},"sk":{"a":0,"k":0},"p":{"a":1,"k":[{"o":{"x":0.167,"y":0.167},"i":{"x":0.833,"y":0.833},"s":[-116.632,263.124,0],"t":63},{"o":{"x":0.167,"y":0.167},"i":{"x":0.833,"y":0.833},"s":[-116.632,263.124,0],"t":71},{"s":[-308.516,193.477,0],"t":121}]},"r":{"a":1,"k":[{"o":{"x":0.167,"y":0.167},"i":{"x":0.833,"y":0.833},"s":[-89],"t":63},{"o":{"x":0.167,"y":0.167},"i":{"x":0.833,"y":0.833},"s":[-89],"t":71},{"s":[17],"t":121}]},"sa":{"a":0,"k":0},"o":{"a":0,"k":100}},"shapes":[{"ty":"gr","bm":0,"hd":false,"nm":"Vector 4535 (Stroke)","it":[{"ty":"sh","bm":0,"hd":false,"nm":"Path 1","d":1,"ks":{"a":0,"k":{"c":true,"i":[[1.979,5.319],[3.623,-1.348],[-1.348,-3.623],[1.105,-2.095],[5.311,-0.909],[1.065,3.424],[3.691,-1.148],[-1.149,-3.691],[-15.375,2.63],[-3.278,6.216]],"o":[[-1.348,-3.623],[-3.624,1.348],[0.728,1.956],[-0.97,1.838],[-10.339,1.768],[-1.149,-3.691],[-3.691,1.148],[3.671,11.801],[8.974,-1.535],[3.142,-5.959]],"v":[[25.496,-13.148],[16.495,-17.267],[12.375,-8.265],[11.974,-1.677],[3.471,3.361],[-13.185,-3.241],[-21.948,-7.845],[-26.552,0.918],[5.831,17.161],[24.357,4.854]]}}},{"ty":"st","bm":0,"hd":false,"nm":"Stroke 1","lc":2,"lj":2,"ml":4,"o":{"a":0,"k":100},"w":{"a":0,"k":3},"c":{"a":0,"k":[0.10588235294117647,0.12156862745098039,0.0784313725490196]}},{"ty":"fl","bm":0,"hd":false,"nm":"Fill 1","c":{"a":0,"k":[0.5804,0.6706,0.1569]},"r":1,"o":{"a":0,"k":100}},{"ty":"tr","a":{"a":0,"k":[0,0]},"s":{"a":0,"k":[100,100]},"sk":{"a":0,"k":0},"p":{"a":0,"k":[0,0]},"r":{"a":0,"k":0},"sa":{"a":0,"k":0},"o":{"a":0,"k":100}}]}],"ind":9,"parent":1},{"ty":4,"nm":"Vector 4538","sr":1,"st":64,"op":122,"ip":64,"hd":false,"ln":"56","ddd":0,"bm":0,"hasMask":false,"ao":0,"ks":{"a":{"a":0,"k":[0,0]},"s":{"a":1,"k":[{"o":{"x":0.167,"y":0.167},"i":{"x":0.833,"y":0.833},"s":[69.611,69.611,100],"t":64},{"o":{"x":0.333,"y":0},"i":{"x":0.154,"y":1},"s":[69.611,69.611,100],"t":72},{"s":[30,30,100],"t":122}]},"sk":{"a":0,"k":0},"p":{"a":1,"k":[{"o":{"x":0.167,"y":0.167},"i":{"x":0.833,"y":0.833},"s":[322.282,287.539,0],"t":64},{"o":{"x":0.167,"y":0.167},"i":{"x":0.833,"y":0.833},"s":[322.282,287.539,0],"t":72},{"s":[475.789,351.501,0],"t":122}]},"r":{"a":1,"k":[{"o":{"x":0.167,"y":0.167},"i":{"x":0.833,"y":0.833},"s":[0],"t":64},{"s":[0],"t":72}]},"sa":{"a":0,"k":0},"o":{"a":0,"k":100}},"shapes":[{"ty":"gr","bm":0,"hd":false,"nm":"Vector 4536","it":[{"ty":"sh","bm":0,"hd":false,"nm":"Path 1","d":1,"ks":{"a":0,"k":{"c":true,"i":[[0,0],[1.052,-0.277],[0.277,-0.664],[0,0],[0.996,-0.731],[-0.083,-3.322],[-1.245,-0.305],[0,0],[-0.466,-0.73],[-2.823,0.166],[-0.194,0.996],[0,0],[0,0],[-0.133,2.791],[1.052,0.332],[0,0]],"o":[[-1.196,-2.258],[-2.524,0],[0,0],[-1.937,1.024],[-1.246,0.913],[0.067,2.657],[0,0],[1.246,2.076],[0.581,0.914],[2.259,-0.133],[0,0],[0,0],[0.942,-0.277],[0.133,-2.79],[0,0],[0,0]],"v":[[2.822,-15.768],[-1.828,-17.761],[-5.814,-15.768],[-8.638,-6.55],[-15.696,-2.564],[-18.271,2.668],[-14.451,6.903],[-6.811,9.062],[-2.492,16.203],[2.822,17.864],[6.227,14.709],[8.635,6.404],[15.278,2.668],[18.268,-1.651],[15.278,-6.135],[7.057,-9.041]]}}},{"ty":"st","bm":0,"hd":false,"nm":"Stroke 1","lc":2,"lj":2,"ml":4,"o":{"a":0,"k":100},"w":{"a":0,"k":3},"c":{"a":0,"k":[0.10588235294117647,0.12156862745098039,0.0784313725490196]}},{"ty":"fl","bm":0,"hd":false,"nm":"Fill 1","c":{"a":0,"k":[1,0.4314,0.4745]},"r":1,"o":{"a":0,"k":100}},{"ty":"tr","a":{"a":0,"k":[0,0]},"s":{"a":0,"k":[100,100]},"sk":{"a":0,"k":0},"p":{"a":0,"k":[0,0]},"r":{"a":0,"k":0},"sa":{"a":0,"k":0},"o":{"a":0,"k":100}}]}],"ind":10,"parent":1},{"ty":4,"nm":"Vector 4537","sr":1,"st":62,"op":120,"ip":62,"hd":false,"ln":"40","ddd":0,"bm":0,"hasMask":false,"ao":0,"ks":{"a":{"a":0,"k":[0,0]},"s":{"a":1,"k":[{"o":{"x":0.167,"y":0.167},"i":{"x":0.833,"y":0.833},"s":[69.611,69.611,100],"t":62},{"o":{"x":0.333,"y":0},"i":{"x":0.154,"y":1},"s":[69.611,69.611,100],"t":70},{"s":[30,30,100],"t":120}]},"sk":{"a":0,"k":0},"p":{"a":1,"k":[{"o":{"x":0.167,"y":0.167},"i":{"x":0.833,"y":0.833},"s":[-25.337,124.682,0],"t":62},{"o":{"x":0.167,"y":0.167},"i":{"x":0.833,"y":0.833},"s":[-25.337,124.682,0],"t":70},{"s":[-147.574,40.822,0],"t":120}]},"r":{"a":1,"k":[{"o":{"x":0.167,"y":0.167},"i":{"x":0.833,"y":0.833},"s":[0],"t":62},{"o":{"x":0.167,"y":0.167},"i":{"x":0.833,"y":0.833},"s":[0],"t":70},{"s":[99],"t":120}]},"sa":{"a":0,"k":0},"o":{"a":0,"k":100}},"shapes":[{"ty":"gr","bm":0,"hd":false,"nm":"Vector 4536","it":[{"ty":"sh","bm":0,"hd":false,"nm":"Path 1","d":1,"ks":{"a":0,"k":{"c":true,"i":[[0,0],[1.052,-0.277],[0.277,-0.664],[0,0],[0.996,-0.731],[-0.083,-3.322],[-1.245,-0.305],[0,0],[-0.466,-0.73],[-2.823,0.166],[-0.194,0.996],[0,0],[0,0],[-0.133,2.791],[1.052,0.332],[0,0]],"o":[[-1.196,-2.258],[-2.524,0],[0,0],[-1.937,1.024],[-1.246,0.913],[0.067,2.657],[0,0],[1.246,2.076],[0.581,0.914],[2.259,-0.133],[0,0],[0,0],[0.942,-0.277],[0.133,-2.79],[0,0],[0,0]],"v":[[2.822,-15.768],[-1.828,-17.761],[-5.814,-15.768],[-8.638,-6.55],[-15.696,-2.564],[-18.271,2.668],[-14.451,6.903],[-6.811,9.062],[-2.492,16.203],[2.822,17.864],[6.227,14.709],[8.635,6.404],[15.278,2.668],[18.268,-1.651],[15.278,-6.135],[7.057,-9.041]]}}},{"ty":"st","bm":0,"hd":false,"nm":"Stroke 1","lc":2,"lj":2,"ml":4,"o":{"a":0,"k":100},"w":{"a":0,"k":3},"c":{"a":0,"k":[0.10588235294117647,0.12156862745098039,0.0784313725490196]}},{"ty":"fl","bm":0,"hd":false,"nm":"Fill 1","c":{"a":0,"k":[1,0.5529,0]},"r":1,"o":{"a":0,"k":100}},{"ty":"tr","a":{"a":0,"k":[0,0]},"s":{"a":0,"k":[100,100]},"sk":{"a":0,"k":0},"p":{"a":0,"k":[0,0]},"r":{"a":0,"k":0},"sa":{"a":0,"k":0},"o":{"a":0,"k":100}}]}],"ind":11,"parent":1},{"ty":4,"nm":"Vector 4536","sr":1,"st":63,"op":121,"ip":63,"hd":false,"ln":"31","ddd":0,"bm":0,"hasMask":false,"ao":0,"ks":{"a":{"a":0,"k":[0,0]},"s":{"a":1,"k":[{"o":{"x":0.167,"y":0.167},"i":{"x":0.833,"y":0.833},"s":[100,100,100],"t":63},{"o":{"x":0.333,"y":0},"i":{"x":0.154,"y":1},"s":[100,100,100],"t":71},{"s":[20,20,100],"t":121}]},"sk":{"a":0,"k":0},"p":{"a":1,"k":[{"o":{"x":0.167,"y":0.167},"i":{"x":0.833,"y":0.833},"s":[22.144,77.012,0],"t":63},{"o":{"x":0.333,"y":0},"i":{"x":0.154,"y":1},"s":[22.144,77.012,0],"t":71},{"s":[-97.251,-48.068,0],"t":121}]},"r":{"a":1,"k":[{"o":{"x":0.333,"y":0},"i":{"x":0.667,"y":1},"s":[0],"t":63},{"o":{"x":0.333,"y":0},"i":{"x":0.154,"y":1},"s":[0],"t":71},{"s":[82],"t":121}]},"sa":{"a":0,"k":0},"o":{"a":0,"k":100}},"shapes":[{"ty":"gr","bm":0,"hd":false,"nm":"Vector 4536","it":[{"ty":"sh","bm":0,"hd":false,"nm":"Path 1","d":1,"ks":{"a":0,"k":{"c":true,"i":[[0,0],[1.052,-0.277],[0.277,-0.664],[0,0],[0.996,-0.731],[-0.083,-3.322],[-1.245,-0.305],[0,0],[-0.466,-0.73],[-2.823,0.166],[-0.194,0.996],[0,0],[0,0],[-0.133,2.791],[1.052,0.332],[0,0]],"o":[[-1.196,-2.258],[-2.524,0],[0,0],[-1.937,1.024],[-1.246,0.913],[0.067,2.657],[0,0],[1.246,2.076],[0.581,0.914],[2.259,-0.133],[0,0],[0,0],[0.942,-0.277],[0.133,-2.79],[0,0],[0,0]],"v":[[2.822,-15.768],[-1.828,-17.761],[-5.814,-15.768],[-8.638,-6.55],[-15.696,-2.564],[-18.271,2.668],[-14.451,6.903],[-6.811,9.062],[-2.492,16.203],[2.822,17.864],[6.227,14.709],[8.635,6.404],[15.278,2.668],[18.268,-1.651],[15.278,-6.135],[7.057,-9.041]]}}},{"ty":"st","bm":0,"hd":false,"nm":"Stroke 1","lc":2,"lj":2,"ml":4,"o":{"a":0,"k":100},"w":{"a":0,"k":3},"c":{"a":0,"k":[0.10588235294117647,0.12156862745098039,0.0784313725490196]}},{"ty":"fl","bm":0,"hd":false,"nm":"Fill 1","c":{"a":0,"k":[0.5804,0.6706,0.1569]},"r":1,"o":{"a":0,"k":100}},{"ty":"tr","a":{"a":0,"k":[0,0]},"s":{"a":0,"k":[100,100]},"sk":{"a":0,"k":0},"p":{"a":0,"k":[0,0]},"r":{"a":0,"k":0},"sa":{"a":0,"k":0},"o":{"a":0,"k":100}}]}],"ind":12,"parent":1},{"ty":4,"nm":"Finger","sr":1,"st":0,"op":168,"ip":0,"hd":false,"ln":"35","ddd":0,"bm":0,"hasMask":false,"ao":0,"ks":{"a":{"a":0,"k":[132.834,-95.547,0]},"s":{"a":1,"k":[{"o":{"x":0.48,"y":0.04},"i":{"x":0.52,"y":0.96},"s":[100,100,100],"t":60},{"o":{"x":0.167,"y":0.167},"i":{"x":0.833,"y":0.833},"s":[104.9,104.9,100],"t":62},{"o":{"x":0.66,"y":0},"i":{"x":0.34,"y":1},"s":[104.9,104.9,100],"t":69.999},{"s":[100,100,100],"t":166.999}]},"sk":{"a":0,"k":0},"p":{"a":1,"k":[{"o":{"x":0.27,"y":0},"i":{"x":0.197,"y":1},"s":[738.155,-410.714,0],"t":20,"ti":[35.619,-31.804,0],"to":[-33.014,27.965,0]},{"o":{"x":0.66,"y":0},"i":{"x":0.34,"y":1},"s":[581.561,-266.05,0],"t":48,"ti":[2.605,-3.839,0],"to":[-35.619,31.804,0]},{"o":{"x":0.167,"y":0.167},"i":{"x":0.833,"y":0.833},"s":[524.438,-219.888,0],"t":52},{"o":{"x":0.48,"y":0.039},"i":{"x":0.52,"y":0.961},"s":[524.438,-219.888,0],"t":60,"ti":[12.658,18.322,0],"to":[0,0,0]},{"o":{"x":0.167,"y":0.167},"i":{"x":0.833,"y":0.833},"s":[415.842,-186.98,0],"t":62},{"o":{"x":0.66,"y":0},"i":{"x":0.34,"y":1},"s":[415.842,-186.98,0],"t":69.999,"ti":[-45.925,36.732,0],"to":[0,0,0]},{"o":{"x":0.333,"y":0},"i":{"x":0.667,"y":1},"s":[554.799,-376.612,0],"t":82.999,"ti":[0,0,0],"to":[45.925,-36.732,0]},{"o":{"x":0.333,"y":0},"i":{"x":0.833,"y":1},"s":[691.39,-412.135,0],"t":118.999,"ti":[33.014,-27.965,0],"to":[0,0,0]},{"s":[738.155,-410.714,0],"t":166.999,"ti":[33.014,-27.965,0],"to":[-33.014,27.965,0]}]},"r":{"a":1,"k":[{"o":{"x":0.27,"y":0},"i":{"x":0.197,"y":-3.04},"s":[9],"t":20},{"o":{"x":0.66,"y":0},"i":{"x":0.34,"y":1},"s":[3.2],"t":48},{"o":{"x":0.333,"y":0},"i":{"x":0.667,"y":1},"s":[5.7],"t":52},{"o":{"x":0.48,"y":0.04},"i":{"x":0.52,"y":0.96},"s":[5.7],"t":60},{"o":{"x":0.333,"y":0},"i":{"x":0.667,"y":1},"s":[-19.3],"t":62},{"o":{"x":0.66,"y":0},"i":{"x":0.34,"y":1},"s":[-19.3],"t":69.999},{"o":{"x":0.333,"y":2.8},"i":{"x":0.833,"y":0.837},"s":[-4.892],"t":82.999},{"o":{"x":0.167,"y":0.17},"i":{"x":0.833,"y":1},"s":[1.2],"t":118.999},{"s":[9],"t":166.999}]},"sa":{"a":0,"k":0},"o":{"a":0,"k":100}},"shapes":[{"ty":"gr","bm":0,"hd":false,"nm":"Vector 4543","it":[{"ty":"sh","bm":0,"hd":false,"nm":"Path 1","d":1,"ks":{"a":1,"k":[{"o":{"x":0.22,"y":0.001},"i":{"x":0.36,"y":1},"s":[{"c":true,"i":[[-0.97,19.404],[7.842,6.548],[0,0],[10.09,-14.164],[1.213,-9.459],[-13.825,-2.91],[-3.477,2.83],[-16.105,23.284]],"o":[[0.776,-15.522],[0,0],[-9.783,10.671],[-12.612,17.705],[3.881,5.578],[11.06,2.329],[7.68,-6.225],[20.131,-29.105]],"v":[[61.955,-38.861],[39.399,-77.909],[-3.773,-34.737],[-45.733,14.983],[-61.983,55.002],[-28.027,77.315],[-3.773,71.737],[39.399,23.957]]}],"t":48},{"o":{"x":0.333,"y":0},"i":{"x":0.667,"y":1},"s":[{"c":true,"i":[[-2.969,19.199],[7.123,7.324],[0,0],[11.499,-13.047],[-3.032,-15.406],[-13.45,-4.322],[-3.755,2.448],[-18.423,21.496]],"o":[[2.375,-15.359],[0,0],[-10.833,9.604],[-14.373,16.308],[3.283,5.949],[10.761,3.459],[8.282,-5.398],[23.029,-26.87]],"v":[[71.815,-30.519],[44.479,-74.443],[0.282,-31.267],[-46.589,13.854],[-64.369,59.341],[-37.718,77.455],[-7.919,79.828],[39.596,37.71]]}],"t":52},{"o":{"x":0.9,"y":0},"i":{"x":0.1,"y":1},"s":[{"c":true,"i":[[-2.969,19.199],[7.123,7.324],[0,0],[11.499,-13.047],[-3.032,-15.406],[-13.45,-4.322],[-3.755,2.448],[-18.423,21.496]],"o":[[2.375,-15.359],[0,0],[-10.833,9.604],[-14.373,16.308],[3.283,5.949],[10.761,3.459],[8.282,-5.398],[23.029,-26.87]],"v":[[71.815,-30.519],[44.479,-74.443],[0.282,-31.267],[-46.589,13.854],[-64.369,59.341],[-37.718,77.455],[-7.919,79.828],[39.596,37.71]]}],"t":60},{"o":{"x":0.333,"y":0},"i":{"x":0.86,"y":0.999},"s":[{"c":true,"i":[[-0.97,19.403],[7.842,6.549],[0,0],[10.667,-13.735],[1.212,-9.459],[-13.825,-2.91],[-3.476,2.83],[-16.104,23.283]],"o":[[0.777,-15.523],[0,0],[-9.783,10.671],[-13.656,17.585],[5.98,2.868],[11.059,2.329],[7.681,-6.225],[20.131,-29.105]],"v":[[85.813,-51.592],[59.314,-96.24],[-3.773,-34.737],[-45.587,14.567],[-62.9,60.867],[-32.459,70.702],[-2.683,66.214],[49.543,19.075]]}],"t":62},{"o":{"x":0.66,"y":0},"i":{"x":0.667,"y":1},"s":[{"c":true,"i":[[-0.97,19.403],[7.842,6.549],[0,0],[10.667,-13.735],[1.212,-9.459],[-13.825,-2.91],[-3.476,2.83],[-16.104,23.283]],"o":[[0.777,-15.523],[0,0],[-9.783,10.671],[-13.656,17.585],[5.98,2.868],[11.059,2.329],[7.681,-6.225],[20.131,-29.105]],"v":[[85.813,-51.592],[59.314,-96.24],[-3.773,-34.737],[-45.587,14.567],[-62.9,60.867],[-32.459,70.702],[-2.683,66.214],[49.543,19.075]]}],"t":69.999},{"o":{"x":0.333,"y":0},"i":{"x":0.667,"y":1},"s":[{"c":true,"i":[[-0.97,19.404],[7.842,6.548],[0,0],[10.09,-14.164],[1.213,-9.459],[-13.825,-2.91],[-3.477,2.83],[-16.105,23.284]],"o":[[0.776,-15.522],[0,0],[-9.783,10.671],[-12.612,17.705],[3.881,5.578],[11.06,2.329],[7.68,-6.225],[20.131,-29.105]],"v":[[61.955,-38.861],[39.399,-77.909],[-3.773,-34.737],[-45.733,14.983],[-61.983,55.002],[-28.027,77.315],[-3.773,71.737],[39.399,23.957]]}],"t":118.999},{"s":[{"c":true,"i":[[-0.97,19.404],[7.842,6.548],[0,0],[10.09,-14.164],[1.213,-9.459],[-13.825,-2.91],[-3.477,2.83],[-16.105,23.284]],"o":[[0.776,-15.522],[0,0],[-9.783,10.671],[-12.612,17.705],[3.881,5.578],[11.06,2.329],[7.68,-6.225],[20.131,-29.105]],"v":[[61.955,-38.861],[39.399,-77.909],[-3.773,-34.737],[-45.733,14.983],[-61.983,55.002],[-28.027,77.315],[-3.773,71.737],[39.399,23.957]]}],"t":166.999}]}},{"ty":"st","bm":0,"hd":false,"nm":"Stroke 1","lc":1,"lj":1,"ml":4,"o":{"a":0,"k":100},"w":{"a":0,"k":3},"c":{"a":0,"k":[0.10588235294117647,0.12156862745098039,0.0784313725490196]}},{"ty":"fl","bm":0,"hd":false,"nm":"Fill 1","c":{"a":0,"k":[1,0.7961,0.7765]},"r":1,"o":{"a":0,"k":100}},{"ty":"tr","a":{"a":0,"k":[0,0]},"s":{"a":0,"k":[100,100]},"sk":{"a":0,"k":0},"p":{"a":0,"k":[-225.946,91.708]},"r":{"a":0,"k":0},"sa":{"a":0,"k":0},"o":{"a":0,"k":100}}]},{"ty":"gr","bm":0,"hd":false,"nm":"Vector 4542","it":[{"ty":"sh","bm":0,"hd":false,"nm":"Path 1","d":1,"ks":{"a":1,"k":[{"o":{"x":0.22,"y":0.001},"i":{"x":0.36,"y":1},"s":[{"c":true,"i":[[27.525,-33.319],[4.687,-33.923],[-71.179,-2.696],[-36.217,47.806],[-34.043,27.525],[-19.557,62.293],[105.028,-55.049]],"o":[[-27.525,33.319],[-1.501,10.884],[95.611,3.622],[28.973,-16.659],[34.044,-27.524],[19.557,-62.292],[-105.028,55.049]],"v":[[-243.299,71.35],[-288.33,148.731],[-209.255,208.972],[25.428,79.317],[165.948,-17.019],[286.911,-169.853],[32.671,-158.987]]}],"t":48},{"o":{"x":0.333,"y":0},"i":{"x":0.667,"y":1},"s":[{"c":true,"i":[[30.819,-30.299],[1.663,-29.266],[-62.909,-9.803],[-71.91,86.29],[-29.21,32.609],[-19.556,62.293],[68.797,-96.582]],"o":[[-30.818,30.298],[-0.623,10.969],[104.239,16.243],[28.973,-16.66],[42.288,-47.207],[19.557,-62.292],[-114.171,160.28]],"v":[[-240.657,73.341],[-290.324,150.371],[-219.769,204.097],[44.644,65.072],[165.005,-40.166],[266.815,-199.975],[-16.412,-187.953]]}],"t":52},{"o":{"x":0.48,"y":0},"i":{"x":0.52,"y":1},"s":[{"c":true,"i":[[30.819,-30.299],[1.663,-29.266],[-62.909,-9.803],[-71.91,86.29],[-29.21,32.609],[-19.556,62.293],[68.797,-96.582]],"o":[[-30.818,30.298],[-0.623,10.969],[104.239,16.243],[28.973,-16.66],[42.288,-47.207],[19.557,-62.292],[-114.171,160.28]],"v":[[-240.657,73.341],[-290.324,150.371],[-219.769,204.097],[44.644,65.072],[165.005,-40.166],[266.815,-199.975],[-16.412,-187.953]]}],"t":60},{"o":{"x":0.333,"y":0},"i":{"x":0.52,"y":1},"s":[{"c":true,"i":[[27.525,-33.319],[4.687,-33.923],[-71.179,-2.696],[-36.216,47.806],[-69.169,56.247],[188.379,91.476],[105.028,-55.049]],"o":[[-27.525,33.319],[-1.501,10.884],[95.611,3.622],[28.973,-16.659],[34.889,-28.37],[-58.732,-28.52],[-105.028,55.049]],"v":[[-243.299,71.35],[-288.33,148.731],[-201.525,211.679],[38.988,81.896],[241.616,-38.974],[286.911,-169.853],[57.672,-184.945]]}],"t":62},{"o":{"x":0.333,"y":0},"i":{"x":0.667,"y":1},"s":[{"c":true,"i":[[27.525,-33.319],[4.687,-33.923],[-71.179,-2.696],[-36.216,47.806],[-69.169,56.247],[188.379,91.476],[105.028,-55.049]],"o":[[-27.525,33.319],[-1.501,10.884],[95.611,3.622],[28.973,-16.659],[34.889,-28.37],[-58.732,-28.52],[-105.028,55.049]],"v":[[-243.299,71.35],[-288.33,148.731],[-201.525,211.679],[38.988,81.896],[241.616,-38.974],[286.911,-169.853],[57.672,-184.945]]}],"t":69.999},{"o":{"x":0.333,"y":0},"i":{"x":0.667,"y":1},"s":[{"c":true,"i":[[27.525,-33.319],[4.687,-33.923],[-71.179,-2.696],[-36.217,47.806],[-34.043,27.525],[-19.557,62.293],[105.028,-55.049]],"o":[[-27.525,33.319],[-1.501,10.884],[95.611,3.622],[28.973,-16.659],[34.044,-27.524],[19.557,-62.292],[-105.028,55.049]],"v":[[-243.299,71.35],[-288.33,148.731],[-209.255,208.972],[25.428,79.317],[165.948,-17.019],[286.911,-169.853],[32.671,-158.987]]}],"t":118.999},{"s":[{"c":true,"i":[[27.525,-33.319],[4.687,-33.923],[-71.179,-2.696],[-36.217,47.806],[-34.043,27.525],[-19.557,62.293],[105.028,-55.049]],"o":[[-27.525,33.319],[-1.501,10.884],[95.611,3.622],[28.973,-16.659],[34.044,-27.524],[19.557,-62.292],[-105.028,55.049]],"v":[[-243.299,71.35],[-288.33,148.731],[-209.255,208.972],[25.428,79.317],[165.948,-17.019],[286.911,-169.853],[32.671,-158.987]]}],"t":166.999}]}},{"ty":"st","bm":0,"hd":false,"nm":"Stroke 1","lc":1,"lj":1,"ml":4,"o":{"a":0,"k":100},"w":{"a":0,"k":3},"c":{"a":0,"k":[0.10588235294117647,0.12156862745098039,0.0784313725490196]}},{"ty":"fl","bm":0,"hd":false,"nm":"Fill 1","c":{"a":0,"k":[0.9608,0.6157,0.5137]},"r":1,"o":{"a":0,"k":100}},{"ty":"tr","a":{"a":0,"k":[0,0]},"s":{"a":0,"k":[100,100]},"sk":{"a":0,"k":0},"p":{"a":0,"k":[0,0]},"r":{"a":0,"k":0},"sa":{"a":0,"k":0},"o":{"a":0,"k":100}}]}],"ind":13,"parent":1},{"ty":4,"nm":"Subtract","sr":1,"st":0,"op":168,"ip":0,"hd":false,"ln":"30","ddd":0,"bm":0,"hasMask":false,"ao":0,"ks":{"a":{"a":0,"k":[0,0]},"s":{"a":0,"k":[100,100]},"sk":{"a":0,"k":0},"p":{"a":0,"k":[636.528,247.595,0]},"r":{"a":0,"k":0},"sa":{"a":0,"k":0},"o":{"a":0,"k":100}},"shapes":[{"ty":"gr","bm":0,"hd":false,"nm":"Subtract","it":[{"ty":"sh","bm":0,"hd":false,"nm":"Path 1","d":1,"ks":{"a":0,"k":{"c":true,"i":[[-248.587,296.368],[0,0],[0,0],[0,0],[44.745,-50.53],[46.487,-8.603],[-5.004,-54.998],[0,-14.632],[0,0],[-39.765,51.403]],"o":[[0,0],[0,0],[0,0],[-206.147,237.844],[-23.398,26.424],[2.502,16.946],[5.243,57.616],[0,0],[48.429,-6.39],[63.503,-82.089]],"v":[[479.232,-513.684],[479.583,-514.102],[270.96,-526.284],[266.634,-521.292],[-371.612,210.251],[-479.583,267.918],[-466.538,394.782],[-456.614,524.966],[-456.614,526.284],[-324.495,443.04]]}}},{"ty":"st","bm":0,"hd":false,"nm":"Stroke 1","lc":1,"lj":1,"ml":4,"o":{"a":0,"k":100},"w":{"a":0,"k":3},"c":{"a":0,"k":[0.10588235294117647,0.12156862745098039,0.0784313725490196]}},{"ty":"fl","bm":0,"hd":false,"nm":"Fill 1","c":{"a":0,"k":[0.6039215686274509,0.6509803921568628,0.22745098039215686]},"r":1,"o":{"a":0,"k":100}},{"ty":"tr","a":{"a":0,"k":[0,0]},"s":{"a":0,"k":[100,100]},"sk":{"a":0,"k":0},"p":{"a":0,"k":[0,0]},"r":{"a":0,"k":0},"sa":{"a":0,"k":0},"o":{"a":0,"k":100}}]}],"ind":14,"parent":1},{"ty":4,"nm":"Group 2147221241 1","sr":1,"st":0,"op":168,"ip":0,"hd":false,"ln":"82","ddd":0,"bm":0,"hasMask":false,"ao":0,"ks":{"a":{"a":0,"k":[0,0]},"s":{"a":0,"k":[100,100]},"sk":{"a":0,"k":0},"p":{"a":0,"k":[-55.028,250.401,0]},"r":{"a":0,"k":0},"sa":{"a":0,"k":0},"o":{"a":0,"k":100}},"shapes":[{"ty":"gr","bm":0,"hd":false,"nm":"Vector 4544","it":[{"ty":"sh","bm":0,"hd":false,"nm":"Path 1","d":1,"ks":{"a":0,"k":{"c":true,"i":[[0,0],[0,0],[-53.525,6.672],[4.597,27.585],[43.831,13.227],[0,0],[0,0]],"o":[[0,0],[64.946,30.247],[0,-29.089],[-41.623,5.614],[0,0],[0,0],[0,0]],"v":[[-598.1,-150.466],[420.647,325.982],[598.1,366.216],[574.816,107.25],[467.114,99.637],[-552.268,-367.677],[-573.676,-334.708]]}}},{"ty":"st","bm":0,"hd":false,"nm":"Stroke 1","lc":1,"lj":1,"ml":4,"o":{"a":0,"k":100},"w":{"a":0,"k":3},"c":{"a":0,"k":[0.10588235294117647,0.12156862745098039,0.0784313725490196]}},{"ty":"fl","bm":0,"hd":false,"nm":"Fill 1","c":{"a":0,"k":[0.3686274509803922,0.41568627450980394,0.10980392156862745]},"r":1,"o":{"a":0,"k":100}},{"ty":"tr","a":{"a":0,"k":[0,0]},"s":{"a":0,"k":[100,100]},"sk":{"a":0,"k":0},"p":{"a":0,"k":[-362.888,157.921]},"r":{"a":0,"k":0},"sa":{"a":0,"k":0},"o":{"a":0,"k":100}}]},{"ty":"gr","bm":0,"hd":false,"nm":"Vector 4521","it":[{"ty":"sh","bm":0,"hd":false,"nm":"Path 1","d":1,"ks":{"a":0,"k":{"c":true,"i":[[80.912,38.096],[0,0],[-29.605,-13.264],[-8.892,2.163],[0,0],[14.834,4.315]],"o":[[0,0],[73.672,33.613],[29.605,13.265],[0,0],[-6.316,-1.906],[-14.834,-4.315]],"v":[[-192.037,-33.874],[-129.667,-96.918],[128.357,20.502],[192.037,30.595],[106.73,96.918],[69.24,85.807]]}}},{"ty":"st","bm":0,"hd":false,"nm":"Stroke 1","lc":1,"lj":1,"ml":4,"o":{"a":0,"k":100},"w":{"a":0,"k":3},"c":{"a":0,"k":[0.10588235294117647,0.12156862745098039,0.0784313725490196]}},{"ty":"fl","bm":0,"hd":false,"nm":"Fill 1","c":{"a":0,"k":[0.49019607843137253,0.5411764705882353,0.16862745098039217]},"r":1,"o":{"a":0,"k":100}},{"ty":"tr","a":{"a":0,"k":[0,0]},"s":{"a":0,"k":[100,100]},"sk":{"a":0,"k":0},"p":{"a":0,"k":[19.935,166.905]},"r":{"a":0,"k":0},"sa":{"a":0,"k":0},"o":{"a":0,"k":100}}]},{"ty":"gr","bm":0,"hd":false,"nm":"Vector 4523","it":[{"ty":"sh","bm":0,"hd":false,"nm":"Path 1","d":1,"ks":{"a":0,"k":{"c":true,"i":[[0,0],[0,0],[0,0],[0,0]],"o":[[0,0],[0,0],[0,0],[0,0]],"v":[[-184.679,-35.922],[-136.195,-98.069],[184.679,47.825],[103.579,98.069]]}}},{"ty":"st","bm":0,"hd":false,"nm":"Stroke 1","lc":1,"lj":1,"ml":4,"o":{"a":0,"k":100},"w":{"a":0,"k":3},"c":{"a":0,"k":[0.10588235294117647,0.12156862745098039,0.0784313725490196]}},{"ty":"fl","bm":0,"hd":false,"nm":"Fill 1","c":{"a":0,"k":[0.49019607843137253,0.5411764705882353,0.16862745098039217]},"r":1,"o":{"a":0,"k":100}},{"ty":"tr","a":{"a":0,"k":[0,0]},"s":{"a":0,"k":[100,100]},"sk":{"a":0,"k":0},"p":{"a":0,"k":[-674.723,-149.161]},"r":{"a":0,"k":0},"sa":{"a":0,"k":0},"o":{"a":0,"k":100}}]},{"ty":"gr","bm":0,"hd":false,"nm":"Vector 4522","it":[{"ty":"sh","bm":0,"hd":false,"nm":"Path 1","d":1,"ks":{"a":0,"k":{"c":true,"i":[[0,0],[0,0],[0,0],[0,0]],"o":[[0,0],[0,0],[0,0],[0,0]],"v":[[-186.808,-35.445],[-134.003,-99.1],[186.808,45.933],[106.153,99.1]]}}},{"ty":"st","bm":0,"hd":false,"nm":"Stroke 1","lc":1,"lj":1,"ml":4,"o":{"a":0,"k":100},"w":{"a":0,"k":3},"c":{"a":0,"k":[0.10588235294117647,0.12156862745098039,0.0784313725490196]}},{"ty":"fl","bm":0,"hd":false,"nm":"Fill 1","c":{"a":0,"k":[0.49019607843137253,0.5411764705882353,0.16862745098039217]},"r":1,"o":{"a":0,"k":100}},{"ty":"tr","a":{"a":0,"k":[0,0]},"s":{"a":0,"k":[100,100]},"sk":{"a":0,"k":0},"p":{"a":0,"k":[-325.12,11.862]},"r":{"a":0,"k":0},"sa":{"a":0,"k":0},"o":{"a":0,"k":100}}]},{"ty":"gr","bm":0,"hd":false,"nm":"Subtract","it":[{"ty":"sh","bm":0,"hd":false,"nm":"Path 1","d":1,"ks":{"a":0,"k":{"c":true,"i":[[-45.173,51.014],[-206.146,237.844],[0,0],[0,0],[39.784,-44.929],[23.335,12.19],[0,0],[0,0],[0,0]],"o":[[44.738,-50.524],[0,0],[0,0],[-219.618,253.328],[-45.362,51.228],[0,0],[0,0],[0,0],[110.088,52.956]],"v":[[298.623,336.582],[936.858,-394.95],[939.021,-397.446],[849.106,-397.07],[250.418,292.32],[125.72,316.775],[-929.781,-160.859],[-939.021,-81.224],[42.647,371.638]]}}},{"ty":"st","bm":0,"hd":false,"nm":"Stroke 1","lc":1,"lj":1,"ml":4,"o":{"a":0,"k":100},"w":{"a":0,"k":3},"c":{"a":0,"k":[0.10588235294117647,0.12156862745098039,0.0784313725490196]}},{"ty":"fl","bm":0,"hd":false,"nm":"Fill 1","c":{"a":0,"k":[0.803921568627451,0.8352941176470589,0.5411764705882353]},"r":1,"o":{"a":0,"k":100}},{"ty":"tr","a":{"a":0,"k":[0,0]},"s":{"a":0,"k":[100,100]},"sk":{"a":0,"k":0},"p":{"a":0,"k":[21.967,-128.153]},"r":{"a":0,"k":0},"sa":{"a":0,"k":0},"o":{"a":0,"k":100}}]}],"ind":15,"parent":1},{"ty":4,"nm":"Clicker","sr":1,"st":0,"op":168,"ip":0,"hd":false,"ln":"27","ddd":0,"bm":0,"hasMask":false,"ao":0,"ks":{"a":{"a":0,"k":[0,0]},"s":{"a":0,"k":[100,100,100]},"sk":{"a":0,"k":0},"p":{"a":1,"k":[{"o":{"x":0,"y":0},"i":{"x":0.495,"y":1},"s":[94.974,213.462,0],"t":0},{"o":{"x":0.421,"y":0},"i":{"x":0.848,"y":1},"s":[94.974,222.462,0],"t":10},{"o":{"x":0.167,"y":0.167},"i":{"x":0.833,"y":0.833},"s":[94.974,213.462,0],"t":20},{"o":{"x":0.48,"y":0.052},"i":{"x":0.52,"y":0.948},"s":[94.974,213.462,0],"t":60},{"o":{"x":0.167,"y":0.167},"i":{"x":0.833,"y":0.833},"s":[84.629,292.839,0],"t":62},{"o":{"x":0.66,"y":0},"i":{"x":0.34,"y":1},"s":[84.629,292.839,0],"t":69.999},{"o":{"x":0.333,"y":0.08},"i":{"x":0.34,"y":1},"s":[94.974,234.462,0],"t":82.999},{"s":[94.974,213.462,0],"t":118.999}]},"r":{"a":0,"k":0},"sa":{"a":0,"k":0},"o":{"a":0,"k":100}},"shapes":[{"ty":"gr","bm":0,"hd":false,"nm":"Group 2147221242","it":[{"ty":"gr","bm":0,"hd":false,"nm":"Vector 4533","it":[{"ty":"sh","bm":0,"hd":false,"nm":"Path 1","d":1,"ks":{"a":0,"k":{"c":true,"i":[[0,0],[0,0],[0,0],[0,0]],"o":[[0,0],[0,0],[0,0],[0,0]],"v":[[-39.864,10.51],[-49.007,-22.474],[-26.362,-30.592],[-11.408,22.559]]}}},{"ty":"mm","bm":0,"hd":false,"nm":"Merge Paths 1","mm":5},{"ty":"sh","bm":0,"hd":false,"nm":"Path 2","d":1,"ks":{"a":0,"k":{"c":true,"i":[[0,0],[0,0],[0,0],[0,0]],"o":[[0,0],[0,0],[0,0],[0,0]],"v":[[19.098,35.633],[-1.923,-39.479],[21.577,-48.451],[49.007,48.451]]}}},{"ty":"mm","bm":0,"hd":false,"nm":"Merge Paths 2","mm":5},{"ty":"st","bm":0,"hd":false,"nm":"Stroke 1","lc":1,"lj":1,"ml":4,"o":{"a":0,"k":100},"w":{"a":0,"k":3},"c":{"a":0,"k":[0.10588235294117647,0.12156862745098039,0.0784313725490196]}},{"ty":"fl","bm":0,"hd":false,"nm":"Fill 1","c":{"a":0,"k":[0.6039215686274509,0.6509803921568628,0.22745098039215686]},"r":1,"o":{"a":0,"k":100}},{"ty":"tr","a":{"a":0,"k":[0,0]},"s":{"a":0,"k":[100,100]},"sk":{"a":0,"k":0},"p":{"a":0,"k":[-83.548,-67.285]},"r":{"a":0,"k":0},"sa":{"a":0,"k":0},"o":{"a":0,"k":100}}]},{"ty":"gr","bm":0,"hd":false,"nm":"Star 23","it":[{"ty":"sr","bm":0,"hd":false,"nm":"Polystar Path 1","d":1,"ir":{"a":0,"k":14.342},"is":{"a":0,"k":0},"pt":{"a":0,"k":7},"p":{"a":0,"k":[0,0]},"or":{"a":0,"k":21.502},"os":{"a":0,"k":0},"r":{"a":0,"k":0},"sy":1},{"ty":"st","bm":0,"hd":false,"nm":"Stroke 1","lc":1,"lj":1,"ml":4,"o":{"a":0,"k":100},"w":{"a":0,"k":3},"c":{"a":0,"k":[0.10588235294117647,0.12156862745098039,0.0784313725490196]}},{"ty":"op","bm":0,"hd":false,"nm":"Stroke align: Inside","a":{"a":0,"k":10},"lj":2,"ml":{"a":0,"k":1}},{"ty":"fl","bm":0,"hd":false,"nm":"Fill 1","c":{"a":0,"k":[1,0.4314,0.4745]},"r":1,"o":{"a":0,"k":100}},{"ty":"rd","bm":0,"hd":false,"nm":"Round Corners 1","r":{"a":0,"k":4}},{"ty":"tr","a":{"a":0,"k":[0,0]},"s":{"a":0,"k":[100,100]},"sk":{"a":0,"k":0},"p":{"a":0,"k":[-4.911,-98.383]},"r":{"a":0,"k":0},"sa":{"a":0,"k":0},"o":{"a":0,"k":100}}]},{"ty":"gr","bm":0,"hd":false,"nm":"Ellipse 71178","it":[{"ty":"el","bm":0,"hd":false,"nm":"Ellipse Path 1","d":1,"p":{"a":0,"k":[0,0]},"s":{"a":0,"k":[24.935,21.504]}},{"ty":"st","bm":0,"hd":false,"nm":"Stroke 1","lc":1,"lj":1,"ml":4,"o":{"a":0,"k":100},"w":{"a":0,"k":3},"c":{"a":0,"k":[0.10588235294117647,0.12156862745098039,0.0784313725490196]}},{"ty":"op","bm":0,"hd":false,"nm":"Stroke align: Inside","a":{"a":0,"k":10},"lj":2,"ml":{"a":0,"k":1}},{"ty":"fl","bm":0,"hd":false,"nm":"Fill 1","c":{"a":0,"k":[0.9882,0.7333,0.9843]},"r":1,"o":{"a":0,"k":100}},{"ty":"tr","a":{"a":0,"k":[0,0]},"s":{"a":0,"k":[100,100]},"sk":{"a":0,"k":0},"p":{"a":0,"k":[2.471,-148.071]},"r":{"a":0,"k":0},"sa":{"a":0,"k":0},"o":{"a":0,"k":100}}]},{"ty":"gr","bm":0,"hd":false,"nm":"Vector 4537","it":[{"ty":"sh","bm":0,"hd":false,"nm":"Path 1","d":1,"ks":{"a":0,"k":{"c":true,"i":[[0,0],[1.052,-0.277],[0.277,-0.664],[0,0],[0.996,-0.731],[-0.083,-3.322],[-1.245,-0.305],[0,0],[-0.466,-0.73],[-2.823,0.166],[-0.194,0.996],[0,0],[0,0],[-0.133,2.791],[1.052,0.332],[0,0]],"o":[[-1.196,-2.258],[-2.524,0],[0,0],[-1.937,1.024],[-1.246,0.913],[0.067,2.657],[0,0],[1.246,2.076],[0.581,0.914],[2.259,-0.133],[0,0],[0,0],[0.942,-0.277],[0.133,-2.79],[0,0],[0,0]],"v":[[2.822,-15.768],[-1.828,-17.761],[-5.814,-15.768],[-8.638,-6.55],[-15.696,-2.564],[-18.271,2.668],[-14.451,6.903],[-6.811,9.062],[-2.492,16.203],[2.822,17.864],[6.227,14.709],[8.635,6.404],[15.278,2.668],[18.268,-1.651],[15.278,-6.135],[7.057,-9.041]]}}},{"ty":"st","bm":0,"hd":false,"nm":"Stroke 1","lc":2,"lj":2,"ml":4,"o":{"a":0,"k":100},"w":{"a":0,"k":3},"c":{"a":0,"k":[0.10588235294117647,0.12156862745098039,0.0784313725490196]}},{"ty":"fl","bm":0,"hd":false,"nm":"Fill 1","c":{"a":0,"k":[0.5804,0.6706,0.1569]},"r":1,"o":{"a":0,"k":100}},{"ty":"tr","a":{"a":0,"k":[0,0]},"s":{"a":0,"k":[100,100]},"sk":{"a":0,"k":0},"p":{"a":0,"k":[124.223,-65.173]},"r":{"a":0,"k":43.947},"sa":{"a":0,"k":0},"o":{"a":0,"k":100}}]},{"ty":"gr","bm":0,"hd":false,"nm":"Vector 4535 (Stroke)","it":[{"ty":"sh","bm":0,"hd":false,"nm":"Path 1","d":1,"ks":{"a":0,"k":{"c":true,"i":[[2.049,6.262],[3.75,-1.587],[-1.395,-4.266],[1.143,-2.466],[5.496,-1.07],[1.102,4.03],[3.82,-1.352],[-1.189,-4.346],[-15.912,3.096],[-3.393,7.317]],"o":[[-1.395,-4.265],[-3.749,1.587],[0.753,2.302],[-1.003,2.165],[-10.7,2.082],[-1.189,-4.346],[-3.82,1.352],[3.8,13.893],[9.287,-1.807],[3.252,-7.016]],"v":[[26.386,-15.479],[17.07,-20.328],[12.807,-9.73],[12.392,-1.975],[3.592,3.957],[-13.645,-3.815],[-22.714,-9.236],[-27.479,1.081],[6.035,20.203],[25.207,5.715]]}}},{"ty":"st","bm":0,"hd":false,"nm":"Stroke 1","lc":2,"lj":2,"ml":4,"o":{"a":0,"k":100},"w":{"a":0,"k":3},"c":{"a":0,"k":[0.10588235294117647,0.12156862745098039,0.0784313725490196]}},{"ty":"fl","bm":0,"hd":false,"nm":"Fill 1","c":{"a":0,"k":[1,0.5529,0]},"r":1,"o":{"a":0,"k":100}},{"ty":"tr","a":{"a":0,"k":[0,0]},"s":{"a":0,"k":[100,100]},"sk":{"a":0,"k":0},"p":{"a":0,"k":[49.384,-124.936]},"r":{"a":0,"k":-9.2},"sa":{"a":0,"k":0},"o":{"a":0,"k":100}}]},{"ty":"gr","bm":0,"hd":false,"nm":"Vector 4541 (Stroke)","it":[{"ty":"sh","bm":0,"hd":false,"nm":"Path 1","d":1,"ks":{"a":0,"k":{"c":true,"i":[[1.707,0.923],[1.764,-0.297],[0,0],[0.615,-0.441],[0.515,-0.512],[1.007,-1.276],[2.22,-3.045],[1.871,-2.14],[0.086,0.321],[0.523,2.41],[0.762,1.994],[0.892,1.299],[2.039,0.969],[2.363,-0.925],[1.234,-1.453],[1.347,-1.717],[1.533,-1.706],[0.689,-0.634],[0.126,0.307],[-0.181,4.536],[3.587,0.143],[0.144,-3.587],[-1.589,-3.901],[-3.198,-1.919],[-1.824,0.451],[-1.091,0.747],[-1.773,1.973],[-1.48,1.887],[-0.215,0.276],[-0.157,-0.723],[-0.68,-2.513],[-1.48,-2.342],[-5.214,0.745],[-1.144,0.926],[-1.179,1.334],[-2.291,3.144],[-0.938,1.287],[0.118,-1.88],[-3.583,-0.224],[-0.224,3.582],[0.592,4.2],[1.261,2.09]],"o":[[-1.722,-0.93],[0,0],[-1.52,0.32],[-0.7,0.5],[-1.031,1.024],[-2.011,2.548],[-2.243,3.078],[-0.083,-0.283],[-0.569,-2.102],[-0.474,-2.188],[-0.508,-1.328],[-0.86,-1.253],[-2.285,-1.086],[-2.116,0.829],[-0.973,1.144],[-1.441,1.838],[-0.908,1.01],[-0.14,-0.245],[-0.64,-1.573],[0.144,-3.587],[-3.587,-0.144],[-0.224,5.599],[1.661,4.076],[2.372,1.422],[1.717,-0.424],[2.194,-1.502],[1.837,-2.044],[0.237,-0.303],[0.135,0.577],[0.474,2.188],[0.654,2.416],[1.456,2.303],[2.515,-0.359],[1.324,-1.071],[2.364,-2.675],[1.044,-1.432],[-0.023,1.668],[-0.224,3.583],[3.583,0.224],[0.309,-4.946],[-0.281,-1.989],[-0.671,-1.111]],"v":[[34.022,-18.578],[28.66,-19.45],[28.308,-19.384],[25.034,-17.893],[23.199,-16.316],[20.099,-12.751],[13.497,-3.822],[7.247,4.243],[6.991,3.338],[5.429,-3.461],[3.616,-10.235],[1.55,-14.29],[-2.706,-18.064],[-9.901,-18.289],[-14.881,-14.527],[-18.621,-9.805],[-23.151,-4.323],[-25.557,-1.858],[-25.956,-2.684],[-26.95,-11.476],[-33.185,-18.231],[-39.94,-11.997],[-37.995,2.22],[-30.505,11.069],[-23.839,11.99],[-19.571,9.984],[-13.482,4.365],[-8.39,-1.784],[-7.713,-2.654],[-7.275,-0.706],[-5.558,6.735],[-2.49,14.391],[7.405,19.469],[13.041,16.768],[16.828,13.039],[24.003,3.833],[26.977,-0.262],[26.763,5.089],[32.845,11.982],[39.738,5.9],[39.558,-8.625],[37.486,-15.199]]}}},{"ty":"st","bm":0,"hd":false,"nm":"Stroke 1","lc":2,"lj":2,"ml":4,"o":{"a":0,"k":100},"w":{"a":0,"k":3},"c":{"a":0,"k":[0.10588235294117647,0.12156862745098039,0.0784313725490196]}},{"ty":"fl","bm":0,"hd":false,"nm":"Fill 1","c":{"a":0,"k":[0.5804,0.6706,0.1569]},"r":1,"o":{"a":0,"k":100}},{"ty":"tr","a":{"a":0,"k":[0,0]},"s":{"a":0,"k":[100,100]},"sk":{"a":0,"k":0},"p":{"a":0,"k":[10.88,-46.114]},"r":{"a":0,"k":0},"sa":{"a":0,"k":0},"o":{"a":0,"k":100}}]},{"ty":"gr","bm":0,"hd":false,"nm":"Vector 4540 (Stroke)","it":[{"ty":"sh","bm":0,"hd":false,"nm":"Path 1","d":1,"ks":{"a":0,"k":{"c":true,"i":[[3.463,0.945],[10.655,-6.022],[-1.767,-3.125],[-3.125,1.766],[-7.096,-1.935],[-0.944,3.463]],"o":[[-10.744,-2.93],[-3.125,1.767],[1.766,3.125],[7.995,-4.519],[3.463,0.945],[0.945,-3.463]],"v":[[15.394,-7.698],[-16.883,-3.031],[-19.342,5.827],[-10.486,8.287],[11.973,4.844],[19.954,0.284]]}}},{"ty":"st","bm":0,"hd":false,"nm":"Stroke 1","lc":2,"lj":2,"ml":4,"o":{"a":0,"k":100},"w":{"a":0,"k":3},"c":{"a":0,"k":[0.10588235294117647,0.12156862745098039,0.0784313725490196]}},{"ty":"fl","bm":0,"hd":false,"nm":"Fill 1","c":{"a":0,"k":[1,0.4314,0.4745]},"r":1,"o":{"a":0,"k":100}},{"ty":"tr","a":{"a":0,"k":[0,0]},"s":{"a":0,"k":[100,100]},"sk":{"a":0,"k":0},"p":{"a":0,"k":[107.887,-105.891]},"r":{"a":0,"k":0},"sa":{"a":0,"k":0},"o":{"a":0,"k":100}}]},{"ty":"gr","bm":0,"hd":false,"nm":"Vector 4539 (Stroke)","it":[{"ty":"sh","bm":0,"hd":false,"nm":"Path 1","d":1,"ks":{"a":0,"k":{"c":true,"i":[[6.87,5.068],[2.131,-2.889],[-2.888,-2.131],[-1.6,-3.181],[-0.482,-3.665],[-3.559,0.468],[0.468,3.559],[2.632,5.233]],"o":[[-2.889,-2.131],[-2.131,2.889],[5.496,4.054],[1.625,3.231],[0.469,3.559],[3.559,-0.469],[-0.531,-4.039],[-2.657,-5.283]],"v":[[-3.744,-17.901],[-12.833,-16.529],[-11.461,-7.44],[-1.55,3.452],[1.157,13.518],[8.449,19.115],[14.046,11.823],[10.064,-2.388]]}}},{"ty":"st","bm":0,"hd":false,"nm":"Stroke 1","lc":2,"lj":2,"ml":4,"o":{"a":0,"k":100},"w":{"a":0,"k":3},"c":{"a":0,"k":[0.10588235294117647,0.12156862745098039,0.0784313725490196]}},{"ty":"fl","bm":0,"hd":false,"nm":"Fill 1","c":{"a":0,"k":[0.9882,0.7333,0.9843]},"r":1,"o":{"a":0,"k":100}},{"ty":"tr","a":{"a":0,"k":[0,0]},"s":{"a":0,"k":[100,100]},"sk":{"a":0,"k":0},"p":{"a":0,"k":[73.222,-69.103]},"r":{"a":0,"k":0},"sa":{"a":0,"k":0},"o":{"a":0,"k":100}}]},{"ty":"gr","bm":0,"hd":false,"nm":"Vector 4538 (Stroke)","it":[{"ty":"sh","bm":0,"hd":false,"nm":"Path 1","d":1,"ks":{"a":0,"k":{"c":true,"i":[[3.579,0.278],[0.279,-3.579],[1.99,-0.406],[0.575,0.381],[0.459,2.145],[3.51,-0.752],[-0.752,-3.51],[-3.781,-2.504],[-4.061,0.828],[-0.812,10.421]],"o":[[-3.579,-0.279],[-0.404,5.188],[-1.032,0.211],[-0.532,-0.353],[-0.753,-3.51],[-3.51,0.752],[1.061,4.949],[3.74,2.477],[8.197,-1.672],[0.279,-3.579]],"v":[[11.756,-13.391],[4.771,-7.416],[-0.615,0.328],[-3.034,-0.044],[-4.895,-3.408],[-12.613,-8.401],[-17.606,-0.683],[-10.212,10.795],[1.984,13.066],[17.732,-6.406]]}}},{"ty":"st","bm":0,"hd":false,"nm":"Stroke 1","lc":2,"lj":2,"ml":4,"o":{"a":0,"k":100},"w":{"a":0,"k":3},"c":{"a":0,"k":[0.10588235294117647,0.12156862745098039,0.0784313725490196]}},{"ty":"fl","bm":0,"hd":false,"nm":"Fill 1","c":{"a":0,"k":[1,0.5529,0]},"r":1,"o":{"a":0,"k":100}},{"ty":"tr","a":{"a":0,"k":[0,0]},"s":{"a":0,"k":[100,100]},"sk":{"a":0,"k":0},"p":{"a":0,"k":[60.246,-9.788]},"r":{"a":0,"k":0},"sa":{"a":0,"k":0},"o":{"a":0,"k":100}}]},{"ty":"gr","bm":0,"hd":false,"nm":"Vector 4534","it":[{"ty":"sh","bm":0,"hd":false,"nm":"Path 1","d":1,"ks":{"a":0,"k":{"c":true,"i":[[0,0],[0,0],[-3.595,0.817],[-0.953,-1.226],[0,0],[2.533,-2.697],[2.35,0.851]],"o":[[0,0],[0.204,-0.306],[3.596,-0.817],[0,0],[-14.334,16.071],[-2.534,2.696],[0,0]],"v":[[-43.156,40.79],[-12.819,-52.673],[-7.712,-54.613],[-0.358,-51.957],[43.156,1.464],[-3.013,53.048],[-13.228,53.865]]}}},{"ty":"st","bm":0,"hd":false,"nm":"Stroke 1","lc":1,"lj":1,"ml":4,"o":{"a":0,"k":100},"w":{"a":0,"k":3},"c":{"a":0,"k":[0.10588235294117647,0.12156862745098039,0.0784313725490196]}},{"ty":"fl","bm":0,"hd":false,"nm":"Fill 1","c":{"a":0,"k":[0.3686274509803922,0.41568627450980394,0.10980392156862745]},"r":1,"o":{"a":0,"k":100}},{"ty":"tr","a":{"a":0,"k":[0,0]},"s":{"a":0,"k":[100,100]},"sk":{"a":0,"k":0},"p":{"a":0,"k":[-21.637,-72.955]},"r":{"a":0,"k":0},"sa":{"a":0,"k":0},"o":{"a":0,"k":100}}]},{"ty":"gr","bm":0,"hd":false,"nm":"Vector 4532","it":[{"ty":"sh","bm":0,"hd":false,"nm":"Path 1","d":1,"ks":{"a":0,"k":{"c":true,"i":[[-1.432,0.589],[0,0],[-1.342,-1.566],[0,0],[2.309,-2.803],[2.459,0.823],[0,0],[0.355,2.98]],"o":[[0,0],[4.294,-1.983],[0,0],[-14.343,15.963],[-2.308,2.803],[0,0],[-1.034,-0.325],[-0.142,-4.54]],"v":[[-85.41,-9.09],[36.781,-54.08],[46.173,-51.861],[89.534,1.519],[43.619,52.913],[33.356,53.948],[-85.982,3.053],[-89.529,-1.647]]}}},{"ty":"st","bm":0,"hd":false,"nm":"Stroke 1","lc":1,"lj":1,"ml":4,"o":{"a":0,"k":100},"w":{"a":0,"k":3},"c":{"a":0,"k":[0.10588235294117647,0.12156862745098039,0.0784313725490196]}},{"ty":"fl","bm":0,"hd":false,"nm":"Fill 1","c":{"a":0,"k":[0.9843,0.8588,0.8706]},"r":1,"o":{"a":0,"k":100}},{"ty":"tr","a":{"a":0,"k":[0,0]},"s":{"a":0,"k":[100,100]},"sk":{"a":0,"k":0},"p":{"a":0,"k":[-68.167,-73.02]},"r":{"a":0,"k":0},"sa":{"a":0,"k":0},"o":{"a":0,"k":100}}]},{"ty":"tr","a":{"a":0,"k":[0,0]},"s":{"a":0,"k":[100,100]},"sk":{"a":0,"k":0},"p":{"a":0,"k":[0,0]},"r":{"a":0,"k":0},"sa":{"a":0,"k":0},"o":{"a":0,"k":100}}]},{"ty":"gr","bm":0,"hd":false,"nm":"Vector 4520","it":[{"ty":"sh","bm":0,"hd":false,"nm":"Path 1","d":1,"ks":{"a":0,"k":{"c":true,"i":[[-6.831,9.242],[7.925,46.319],[2.994,-3.982],[11.056,-11.057],[6.354,-1.112],[0,-2.009],[-11.329,9.822]],"o":[[-0.134,-8.572],[0,8.217],[-39.847,45.417],[-11.057,11.057],[0.506,50.553],[15.938,1.206],[44.813,-51.398]],"v":[[99.585,-22.161],[75.644,-171.834],[66.662,-149.617],[-66.7,0.454],[-99.585,17.612],[-98.065,171.781],[-43.392,143.585]]}}},{"ty":"st","bm":0,"hd":false,"nm":"Stroke 1","lc":1,"lj":1,"ml":4,"o":{"a":0,"k":100},"w":{"a":0,"k":3},"c":{"a":0,"k":[0.10588235294117647,0.12156862745098039,0.0784313725490196]}},{"ty":"fl","bm":0,"hd":false,"nm":"Fill 1","c":{"a":0,"k":[0.9490196078431372,0.6627450980392157,0.23137254901960785]},"r":1,"o":{"a":0,"k":100}},{"ty":"tr","a":{"a":0,"k":[0,0]},"s":{"a":0,"k":[100,100]},"sk":{"a":0,"k":0},"p":{"a":0,"k":[159.485,65.416]},"r":{"a":0,"k":0},"sa":{"a":0,"k":0},"o":{"a":0,"k":100}}]},{"ty":"gr","bm":0,"hd":false,"nm":"Vector 4519","it":[{"ty":"sh","bm":0,"hd":false,"nm":"Path 1","d":1,"ks":{"a":0,"k":{"c":true,"i":[[30.803,13.942],[-10.808,46.609],[-5.533,-3.865],[-22.476,-10.055],[-7.085,1.355],[0,-22.92],[8.554,4.518]],"o":[[-0.649,-26.911],[-3.921,18.57],[66.047,30.594],[22.476,10.055],[0.554,41.773],[-24.841,4.288],[-75.115,-34.18]],"v":[[-160.274,22.039],[-128.661,-151.428],[-116.964,-116.62],[109.274,-12.27],[158.625,-3.768],[160.288,150.2],[103.575,142.007]]}}},{"ty":"st","bm":0,"hd":false,"nm":"Stroke 1","lc":1,"lj":1,"ml":4,"o":{"a":0,"k":100},"w":{"a":0,"k":3},"c":{"a":0,"k":[0.10588235294117647,0.12156862745098039,0.0784313725490196]}},{"ty":"fl","bm":0,"hd":false,"nm":"Fill 1","c":{"a":0,"k":[0.8509803921568627,0.5568627450980392,0.13333333333333333]},"r":1,"o":{"a":0,"k":100}},{"ty":"tr","a":{"a":0,"k":[0,0]},"s":{"a":0,"k":[100,100]},"sk":{"a":0,"k":0},"p":{"a":0,"k":[-98.781,87.087]},"r":{"a":0,"k":0},"sa":{"a":0,"k":0},"o":{"a":0,"k":100}}]},{"ty":"gr","bm":0,"hd":false,"nm":"Rectangle 1532578613","it":[{"ty":"sh","bm":0,"hd":false,"nm":"Path 1","d":1,"ks":{"a":0,"k":{"c":true,"i":[[0,0],[14.99,-17.333],[0,0],[-16.136,-8.472],[0,0],[-19.364,19.767],[0,0],[17.75,5.648]],"o":[[-25.011,-8.068],[0,0],[-12.909,15.33],[0,0],[39.937,18.96],[0,0],[25.011,-25.415],[0,0]],"v":[[-28.112,-157.622],[-91.107,-143.113],[-224.565,1.389],[-216.094,48.991],[7.63,152.273],[95.333,137.739],[219.155,-2.6],[209.612,-59.857]]}}},{"ty":"st","bm":0,"hd":false,"nm":"Stroke 1","lc":1,"lj":1,"ml":4,"o":{"a":0,"k":100},"w":{"a":0,"k":3},"c":{"a":0,"k":[0.10588235294117647,0.12156862745098039,0.0784313725490196]}},{"ty":"fl","bm":0,"hd":false,"nm":"Fill 1","c":{"a":0,"k":[0.9529411764705882,0.9333333333333333,0.8745098039215686]},"r":1,"o":{"a":0,"k":100}},{"ty":"tr","a":{"a":0,"k":[0,0]},"s":{"a":0,"k":[100,100]},"sk":{"a":0,"k":0},"p":{"a":0,"k":[3.169,-77.191]},"r":{"a":0,"k":0},"sa":{"a":0,"k":0},"o":{"a":0,"k":100}}]}],"ind":16,"parent":1},{"ty":4,"nm":"Group 2147221240","sr":1,"st":0,"op":168,"ip":0,"hd":false,"ln":"26","ddd":0,"bm":0,"hasMask":false,"ao":0,"ks":{"a":{"a":0,"k":[0,0]},"s":{"a":0,"k":[100,100]},"sk":{"a":0,"k":0},"p":{"a":0,"k":[-38.346,-113.401,0]},"r":{"a":0,"k":0},"sa":{"a":0,"k":0},"o":{"a":0,"k":100}},"shapes":[{"ty":"gr","bm":0,"hd":false,"nm":"Vector 4525","it":[{"ty":"sh","bm":0,"hd":false,"nm":"Path 1","d":1,"ks":{"a":0,"k":{"c":true,"i":[[3.789,-3.136],[15.351,-0.326],[0,0],[-2.424,0],[-3.963,5.143],[0,0],[2.874,10.975],[2.776,-4.245],[0,0]],"o":[[-4.736,3.919],[0,0],[-0.238,1.266],[12.142,0.202],[0,0],[-4.285,-26.327],[0,6.271],[0,0],[-9.799,10.887]],"v":[[-70.688,-1.118],[-106.889,14.543],[-103.146,169.278],[-100.83,173.075],[-73.764,157.898],[106.889,-23.329],[75.47,-173.078],[67.141,-152.502],[-36.557,-37.698]]}}},{"ty":"st","bm":0,"hd":false,"nm":"Stroke 1","lc":1,"lj":1,"ml":4,"o":{"a":0,"k":100},"w":{"a":0,"k":3},"c":{"a":0,"k":[0.10588235294117647,0.12156862745098039,0.0784313725490196]}},{"ty":"fl","bm":0,"hd":false,"nm":"Fill 1","c":{"a":0,"k":[0.6039215686274509,0.6509803921568628,0.22745098039215686]},"r":1,"o":{"a":0,"k":100}},{"ty":"tr","a":{"a":0,"k":[0,0]},"s":{"a":0,"k":[100,100]},"sk":{"a":0,"k":0},"p":{"a":0,"k":[-56.555,247.609]},"r":{"a":0,"k":0},"sa":{"a":0,"k":0},"o":{"a":0,"k":100}}]},{"ty":"gr","bm":0,"hd":false,"nm":"Rectangle 1532578612","it":[{"ty":"sh","bm":0,"hd":false,"nm":"Path 1","d":1,"ks":{"a":0,"k":{"c":true,"i":[[0,0],[14.99,-17.333],[0,0],[-16.136,-8.471],[0,0],[-19.364,19.766],[0,0],[17.75,5.648]],"o":[[-25.011,-8.068],[0,0],[-12.909,15.329],[0,0],[39.937,18.959],[0,0],[25.011,-25.415],[0,0]],"v":[[-25.519,-156.306],[-88.514,-141.797],[-226.01,1.827],[-217.539,49.428],[7.156,150.279],[93.888,138.177],[219.748,-0.593],[212.89,-59.49]]}}},{"ty":"st","bm":0,"hd":false,"nm":"Stroke 1","lc":1,"lj":1,"ml":4,"o":{"a":0,"k":100},"w":{"a":0,"k":3},"c":{"a":0,"k":[0.10588235294117647,0.12156862745098039,0.0784313725490196]}},{"ty":"fl","bm":0,"hd":false,"nm":"Fill 1","c":{"a":0,"k":[0.803921568627451,0.8352941176470589,0.5411764705882353]},"r":1,"o":{"a":0,"k":100}},{"ty":"tr","a":{"a":0,"k":[0,0]},"s":{"a":0,"k":[100,100]},"sk":{"a":0,"k":0},"p":{"a":0,"k":[-214.184,101.682]},"r":{"a":0,"k":0},"sa":{"a":0,"k":0},"o":{"a":0,"k":100}}]},{"ty":"gr","bm":0,"hd":false,"nm":"Vector 4524","it":[{"ty":"sh","bm":0,"hd":false,"nm":"Path 1","d":1,"ks":{"a":0,"k":{"c":true,"i":[[4.915,2.484],[-17.058,67.229],[-5.116,-3.176],[-21.528,-9.828],[-5.33,1.105],[0,0]],"o":[[-2.007,-4.013],[-1.07,13.428],[66.625,29.899],[21.528,9.828],[0,0],[-103.349,-46.865]],"v":[[-157.997,3.908],[-129.4,-147.607],[-115.388,-121.296],[111.395,-19.312],[154.295,-10.342],[158.195,147.607]]}}},{"ty":"st","bm":0,"hd":false,"nm":"Stroke 1","lc":1,"lj":1,"ml":4,"o":{"a":0,"k":100},"w":{"a":0,"k":3},"c":{"a":0,"k":[0.10588235294117647,0.12156862745098039,0.0784313725490196]}},{"ty":"fl","bm":0,"hd":false,"nm":"Fill 1","c":{"a":0,"k":[0.3686274509803922,0.41568627450980394,0.10980392156862745]},"r":1,"o":{"a":0,"k":100}},{"ty":"tr","a":{"a":0,"k":[0,0]},"s":{"a":0,"k":[100,100]},"sk":{"a":0,"k":0},"p":{"a":0,"k":[-317.702,271.923]},"r":{"a":0,"k":0},"sa":{"a":0,"k":0},"o":{"a":0,"k":100}}]},{"ty":"gr","bm":0,"hd":false,"nm":"Vector 4529","it":[{"ty":"sh","bm":0,"hd":false,"nm":"Path 1","d":1,"ks":{"a":0,"k":{"c":true,"i":[[0,0],[13.274,6.918],[0,0],[2.536,11.623],[-2.943,11.869],[-4.722,-1.374],[-20.754,-9.161],[-7.012,0.857]],"o":[[-7.401,1.558],[0,0],[-2.704,-14.274],[2.256,-20.902],[1.826,17.347],[209.755,88.126],[20.754,9.162],[0,0]],"v":[[370.041,236.416],[331.245,232.443],[-349.062,-58.244],[-370.041,-169.613],[-358.655,-237.686],[-340.322,-211.426],[314.885,64.404],[361.861,73.285]]}}},{"ty":"st","bm":0,"hd":false,"nm":"Stroke 1","lc":1,"lj":1,"ml":4,"o":{"a":0,"k":100},"w":{"a":0,"k":3},"c":{"a":0,"k":[0.10588235294117647,0.12156862745098039,0.0784313725490196]}},{"ty":"fl","bm":0,"hd":false,"nm":"Fill 1","c":{"a":0,"k":[0.3686274509803922,0.41568627450980394,0.10980392156862745]},"r":1,"o":{"a":0,"k":100}},{"ty":"tr","a":{"a":0,"k":[0,0]},"s":{"a":0,"k":[100,100]},"sk":{"a":0,"k":0},"p":{"a":0,"k":[46.609,94.87]},"r":{"a":0,"k":0},"sa":{"a":0,"k":0},"o":{"a":0,"k":100}}]},{"ty":"gr","bm":0,"hd":false,"nm":"Vector 4528","it":[{"ty":"sh","bm":0,"hd":false,"nm":"Path 1","d":1,"ks":{"a":0,"k":{"c":true,"i":[[-9.781,12.498],[9.283,38.831],[3.075,-4.439],[10.869,-12.499],[8.264,-1.812],[-1.63,-18.204],[-1.924,2.264]],"o":[[2.717,-19.563],[0.859,7.549],[-39.057,44.039],[-10.868,12.498],[2.151,46.755],[8.151,-1.358],[55.02,-63.172]],"v":[[100.731,-36.34],[76.278,-177.287],[68.127,-154.532],[-62.631,-6.792],[-101.009,14.265],[-92.518,177.287],[-76.556,168.797]]}}},{"ty":"st","bm":0,"hd":false,"nm":"Stroke 1","lc":1,"lj":1,"ml":4,"o":{"a":0,"k":100},"w":{"a":0,"k":3},"c":{"a":0,"k":[0.10588235294117647,0.12156862745098039,0.0784313725490196]}},{"ty":"fl","bm":0,"hd":false,"nm":"Fill 1","c":{"a":0,"k":[0.6039215686274509,0.6509803921568628,0.22745098039215686]},"r":1,"o":{"a":0,"k":100}},{"ty":"tr","a":{"a":0,"k":[0,0]},"s":{"a":0,"k":[100,100]},"sk":{"a":0,"k":0},"p":{"a":0,"k":[509.469,153.83]},"r":{"a":0,"k":0},"sa":{"a":0,"k":0},"o":{"a":0,"k":100}}]},{"ty":"gr","bm":0,"hd":false,"nm":"Rectangle 1532578615","it":[{"ty":"sh","bm":0,"hd":false,"nm":"Path 1","d":1,"ks":{"a":0,"k":{"c":true,"i":[[0,0],[14.99,-17.333],[0,0],[-16.136,-8.472],[0,0],[-19.363,19.766],[0,0],[17.75,5.648]],"o":[[-25.011,-8.068],[0,0],[-12.909,15.33],[0,0],[39.937,18.96],[0,0],[25.01,-25.415],[0,0]],"v":[[-245.112,-244.026],[-308.107,-229.517],[-441.565,-85.015],[-433.093,-37.413],[224.63,238.677],[312.332,224.143],[436.155,83.804],[426.612,26.547]]}}},{"ty":"st","bm":0,"hd":false,"nm":"Stroke 1","lc":1,"lj":1,"ml":4,"o":{"a":0,"k":100},"w":{"a":0,"k":3},"c":{"a":0,"k":[0.10588235294117647,0.12156862745098039,0.0784313725490196]}},{"ty":"fl","bm":0,"hd":false,"nm":"Fill 1","c":{"a":0,"k":[0.803921568627451,0.8352941176470589,0.5411764705882353]},"r":1,"o":{"a":0,"k":100}},{"ty":"tr","a":{"a":0,"k":[0,0]},"s":{"a":0,"k":[100,100]},"sk":{"a":0,"k":0},"p":{"a":0,"k":[136.982,-79.689]},"r":{"a":0,"k":0},"sa":{"a":0,"k":0},"o":{"a":0,"k":100}}]},{"ty":"gr","bm":0,"hd":false,"nm":"Vector 4531","it":[{"ty":"sh","bm":0,"hd":false,"nm":"Path 1","d":1,"ks":{"a":0,"k":{"c":true,"i":[[0,0],[13.275,6.918],[0,0],[-2.446,14.447],[-4.722,-1.374],[-20.753,-9.161],[-7.012,0.857]],"o":[[-11.679,12.698],[0,0],[6.778,-30.592],[2.68,13.749],[209.755,88.126],[20.754,9.162],[0,0]],"v":[[374.846,227.989],[337.628,229.182],[-374.846,-126.16],[-351.455,-235.996],[-333.938,-214.687],[321.268,61.143],[368.245,70.024]]}}},{"ty":"st","bm":0,"hd":false,"nm":"Stroke 1","lc":1,"lj":1,"ml":4,"o":{"a":0,"k":100},"w":{"a":0,"k":3},"c":{"a":0,"k":[0.10588235294117647,0.12156862745098039,0.0784313725490196]}},{"ty":"fl","bm":0,"hd":false,"nm":"Fill 1","c":{"a":0,"k":[0.3686274509803922,0.41568627450980394,0.10980392156862745]},"r":1,"o":{"a":0,"k":100}},{"ty":"tr","a":{"a":0,"k":[0,0]},"s":{"a":0,"k":[100,100]},"sk":{"a":0,"k":0},"p":{"a":0,"k":[259.449,-137.078]},"r":{"a":0,"k":0},"sa":{"a":0,"k":0},"o":{"a":0,"k":100}}]},{"ty":"gr","bm":0,"hd":false,"nm":"Vector 4530","it":[{"ty":"sh","bm":0,"hd":false,"nm":"Path 1","d":1,"ks":{"a":0,"k":{"c":true,"i":[[-9.782,12.498],[9.283,38.831],[3.075,-4.44],[10.868,-12.498],[8.264,-1.811],[-1.63,-18.204],[-1.925,2.264]],"o":[[2.717,-19.563],[0.859,7.55],[-39.058,44.038],[-10.868,12.498],[2.151,46.756],[5.586,-7.109],[55.02,-63.171]],"v":[[99.011,-45.663],[77.943,-174.118],[69.792,-151.362],[-60.966,-3.623],[-99.344,17.434],[-91.906,174.118],[-80.48,160.915]]}}},{"ty":"st","bm":0,"hd":false,"nm":"Stroke 1","lc":1,"lj":1,"ml":4,"o":{"a":0,"k":100},"w":{"a":0,"k":3},"c":{"a":0,"k":[0.10588235294117647,0.12156862745098039,0.0784313725490196]}},{"ty":"fl","bm":0,"hd":false,"nm":"Fill 1","c":{"a":0,"k":[0.6039215686274509,0.6509803921568628,0.22745098039215686]},"r":1,"o":{"a":0,"k":100}},{"ty":"tr","a":{"a":0,"k":[0,0]},"s":{"a":0,"k":[100,100]},"sk":{"a":0,"k":0},"p":{"a":0,"k":[727.028,-84.549]},"r":{"a":0,"k":0},"sa":{"a":0,"k":0},"o":{"a":0,"k":100}}]},{"ty":"gr","bm":0,"hd":false,"nm":"Rectangle 1532578616","it":[{"ty":"sh","bm":0,"hd":false,"nm":"Path 1","d":1,"ks":{"a":0,"k":{"c":true,"i":[[0,0],[14.99,-17.333],[0,0],[-16.136,-8.472],[0,0],[-19.363,19.766],[0,0],[17.75,5.648]],"o":[[-25.011,-8.068],[0,0],[-12.909,15.33],[0,0],[39.937,18.96],[0,0],[25.01,-25.415],[0,0]],"v":[[-245.112,-244.026],[-308.107,-229.517],[-441.565,-85.015],[-433.093,-37.413],[224.63,238.677],[312.332,224.143],[436.155,83.804],[426.612,26.547]]}}},{"ty":"st","bm":0,"hd":false,"nm":"Stroke 1","lc":1,"lj":1,"ml":4,"o":{"a":0,"k":100},"w":{"a":0,"k":3},"c":{"a":0,"k":[0.10588235294117647,0.12156862745098039,0.0784313725490196]}},{"ty":"fl","bm":0,"hd":false,"nm":"Fill 1","c":{"a":0,"k":[0.803921568627451,0.8352941176470589,0.5411764705882353]},"r":1,"o":{"a":0,"k":100}},{"ty":"tr","a":{"a":0,"k":[0,0]},"s":{"a":0,"k":[100,100]},"sk":{"a":0,"k":0},"p":{"a":0,"k":[356.205,-314.899]},"r":{"a":0,"k":0},"sa":{"a":0,"k":0},"o":{"a":0,"k":100}}]},{"ty":"gr","bm":0,"hd":false,"nm":"Vector 4527","it":[{"ty":"sh","bm":0,"hd":false,"nm":"Path 1","d":1,"ks":{"a":0,"k":{"c":true,"i":[[3.789,-3.061],[15.351,-0.319],[0,0],[-2.424,0],[-3.963,5.021],[0,0],[2.874,10.715],[2.776,-4.145],[0,0]],"o":[[-4.736,3.827],[0,0],[-0.238,1.235],[12.142,0.197],[0,0],[-4.285,-25.705],[0,6.123],[0,0],[-9.799,10.629]],"v":[[-63.202,-1.092],[-99.403,14.2],[-95.66,165.277],[-93.344,168.984],[-66.278,154.166],[99.403,-78.479],[82.956,-168.987],[74.627,-148.897],[-29.071,-36.807]]}}},{"ty":"st","bm":0,"hd":false,"nm":"Stroke 1","lc":1,"lj":1,"ml":4,"o":{"a":0,"k":100},"w":{"a":0,"k":3},"c":{"a":0,"k":[0.10588235294117647,0.12156862745098039,0.0784313725490196]}},{"ty":"fl","bm":0,"hd":false,"nm":"Fill 1","c":{"a":0,"k":[0.6039215686274509,0.6509803921568628,0.22745098039215686]},"r":1,"o":{"a":0,"k":100}},{"ty":"tr","a":{"a":0,"k":[0,0]},"s":{"a":0,"k":[100,100]},"sk":{"a":0,"k":0},"p":{"a":0,"k":[-406.626,92.703]},"r":{"a":0,"k":0},"sa":{"a":0,"k":0},"o":{"a":0,"k":100}}]},{"ty":"gr","bm":0,"hd":false,"nm":"Rectangle 1532578614","it":[{"ty":"sh","bm":0,"hd":false,"nm":"Path 1","d":1,"ks":{"a":0,"k":{"c":true,"i":[[0,0],[14.99,-16.924],[0,0],[-16.136,-8.271],[0,0],[-19.364,19.299],[0,0],[17.75,5.514]],"o":[[-25.011,-7.877],[0,0],[-12.909,14.967],[0,0],[39.937,18.512],[0,0],[25.011,-24.814],[0,0]],"v":[[-25.519,-152.612],[-88.514,-138.445],[-226.01,1.784],[-217.539,48.26],[7.156,146.726],[93.888,134.911],[219.748,-0.579],[212.89,-58.084]]}}},{"ty":"st","bm":0,"hd":false,"nm":"Stroke 1","lc":1,"lj":1,"ml":4,"o":{"a":0,"k":100},"w":{"a":0,"k":3},"c":{"a":0,"k":[0.10588235294117647,0.12156862745098039,0.0784313725490196]}},{"ty":"fl","bm":0,"hd":false,"nm":"Fill 1","c":{"a":0,"k":[0.803921568627451,0.8352941176470589,0.5411764705882353]},"r":1,"o":{"a":0,"k":100}},{"ty":"tr","a":{"a":0,"k":[0,0]},"s":{"a":0,"k":[100,100]},"sk":{"a":0,"k":0},"p":{"a":0,"k":[-556.77,-49.775]},"r":{"a":0,"k":0},"sa":{"a":0,"k":0},"o":{"a":0,"k":100}}]},{"ty":"gr","bm":0,"hd":false,"nm":"Vector 4526","it":[{"ty":"sh","bm":0,"hd":false,"nm":"Path 1","d":1,"ks":{"a":0,"k":{"c":true,"i":[[4.915,2.425],[-17.058,65.64],[-5.116,-3.101],[-21.528,-9.595],[-5.33,1.079],[0,0]],"o":[[-2.007,-3.919],[-1.07,13.111],[66.625,29.193],[21.528,9.596],[0,0],[-103.349,-45.757]],"v":[[-157.997,3.816],[-129.4,-144.118],[-115.388,-118.429],[111.395,-18.856],[154.295,-10.098],[158.195,144.118]]}}},{"ty":"st","bm":0,"hd":false,"nm":"Stroke 1","lc":1,"lj":1,"ml":4,"o":{"a":0,"k":100},"w":{"a":0,"k":3},"c":{"a":0,"k":[0.10588235294117647,0.12156862745098039,0.0784313725490196]}},{"ty":"fl","bm":0,"hd":false,"nm":"Fill 1","c":{"a":0,"k":[0.3686274509803922,0.41568627450980394,0.10980392156862745]},"r":1,"o":{"a":0,"k":100}},{"ty":"tr","a":{"a":0,"k":[0,0]},"s":{"a":0,"k":[100,100]},"sk":{"a":0,"k":0},"p":{"a":0,"k":[-660.287,116.441]},"r":{"a":0,"k":0},"sa":{"a":0,"k":0},"o":{"a":0,"k":100}}]},{"ty":"gr","bm":0,"hd":false,"nm":"Vector 4516","it":[{"ty":"sh","bm":0,"hd":false,"nm":"Path 1","d":1,"ks":{"a":0,"k":{"c":true,"i":[[23.013,12.036],[0,0],[0,0],[0,0],[44.732,-50.516]],"o":[[0,0],[0,0],[0,0],[-206.145,237.842],[-44.731,50.516]],"v":[[131.664,394.611],[-928.932,-85.328],[-896.6,-406.163],[928.932,-406.163],[254.58,370.51]]}}},{"ty":"st","bm":0,"hd":false,"nm":"Stroke 1","lc":1,"lj":1,"ml":4,"o":{"a":0,"k":100},"w":{"a":0,"k":3},"c":{"a":0,"k":[0.10588235294117647,0.12156862745098039,0.0784313725490196]}},{"ty":"fl","bm":0,"hd":false,"nm":"Fill 1","c":{"a":0,"k":[0.10588235294117647,0.12156862745098039,0.0784313725490196]},"r":1,"o":{"a":0,"k":100}},{"ty":"tr","a":{"a":0,"k":[0,0]},"s":{"a":0,"k":[100,100]},"sk":{"a":0,"k":0},"p":{"a":0,"k":[0,156.464]},"r":{"a":0,"k":0},"sa":{"a":0,"k":0},"o":{"a":0,"k":100}}]}],"ind":17,"parent":1},{"ty":4,"nm":"BG2","sr":1,"st":0,"op":168,"ip":0,"hd":false,"ln":"39","ddd":0,"bm":0,"hasMask":false,"ao":0,"ks":{"a":{"a":0,"k":[-461.833,432.213,0]},"s":{"a":0,"k":[100,100]},"sk":{"a":0,"k":0},"p":{"a":0,"k":[259.667,863.713]},"r":{"a":0,"k":0},"sa":{"a":0,"k":0},"o":{"a":0,"k":100}},"shapes":[{"ty":"gr","bm":0,"hd":false,"nm":"Shape 1","it":[{"ty":"sh","bm":0,"hd":false,"nm":"Path 1","d":1,"ks":{"a":0,"k":{"c":true,"i":[[0,0],[0,0],[0,0],[0,0]],"o":[[0,0],[0,0],[0,0],[0,0]],"v":[[939.629,-354.153],[851.233,596.117],[51.975,795.01],[51.975,515.086]]}}},{"ty":"fl","bm":0,"hd":false,"nm":"Fill 1","c":{"a":0,"k":[0.9529411764705882,0.9333333333333333,0.8745098039215686]},"r":1,"o":{"a":0,"k":100}},{"ty":"tr","a":{"a":0,"k":[0,0]},"s":{"a":0,"k":[100,100]},"sk":{"a":0,"k":0},"p":{"a":0,"k":[0,0]},"r":{"a":0,"k":0},"sa":{"a":0,"k":0},"o":{"a":0,"k":100}}]}],"ind":18},{"ty":4,"nm":"BG1","sr":1,"st":0,"op":168,"ip":0,"hd":false,"ln":"38","ddd":0,"bm":0,"hasMask":false,"ao":0,"ks":{"a":{"a":0,"k":[-461.833,432.213,0]},"s":{"a":0,"k":[100,100]},"sk":{"a":0,"k":0},"p":{"a":0,"k":[259.667,863.713]},"r":{"a":0,"k":0},"sa":{"a":0,"k":0},"o":{"a":0,"k":100}},"shapes":[{"ty":"gr","bm":0,"hd":false,"nm":"Shape 1","it":[{"ty":"sh","bm":0,"hd":false,"nm":"Path 1","d":1,"ks":{"a":0,"k":{"c":true,"i":[[0,0],[0,0],[0,0],[0,0]],"o":[[0,0],[0,0],[0,0],[0,0]],"v":[[-894.611,69.417],[-975.642,795.01],[51.975,795.01],[51.975,515.086]]}}},{"ty":"fl","bm":0,"hd":false,"nm":"Fill 1","c":{"a":0,"k":[0.10588235294117647,0.12156862745098039,0.0784313725490196]},"r":1,"o":{"a":0,"k":100}},{"ty":"tr","a":{"a":0,"k":[0,0]},"s":{"a":0,"k":[100,100]},"sk":{"a":0,"k":0},"p":{"a":0,"k":[0,0]},"r":{"a":0,"k":0},"sa":{"a":0,"k":0},"o":{"a":0,"k":100}}]}],"ind":19}],"v":"5.7.0","fr":60,"op":168,"ip":0,"assets":[],"markers":[{"cm":"idle","tm":0,"dr":20},{"cm":"hover","tm":20,"dr":28},{"cm":"click","tm":48,"dr":118}]}</script>
+<script>
+(function () {
+  var $ = function (s) { return document.querySelector(s); };
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var V = '/assets/divende-v.webp';
+
+  /* ---------- Proyectos de diseño ---------- */
+  var P = [
+    { k: 'div', t: 'Estudio Divende', tipo: 'Branding e identidad de marca', r: -9,
+      cov: '<div class="cov cv-div"><img src="' + V + '" alt=""><b>divende</b><small>diseño y desarrollo</small></div>',
+      d: 'Identidad visual del estudio: isotipo en cinta continua con transición de degradados vibrantes y tipografía con peso.',
+      hice: ['Isotipo y logotipo principal', 'Sistema cromático y guías de uso', 'Adaptación digital y favicon'],
+      sw: ['#1E9FB6', '#6E5CF0', '#C3B3FA', '#0F1016'], meta: ['Branding', 'Identidad'] },
+    { k: 'man', t: 'Manual en 5 y 7', tipo: 'Editorial y diseño web interactivo', r: 6,
+      cov: '<div class="cov cv-man"><div class="n">5/7</div><div class="t">Manual en 5 y 7<i>Kalöte de Monte y Convite de Diriá</i></div><div class="dots"><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i></i></div></div>',
+      d: 'Plataforma web interactiva para el método rítmico de Daniel Cuenca Alpízar. Combina lectura tradicional con síntesis sonora.',
+      hice: ['Maquetación y jerarquía editorial', 'Sistema tipográfico y paleta de acentos', 'Ilustración vectorizada de claves rítmicas'],
+      sw: ['#FAB10A', '#050706', '#B4204A', '#F4F1EA'], meta: ['Editorial', 'Web Interactiva'], link: ['Explorar proyecto', '/manual-5y7'] },
+    { k: 'mon', t: 'Monteverde: Niebla', tipo: 'Diseño web conceptual', r: -4,
+      cov: '<div class="cov cv-mon"><span class="q"></span><b>Monteverde<i>Capas de niebla</i></b></div>',
+      d: 'Experiencia web inmersiva inspirada en el bosque nuboso. La navegación utiliza separadores dinámicos de niebla entre bloques.',
+      hice: ['Dirección de arte y concepto visual', 'Paleta orgánica: bosque, musgo y acento quetzal', 'Ilustración y transiciones visuales'],
+      sw: ['#2F4A33', '#6F8F6A', '#B9C9B5', '#B3122E'], meta: ['Web Design', 'Dirección de Arte'], pend: true },
+    { k: 'caf', t: 'Café Kracovia', tipo: 'Concepto de identidad y web', r: 8,
+      cov: '<div class="cov cv-caf"><span class="cup"></span><b>Café Kracovia</b><small>Sitio demo</small></div>',
+      d: 'Propuesta integral de presencia digital y menú para cafetería de especialidad, optimizada para pedidos móviles rápidos.',
+      hice: ['Diseño de interfaz y experiencia móvil', 'Adaptación de menú y estética gastronómica'],
+      sw: ['#3B2A20', '#C98B4E', '#F4E9D8'], meta: ['Identidad Gastronómica', 'Web'], pend: true },
+    { k: 'fil', t: 'Barbería El Filo', tipo: 'Concepto de marca y reservas', r: -7,
+      cov: '<div class="cov cv-fil"><span class="pole"></span><div><b>El Filo</b><small>Barbería</small></div></div>',
+      d: 'Identidad de alto contraste y diseño de landing page orientada a agendamiento ágil de citas desde el teléfono.',
+      hice: ['Interfaz de reserva pensada para móvil', 'Estilo visual de alto contraste y cartelería'],
+      sw: ['#111111', '#C7262E', '#1E3A8A', '#F4F1EC'], meta: ['Landing Page', 'Branding'], pend: true }
+  ];
+  var CHAOS = [[.2, .3], [.5, .26], [.8, .32], [.33, .66], [.67, .64]];
+  var DECO = [
+    ['<svg width="70" height="70" viewBox="0 0 64 64"><path d="M32 4l7 21 21 7-21 7-7 21-7-21-21-7 21-7z" fill="#F2A93B" stroke="#1B1F14" stroke-width="3.5" stroke-linejoin="round"/></svg>', .06, .14, -10, 1],
+    ['<svg width="120" height="60" viewBox="0 0 120 60"><path d="M6 40C20 6 36 6 44 30s22 24 32 0 26-20 38 6" fill="none" stroke="#F49AC1" stroke-width="7" stroke-linecap="round"/></svg>', .93, .14, 12, 1],
+    ['<div style="font:700 92px/1 Fredoka;color:#F49AC1;-webkit-text-stroke:4px #1B1F14;paint-order:stroke fill">D</div>', .93, .78, 14, 0],
+    ['<div style="font:700 80px/1 Fredoka;color:#33B09B;-webkit-text-stroke:4px #1B1F14;paint-order:stroke fill">V</div>', .06, .82, -12, 0],
+    ['<svg width="60" height="60" viewBox="0 0 60 60"><circle cx="30" cy="30" r="26" fill="#F2A93B" stroke="#1B1F14" stroke-width="3.5"/></svg>', .5, .9, 0, 1],
+    ['<svg width="90" height="90" viewBox="0 0 90 90"><g fill="none" stroke="#9AA63A" stroke-width="3"><path d="M10 50c10-30 40-40 60-20s-10 40-30 30S20 20 50 14s40 30 20 50"/></g></svg>', .5, .06, 0, 1],
+    ['<div style="padding:4px 10px;background:#FBF8EE;border:2.5px solid #1B1F14;font:700 12px Space Mono;white-space:nowrap">Hecho con café y buenas ideas</div>', .2, .06, -4, 0]
+  ];
+
+  var rano = null;
+  var R = function (fn, txt) { if (rano) rano[fn](txt); };
+  var desk = $('#desk'), wrapP = $('#papers'), chat = $('#chat'), slots = $('#slots');
+  var mode = 'cerrada';
+  var els = P.map(function (p, i) {
+    var b = document.createElement('button');
+    b.className = 'paper'; b.type = 'button';
+    b.setAttribute('aria-label', 'Ver ' + p.t);
+    b.innerHTML = (i % 2 ? '<span class="tape"></span>' : '') + p.cov + '<span class="lbl"><b>' + p.t + '</b><small>' + p.tipo + '</small></span>';
+    b.style.setProperty('--d', (i * 0.07) + 's');
+    wrapP.appendChild(b);
+    slots.appendChild(document.createElement('i'));
+    return b;
+  });
+  var decos = DECO.map(function (d, i) {
+    var el = document.createElement('div'); el.className = 'deco' + (d[4] ? ' wig' : '');
+    el.innerHTML = d[0]; el.style.setProperty('--d', (0.25 + i * 0.06) + 's'); el.style.setProperty('--r', d[3] + 'deg');
+    desk.insertBefore(el, wrapP); return el;
+  });
+  var wave = $('#wave'), cols = ['#F2A93B', '#F49AC1', '#33B09B', '#9AA63A', '#FBF8EE', '#6E5CF0'];
+  for (var w = 0; w < 26; w++) { var bar = document.createElement('i'); bar.style.background = cols[w % cols.length]; bar.style.height = (8 + (w * 37 % 14)) + 'px'; bar.style.alignSelf = 'center'; bar.style.animationDelay = (w * 0.05) + 's'; wave.appendChild(bar); }
+
+  function place(el, x, y, r, s) { el.style.setProperty('--x', x + 'px'); el.style.setProperty('--y', y + 'px'); el.style.setProperty('--r', r + 'deg'); el.style.setProperty('--s', s); }
+  function size() { return { w: desk.clientWidth, h: desk.clientHeight }; }
+  function folderPos() { var z = size(); return [z.w * .5, z.h * .46]; }
+
+  function layout() {
+    var z = size(), f = folderPos();
+    desk.style.setProperty('--fx', (f[0] / z.w * 100) + '%'); desk.style.setProperty('--fy', (f[1] / z.h * 100) + '%');
+    els.forEach(function (el, i) {
+      if (el._drag) return;
+      if (mode === 'cerrada') place(el, f[0], f[1], 0, .2);
+      else if (mode === 'caos') { var c = el._pos || [CHAOS[i][0] * z.w, CHAOS[i][1] * (z.h - 120) + 20]; place(el, c[0], c[1], P[i].r, z.w < 600 ? .78 : 1); }
+      else if (mode === 'orden') {
+        var s = slots.children[i], pw = el.offsetWidth;
+        var k = s.offsetWidth / pw;
+        place(el, s.offsetLeft + s.offsetWidth / 2, s.offsetTop + s.offsetWidth * 1.25 / 2, 0, k);
+      }
+    });
+    decos.forEach(function (d, i) { d.style.setProperty('--x', DECO[i][1] * z.w + 'px'); d.style.setProperty('--y', DECO[i][2] * z.h + 'px'); });
+  }
+
+  function setChat(q, btns) {
+    chat.classList.remove('on');
+    setTimeout(function () {
+      $('#chatQ').textContent = q;
+      var row = $('#chatRow'); row.innerHTML = '';
+      btns.forEach(function (b) { var x = document.createElement('button'); x.textContent = b[0]; if (b[2]) x.className = 'pri'; x.addEventListener('click', b[1]); row.appendChild(x); });
+      chat.classList.add('on');
+    }, 220);
+  }
+
+  function abrir() {
+    if (mode !== 'cerrada') return;
+    var fo = $('#folder');
+    if (reduce) { ordenar(); return; }
+    fo.classList.add('shake');
+    setTimeout(function () {
+      fo.classList.remove('shake');
+      mode = 'caos'; desk.classList.add('abierta', 'caos');
+      layout(); R('croak', '¡Croac! Todo sobre la mesa.');
+      setTimeout(function () { els.forEach(function (e) { e.classList.add('idle'); }); }, 1100);
+      setTimeout(function () { setChat('¿Ordenamos el escritorio?', [['¡Sí, ordenalo!', ordenar, 1], ['Me gusta el desorden', caos]]); }, 900);
+      $('#reset').hidden = false;
+    }, 380);
+  }
+  function ordenar() {
+    mode = 'orden'; desk.classList.add('abierta'); desk.classList.remove('caos');
+    els.forEach(function (e) { e.classList.remove('idle'); });
+    desk.style.height = (slots.scrollHeight + chat.offsetHeight + 60) + 'px';
+    requestAnimationFrame(function () { layout(); setTimeout(layout, 720); });
+    R('celebrate', '¡Orden alfabético y visual restaurado!');
+    setChat('Todo listo. Tocá cualquier proyecto para abrirlo.', [['Volver al caos', caos]]);
+    $('#reset').hidden = false;
+  }
+  function caos() {
+    mode = 'caos'; desk.style.height = ''; desk.classList.add('abierta', 'caos');
+    setTimeout(function () { layout(); els.forEach(function (e) { e.classList.add('idle'); }); }, 60);
+    R('croak', '¡El desorden creativo es el mejor!');
+    setChat('Arrastrá los papeles a tu gusto. Tocá uno para ver el detalle.', [['Mejor ordenalo', ordenar, 1]]);
+  }
+  function cerrar() {
+    mode = 'cerrada'; desk.style.height = ''; desk.classList.remove('abierta', 'caos'); chat.classList.remove('on');
+    els.forEach(function (e) { e._pos = null; e.classList.remove('idle'); });
+    setTimeout(layout, 60); $('#reset').hidden = true;
+  }
+  $('#folder').addEventListener('click', abrir);
+  $('#reset').addEventListener('click', cerrar);
+  addEventListener('resize', function () { if (mode === 'orden') desk.style.height = (slots.scrollHeight + chat.offsetHeight + 60) + 'px'; layout(); });
+
+  /* arrastrar en modo caos; un toque abre el papel */
+  els.forEach(function (el, i) {
+    var sx, sy, ox, oy, moved = false, down = false;
+    el.addEventListener('pointerdown', function (e) {
+      down = true; moved = false; sx = e.clientX; sy = e.clientY;
+      var cs = getComputedStyle(el); ox = parseFloat(el.style.getPropertyValue('--x')); oy = parseFloat(el.style.getPropertyValue('--y'));
+      if (mode === 'caos') { try { el.setPointerCapture(e.pointerId); } catch (x) {} }
+    });
+    el.addEventListener('pointermove', function (e) {
+      if (!down || mode !== 'caos') return;
+      var dx = e.clientX - sx, dy = e.clientY - sy;
+      if (!moved && Math.hypot(dx, dy) > 6) { moved = true; el._drag = true; el.classList.add('drag'); el.classList.remove('idle'); }
+      if (moved) { el.style.setProperty('--x', (ox + dx) + 'px'); el.style.setProperty('--y', (oy + dy) + 'px'); el.style.setProperty('--r', (P[i].r + dx * .04) + 'deg'); }
+    });
+    el.addEventListener('pointerup', function () {
+      if (!down) return; down = false;
+      if (moved) { el._pos = [parseFloat(el.style.getPropertyValue('--x')), parseFloat(el.style.getPropertyValue('--y'))]; el._drag = false; el.classList.remove('drag'); el.style.setProperty('--r', P[i].r + 'deg'); }
+      else if (mode !== 'cerrada') abrirPapel(i);
+    });
+    el.addEventListener('keydown', function (e) { if ((e.key === 'Enter' || e.key === ' ') && mode !== 'cerrada') { e.preventDefault(); abrirPapel(i); } });
+  });
+
+  /* ---------- El papel se agranda hasta ser la página del proyecto ---------- */
+  function abrirPapel(i) {
+    var p = P[i], src = els[i];
+    var bg = document.createElement('div'); bg.className = 'sheetbg';
+    var big = document.createElement('div'); big.className = 'big'; big.setAttribute('role', 'dialog'); big.setAttribute('aria-modal', 'true'); big.setAttribute('aria-label', p.t);
+    big.innerHTML = '<button class="x" aria-label="Cerrar">✕</button><div class="grid"><div class="art">' + p.cov + '</div><div class="txt">' +
+      '<span class="tag" style="background:var(--olive)">' + p.tipo + '</span><h3>' + p.t + '</h3><p>' + p.d + '</p>' +
+      '<div style="margin-top:20px;font-weight:700">Qué resolví</div><ul>' + p.hice.map(function (h) { return '<li>' + h + '</li>'; }).join('') + '</ul>' +
+      '<div class="sw">' + p.sw.map(function (c) { return '<i style="background:' + c + '" title="' + c + '"></i>'; }).join('') + '</div>' +
+      '<div class="meta">' + p.meta.map(function (m) { return '<span class="tag">' + m + '</span>'; }).join('') + '</div>' +
+      (p.pend ? '<div class="pend">Muestras visuales del proyecto.</div>' : '') +
+      '<div class="acts">' + (p.link ? '<a class="btn pri" href="' + p.link[1] + '">' + p.link[0] + ' ↗</a>' : '') +
+      '<button class="btn" data-next>Siguiente proyecto →</button></div></div></div>';
+    document.body.appendChild(bg); document.body.appendChild(big);
+    document.body.style.overflow = 'hidden';
+    var last = big.getBoundingClientRect(), first = src.getBoundingClientRect();
+    var sx = first.width / last.width, sy = first.height / last.height;
+    var from = 'translate(' + (first.left - last.left) + 'px,' + (first.top - last.top) + 'px) scale(' + sx + ',' + sy + ') rotate(' + (p.r * (mode === 'caos' ? 1 : 0)) + 'deg)';
+    src.style.visibility = 'hidden';
+    requestAnimationFrame(function () { bg.classList.add('on'); });
+    if (!reduce && big.animate) {
+      big.animate([{ transform: from, borderRadius: '8px' }, { transform: 'rotate(-2deg) scale(1.02)', offset: .7 }, { transform: 'none' }], { duration: 650, easing: 'cubic-bezier(.6,0,.2,1)' }).onfinish = function () { big.classList.add('on'); };
+    } else big.classList.add('on');
+    var close = function (then) {
+      big.classList.remove('on'); bg.classList.remove('on');
+      var f2 = src.getBoundingClientRect(), l2 = big.getBoundingClientRect();
+      var to = 'translate(' + (f2.left - l2.left) + 'px,' + (f2.top - l2.top) + 'px) scale(' + (f2.width / l2.width) + ',' + (f2.height / l2.height) + ')';
+      var end = function () { big.remove(); bg.remove(); src.style.visibility = ''; document.body.style.overflow = ''; document.removeEventListener('keydown', esc); if (then) then(); else src.focus(); };
+      if (!reduce && big.animate) big.animate([{ transform: 'none' }, { transform: to }], { duration: 420, easing: 'cubic-bezier(.6,0,.4,1)' }).onfinish = end; else end();
+    };
+    var esc = function (e) { if (e.key === 'Escape') close(); };
+    document.addEventListener('keydown', esc);
+    big.querySelector('.x').addEventListener('click', function () { close(); });
+    bg.addEventListener('click', function () { close(); });
+    big.querySelector('[data-next]').addEventListener('click', function () { close(function () { abrirPapel((i + 1) % P.length); }); });
+    big.querySelector('.x').focus();
+  }
+
+  /* ---------- Hero: stickers siguen el cursor ---------- */
+  var stage = $('#stage');
+  if (!reduce) addEventListener('pointermove', function (e) {
+    var r = stage.getBoundingClientRect(), cx = (e.clientX - r.left - r.width / 2) / r.width, cy = (e.clientY - r.top - r.height / 2) / r.height;
+    stage.querySelectorAll('.stk').forEach(function (s) { var k = parseFloat(s.dataset.k); s.style.translate = (cx * 24 * k) + 'px ' + (cy * 24 * k) + 'px'; });
+  });
+
+  /* ---------- Tira cómica: las viñetas saltan al entrar ---------- */
+  if ('IntersectionObserver' in window && !reduce) {
+    var io = new IntersectionObserver(function (es) { es.forEach(function (en) { if (en.isIntersecting) { [].forEach.call(en.target.children, function (p, k) { p.style.animationDelay = (k * 0.15) + 's'; p.classList.add('pop'); }); io.disconnect(); } }); }, { threshold: .3 });
+    io.observe($('#strip'));
+  }
+
+  /* ---------- Otros ---------- */
+  $('#copy').addEventListener('click', function () {
+    var b = this, t = $('#mail').textContent;
+    var ok = function () { b.textContent = '¡Copiado al portapapeles!'; setTimeout(function () { b.textContent = 'Copiar correo'; }, 1600); };
+    if (navigator.clipboard) navigator.clipboard.writeText(t).then(ok, function () { var s = getSelection(), r = document.createRange(); r.selectNodeContents($('#mail')); s.removeAllRanges(); s.addRange(r); });
+  });
+  $('#swbtn').addEventListener('click', function () { abrirMenu(); });
+
+
+  /* ---------- Tecla de fiesta (Lottie recoloreado) ---------- */
+  (function () {
+    var box = $('#keybox'), cap = $('#keycap');
+    if (!window.lottie) { box.addEventListener('click', function () { R('celebrate', '¡Cambiando de dimensión!'); setTimeout(abrirMenu, 900); }); return; }
+    var data = JSON.parse(document.getElementById('tecla').textContent);
+    var A = lottie.loadAnimation({ container: $('#keyanim'), renderer: 'svg', loop: false, autoplay: false, animationData: data, rendererSettings: { preserveAspectRatio: 'xMidYMid slice' } });
+    var st = 'idle';
+    function idle() { st = 'idle'; A.setSpeed(.7); A.loop = true; A.playSegments([0, 20], true); }
+    A.addEventListener('DOMLoaded', function () { if (reduce) A.goToAndStop(0, true); else idle(); });
+    A.addEventListener('complete', function () { if (st === 'click' || st === 'out') idle(); });
+    box.addEventListener('pointerenter', function () { if (reduce || st === 'click') return; st = 'hover'; A.loop = false; A.setSpeed(1); A.playSegments([20, 47], true); });
+    box.addEventListener('pointerleave', function () { if (reduce || st !== 'hover') return; st = 'out'; A.loop = false; A.playSegments([47, 20], true); });
+    box.addEventListener('click', alMenu);
+    function alMenu() {
+      if (box.dataset.go) return; box.dataset.go = 1;
+      R('celebrate', '¡Cambiando de dimensión!');
+      cap.textContent = 'Cambiando de vista…';
+      if (!reduce) { st = 'click'; A.loop = false; A.setSpeed(1); A.playSegments([48, 166], true); }
+      setTimeout(function () { abrirMenu(); delete box.dataset.go; cap.textContent = 'Presioná para cambiar de ambiente.'; }, reduce ? 300 : 1500);
+    }
+  })();
+
+
+  /* ---------- Dedi, el compañero del estilo creativo ---------- */
+  (function () {
+    if (typeof Rano !== 'function') return;
+    var frases = [['croak', '¡Croac!'], ['wave', '¿Buscando refrescar tu marca? Mandale un mensaje a Noah.'], ['think', '¿Ya revisaste los proyectos de la carpeta?'], ['croak', 'Si te tapo un botón, podés arrastrarme a un lado.']], k = 0;
+    rano = Rano($('#rano'), { onTap: function (r) { var f = frases[k++ % frases.length]; r[f[0]](f[1]); } });
+    setTimeout(function () { rano.wave('¡Hola! Soy Dedi. Te doy la bienvenida al archivo creativo de Noah.'); }, 700);
+    var dichos = {};
+    var io2 = new IntersectionObserver(function (es) { es.forEach(function (en) {
+      var id = en.target.id; if (!en.isIntersecting || dichos[id]) return; dichos[id] = 1;
+      if (id === 'trabajos' && mode === 'cerrada') rano.think('Hay bastante material acá. Hacé clic para abrirlo.');
+      if (id === 'servicios') rano.wave('Estos son los servicios en los que Noah te puede dar una mano.');
+      if (id === 'strip') rano.croak('¡Esa rana de ahí tiene futuro en el diseño!');
+    }); }, { threshold: .35 });
+    ['trabajos', 'servicios'].forEach(function (id) { io2.observe(document.getElementById(id)); });
+    var strip = document.getElementById('strip'); strip.id = 'strip'; io2.observe(strip);
+
+    /* Dedi se corre para no tapar lo que se lee */
+    var host = $('#rano');
+    var IMP = 'p,h1,h2,h3,a,button,li,code,.paper,.sticker,.bub,.chat,.tag,figure,.folder,.hint,.strip,.mail,.keybox';
+    function tapa(x, y, w, h) {
+      var n = 0;
+      for (var i = 1; i <= 3; i++) for (var j = 1; j <= 3; j++) {
+        var px = x + w * i / 4, py = y + h * j / 4;
+        var hits = document.elementsFromPoint(px, py);
+        for (var k2 = 0; k2 < hits.length; k2++) { var el = hits[k2]; if (host.contains(el) || el === host) continue; if (el.closest(IMP) && !el.closest('#rano')) { n++; } break; }
+      }
+      return n;
+    }
+    function revisar() {
+      if (rano.busy() || document.querySelector('.big')) return;
+      var r = host.getBoundingClientRect(); if (host.classList.contains('peek')) r = { left: r.left, top: r.top - r.height * .62, width: r.width, height: r.height };
+      if (tapa(r.left, r.top, r.width, r.height) === 0) { rano.peek(false); return; }
+      var best = null, bestN = 99, step = 24, max = innerWidth - r.width - 8;
+      for (var x = 8; x <= max; x += step) {
+        var c = tapa(x, r.top, r.width, r.height);
+        var d = Math.abs(x - r.left);
+        if (c < bestN || (c === bestN && best !== null && d < Math.abs(best - r.left))) { bestN = c; best = x; }
+        if (c === 0 && d < 60) break;
+      }
+      if (bestN === 0 && best !== null) rano.walkTo(best, function () { rano.peek(false); });
+      else rano.peek(true);
+    }
+    var tmr = null;
+    addEventListener('scroll', function () { clearTimeout(tmr); tmr = setTimeout(revisar, 250); }, { passive: true });
+    addEventListener('resize', function () { clearTimeout(tmr); tmr = setTimeout(revisar, 250); });
+    setInterval(revisar, 1500);
+    setTimeout(revisar, 3600);
+    var snd = $('#rsnd');
+    snd.addEventListener('click', function () { var on = snd.getAttribute('aria-pressed') !== 'true'; snd.setAttribute('aria-pressed', on); snd.textContent = on ? 'Sonido: on' : 'Sonido: off'; rano.sound(on); if (on) rano.croak('¡Croac! Efectos de sonido activados.'); });
+  })();
+
+
+  /* ---------- Menú principal (en el sitio real es la entrada de divende.com) ---------- */
+  var menuP = $('#menuP');
+  function abrirMenu() {
+    var src = document.activeElement && document.activeElement.id === 'swbtn' ? $('#swbtn') : $('#keybox'); var k = src.getBoundingClientRect();
+    menuP.style.setProperty('--mx', (k.left + k.width / 2) + 'px'); menuP.style.setProperty('--my', (k.top + k.height / 2) + 'px');
+    menuP.hidden = false; document.body.style.overflow = 'hidden'; $('#mpNote').textContent = '';
+    requestAnimationFrame(function () { requestAnimationFrame(function () { menuP.classList.add('on'); }); });
+    setTimeout(function () { $('#mpX').focus(); }, 500);
+  }
+  function cerrarMenu() {
+    menuP.classList.remove('on'); document.body.style.overflow = '';
+    setTimeout(function () { menuP.hidden = true; R('wave', '¡De vuelta al estilo Caricatura!'); }, reduce ? 0 : 800);
+  }
+  $('#mpX').addEventListener('click', cerrarMenu);
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !menuP.hidden) cerrarMenu(); });
+  [].forEach.call(menuP.querySelectorAll('[data-st]'), function (b) {
+    b.addEventListener('click', function () {
+      var st = b.dataset.st;
+      if (st === 'caricatura') { cerrarMenu(); return; }
+      try { localStorage.setItem('divende-estilo', st); } catch (e) {}
+      location.href = '/'; return;
+      $('#mpNote').textContent = 'En la versión final, esta opción transforma el sitio a ' + b.querySelector('.tag2').textContent.replace(/^> modo --/, '').split(' · ')[0].toLowerCase() + '. Por ahora estás explorando la propuesta de Diseño Creativo.';
+    });
+  });
+
+
+
+
+  /* ---------- Viñeta 2: tarjetas de Rive ("elements inside cards") ---------- */
+  (function () {
+    var cv = document.getElementById('rvCards');
+    if (!window.rive || !cv) return;
+    var start = function () {
+      fetch('/caricatura/cartas.riv').then(function (r) { return r.arrayBuffer(); }).then(function (buf) {
+        var r = new rive.Rive({ buffer: buf, canvas: cv, artboard: 'New Artboard', stateMachines: 'animation', autoplay: !reduce,
+          layout: new rive.Layout({ fit: rive.Fit.Cover, alignment: rive.Alignment.TopCenter }),
+          onLoad: function () { r.resizeDrawingSurfaceToCanvas(); } });
+      }).catch(function () {});
+    };
+    var o = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { o.disconnect(); start(); } }, { rootMargin: '300px' });
+    o.observe(cv);
+  })();
+
+  layout();
+})();
+</script>
+</body>
+</html>
