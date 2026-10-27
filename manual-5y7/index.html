@@ -946,7 +946,7 @@ html{scroll-behavior:smooth;scroll-padding-top:4.6rem}
         <div class="figura" id="figura"><svg viewBox="0 0 100 100" id="svgFigura" role="img" aria-label="Figura circular del ritmo seleccionado"></svg></div>
         <p class="pista-rueda" id="pistaRueda" aria-live="polite"></p>
         <div class="cifrado" id="cifrado"></div>
-        <p class="leyenda-cifrado">Cada casilla es una corchea. La barra marca el cambio de compás. <span id="notaCiclo"></span></p>
+        <p class="leyenda-cifrado"><span id="notaCasilla"></span> La barra marca el cambio de compás. <span id="notaCiclo"></span></p>
       </div>
 
       <div class="controles">
@@ -1154,7 +1154,7 @@ const TOTAL_PAGINAS = 300;
 
 /* ==========================================================================
    2. Datos rítmicos — transcritos del cifrado del manual
-      Cada golpe es el índice de una corchea dentro del ciclo completo.
+      Cada golpe es el índice de una casilla dentro del ciclo completo.
    ========================================================================== */
 const METRICAS = {
   5: {
@@ -1166,9 +1166,10 @@ const METRICAS = {
     paso: 2,        // corcheas entre un número y el siguiente (ciclo / 2 / tiempos)
     base: [0,3,6,8,10,13,16,18],           // patrón base  |123 123 12 12|
     marcha: [0,5,10,15],                   // pulsos fuertes: el 1 y la mitad del compás
+    casillaNombre: "corchea",
     nota: "Ciclo de 20 corcheas: dos compases de 5/4, o uno de 5/2.",
     bpm: 162,
-    corchea: 60/162/2,
+    casilla: 60/162/2,
     vueltas: 4,
     click: "kalote-5/00-claves-5/00-click_162bpm.mp3",
     pagina: "kalote/claves-5",
@@ -1193,29 +1194,30 @@ const METRICAS = {
   },
   7: {
     nombre: "7",
-    ciclo: 14,      // dos compases de 7/8, o uno de 7/4
-    unidad: 14,
+    ciclo: 28,      // dos compases de 7/8 en semicorcheas, o uno de 7/4
+    unidad: 14,    // semicorcheas de un compás de 7/8
     mitad: 7,
     tiempos: 7,
-    paso: 1,
-    base: [0,2,4,7,9,11],                  // patrón base  |12 12 123|
-    marcha: [0,7],
-    nota: "Ciclo de 14 corcheas: dos compases de 7/8, o uno de 7/4.",
+    paso: 2,
+    base: [0,4,8,14,18,22],                // patrón base  |12 12 123|
+    marcha: [0,14],
+    casillaNombre: "semicorchea",
+    nota: "Ciclo de 28 semicorcheas: dos compases de 7/8, o uno de 7/4.",
     bpm: 120,
-    corchea: 0.25,
+    casilla: 0.125,
     vueltas: 4,
     click: "convite-7/00-claves-7/00-click-120bpm.mp3",
     pagina: "diria/claves-7",
     claves: [
-      { id:"completa7", nombre:"Clave completa en 7", golpes:[0,2,4,7,9,11] },
-      { id:"abierta7",  nombre:"Clave abierta en 7",  golpes:[0,2,6,8,9] },
-      { id:"c34_7",     nombre:"Clave 3 - 4 en 7",    golpes:[2,4,8,11],
+      { id:"completa7", nombre:"Clave completa en 7", golpes:[0,4,8,14,18,22] },
+      { id:"abierta7",  nombre:"Clave abierta en 7",  golpes:[0,4,12,16,18] },
+      { id:"c34_7",     nombre:"Clave 3 - 4 en 7",    golpes:[4,8,16,22],
         grab:"convite-7/00-claves-7/03-clave-son_3-4.mp3", rot:0 },
-      { id:"c43_7",     nombre:"Clave 4 - 3 en 7",    golpes:[0,3,8,10],
+      { id:"c43_7",     nombre:"Clave 4 - 3 en 7",    golpes:[0,6,16,20],
         grab:"convite-7/00-claves-7/04-clave-son_4-3.mp3", rot:0 },
-      { id:"completa7son", nombre:"Clave completa en 7 · son", golpes:[0,2,4,7,9,10],
+      { id:"completa7son", nombre:"Clave completa en 7 · son", golpes:[0,4,8,14,18,20],
         grab:"convite-7/00-claves-7/01-clave-completa-son.mp3", rot:0 },
-      { id:"abierta7son",  nombre:"Clave abierta en 7 · son",  golpes:[0,2,5,7,8],
+      { id:"abierta7son",  nombre:"Clave abierta en 7 · son",  golpes:[0,4,10,14,16],
         grab:"convite-7/00-claves-7/02-clave-abierta-son.mp3", rot:0 }
     ]
   }
@@ -1308,8 +1310,8 @@ function dibujarFigura(){
 
        · en 5, el ciclo son 20 corcheas = un compás de 5/2, con el tiempo en
          blanca; medio tiempo son 2 corcheas, así que hay 10 números.
-       · en 7, el ciclo son 14 corcheas = un compás de 7/4, con el tiempo en
-         negra; medio tiempo es 1 corchea, así que hay 14 números.
+       · en 7, el ciclo son 28 semicorcheas = un compás de 7/4, con el tiempo
+         en negra; medio tiempo son 2 semicorcheas, así que hay 14 números.
 
      Los números en blanco, sobre el aro interno, van de medio en medio
      (1, 1,5, 2…) y dividen la figura en UN compás. Los de color, por fuera,
@@ -1385,6 +1387,8 @@ function dibujarCifrado(){
   });
   cajaCifrado.innerHTML = filas.join("") || `<p class="leyenda-cifrado">Encendé al menos una capa.</p>`;
   document.getElementById("notaCiclo").textContent = m.nota;
+  document.getElementById("notaCasilla").textContent =
+    `Cada casilla es una ${m.casillaNombre}.`;
 }
 
 function marcarCifrado(paso){
@@ -1501,7 +1505,7 @@ let audioClave = null, audioClick = null, rafId = null;
 function tocarGrabacion(){
   const c = claveActual(), m = metricaActual();
   if(!c.grab) return;
-  const finBucle = m.vueltas * m.ciclo * m.corchea;
+  const finBucle = m.vueltas * m.ciclo * m.casilla;
 
   audioClave = new Audio(BASE_AUDIO + c.grab);
   audioClick = new Audio(BASE_AUDIO + m.click);
@@ -1519,7 +1523,7 @@ function tocarGrabacion(){
         if(!estado.sonando) return;
         const t = audioClave.currentTime;
         if(t >= finBucle){ audioClave.currentTime = 0; audioClick.currentTime = 0; }
-        const s = Math.floor(audioClave.currentTime / m.corchea);
+        const s = Math.floor(audioClave.currentTime / m.casilla);
         const paso = ((s - (c.rot || 0)) % m.ciclo + m.ciclo) % m.ciclo;
         if(paso !== estado.paso){ estado.paso = paso; moverAguja(paso, true); marcarCifrado(paso); }
         rafId = requestAnimationFrame(marco);
@@ -2141,7 +2145,7 @@ function forma(tipo, x, y, color, activa, vz, i){
   return `<circle ${at} cx="${x}" cy="${y}" r="1.55" fill="${color}"/>`;   // golpe único
 }
 
-/* Sector anular de una corchea: va del aro interno al externo y ocupa todo
+/* Sector anular de una casilla: va del aro interno al externo y ocupa todo
    el ancho angular, así que en un teléfono el blanco pasa de 18 px a unos
    34 × 110. Es transparente: solo captura el toque. */
 function sector(i, n){
@@ -2195,7 +2199,7 @@ function dibujarTaller(){
       const t = tipoEn(v.id, i);
       p.push(forma(t, x, y, v.color, activa, v.id, i));
       if(activa){
-        /* El blanco táctil es el sector entero de esa corchea, no el punto:
+        /* El blanco táctil es el sector entero de esa casilla, no el punto:
            con seis anillos a 4,6 de distancia un círculo pequeño es
            imposible de acertar con el dedo. */
         p.push(sector(i, n));
@@ -2251,6 +2255,8 @@ function dibujarCifradoTaller(){
   });
   caja.innerHTML = filas.join("");
   document.getElementById("notaCiclo").textContent = m.nota;
+  document.getElementById("notaCasilla").textContent =
+    `Cada casilla es una ${m.casillaNombre}.`;
 }
 
 function marcarCifradoTaller(paso){
