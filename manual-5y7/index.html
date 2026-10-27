@@ -331,6 +331,7 @@ input[type=range]{width:100%;accent-color:var(--azafran);height:26px}
   border:1.5px solid var(--carmin);color:var(--carmin)
 }
 .c-play:hover{background:var(--carmin);color:#fff}
+.c-yt{font-size:.75rem;color:var(--carmin);text-decoration:underline;text-underline-offset:2px;white-space:nowrap}
 .c-marco{margin:0 0 1rem;aspect-ratio:16/9;max-width:34rem}
 .c-marco iframe,li + iframe{width:100%;aspect-ratio:16/9;border:0;border-radius:3px;margin-bottom:1rem}
 .video-album{max-width:34rem}
@@ -1113,7 +1114,11 @@ const CANCIONES = [
   { titulo:"PAL alma en pena",           grupo:"Grupo 5 y 7",
     ritmo:"Quinta de clave completa",                     video:"", lista:"" },
   { titulo:"Esponjosis del Brein",       grupo:"Grupo Sonámbulo Psicotropical",
-    ritmo:"Convite de Diriá · Séptima 4 - 3 modificada",   video:"", lista:"" }
+    ritmo:"Convite de Diriá · Séptima 4 - 3 modificada",
+    video:"9if_nuYnYGc", lista:"OLAK5uy_me2FIN-sqBYyUvwWP5ZbV8nICwJxvt-wQ" },
+  { titulo:"Luminaria",                  grupo:"Grupo Sonámbulo Psicotropical",
+    ritmo:"En 5 y 7 · ritmo por confirmar",
+    video:"kfBDkb785Lk", lista:"OLAK5uy_me2FIN-sqBYyUvwWP5ZbV8nICwJxvt-wQ" }
 ];
 
 /* El disco completo en 5 y 7. */
@@ -1128,9 +1133,7 @@ const ALBUM = {
    En cuanto sepamos cuál es cuál, se mueve el id al campo "video" de arriba
    y desaparecen de acá solas. */
 const OTRAS_GRABACIONES = [
-  { id:"kfBDkb785Lk", lista:"OLAK5uy_me2FIN-sqBYyUvwWP5ZbV8nICwJxvt-wQ" },
-  { id:"9if_nuYnYGc", lista:"OLAK5uy_m8wvuFQR8X3BG1wvhPYA2tadsqHYGbATI" },
-  { id:"aAQWd0la-2I", lista:"" }
+  { id:"aAQWd0la-2I", lista:"", titulo:"", nota:"" }
 ];
 
 const CARPETA = "paginas/";
@@ -1902,7 +1905,9 @@ const COMPRA = "";   /* p. ej. "https://..." */
   const VIDEOS = [
     { id:ALBUM.id, lista:ALBUM.lista, titulo:ALBUM.titulo, nota:ALBUM.nota },
     ...OTRAS_GRABACIONES.map((v, i) => ({
-      id:v.id, lista:v.lista, titulo:`Grabaci\u00f3n ${i + 1}`, nota:"Pendiente de t\u00edtulo" })),
+      id:v.id, lista:v.lista,
+      titulo:v.titulo || `Grabaci\u00f3n ${i + 1}`,
+      nota:v.nota || "Pendiente de t\u00edtulo" })),
     ...CANCIONES.filter(c => c.video).map(c => ({
       id:c.video, lista:c.lista, titulo:c.titulo, nota:`${c.grupo} \u00b7 ${c.ritmo}` }))
   ];
@@ -2030,7 +2035,8 @@ const COMPRA = "";   /* p. ej. "https://..." */
           <span class="meta"><span class="grupo">${c.grupo}</span> \u00b7 ${kal(c.ritmo)}</span>
         </span>
         ${c.video
-          ? `<button class="c-play" data-v="${c.video}" aria-label="Reproducir ${c.titulo}"><span aria-hidden="true">\u25b6</span> Escuchar</button>`
+          ? `<button class="c-play" data-v="${c.video}" aria-label="Reproducir ${c.titulo}"><span aria-hidden="true">\u25b6</span> Escuchar</button>
+             <a class="c-yt" href="${url(c.video, c.lista)}" target="_blank" rel="noopener">YouTube \u2197</a>`
           : ""}
       </li>`).join("");
 
