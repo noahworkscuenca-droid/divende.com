@@ -995,7 +995,7 @@ html{scroll-behavior:smooth;scroll-padding-top:4.6rem}
           <p class="pie-ctrl">El 1 del compás y su mitad exacta. Si tu clave calza contra eso, se baila.</p>
         </div>
 
-        <details class="mas-opciones">
+        <details class="mas-opciones solo-escuchar">
           <summary><span class="mo-signo" aria-hidden="true">＋</span> Más opciones</summary>
           <div class="mo-cuerpo">
             <div class="grupo-ctrl">
@@ -2188,12 +2188,22 @@ function dibujarTaller(){
     p.push(`<circle cx="${x}" cy="${y}" r="1.6" fill="${taller.marcha ? "#E8622F" : "rgba(232,98,47,.3)"}" data-marcha="${i}"/>`);
   });
 
-  // números de referencia
+  // números de referencia: los mismos dos anillos que en la rueda de escuchar
   for(let i = 0; i < n; i += m.paso){
-    const a = angulo(i, n), [x,y] = px(a, 17.2);
+    const a = angulo(i, n), [x,y] = px(a, 14.8);
     const val = i / (m.paso * 2) + 1;
     const entero = val % 1 === 0;
     p.push(`<text class="num num-blanco${entero ? " num-tiempo-fuerte" : " num-medio"}" x="${x}" y="${y}">${cifra(val)}</text>`);
+
+    if(estado.trazos.dos){
+      const enTiempo = i % (m.paso * 2) === 0;
+      const off = (i % (n / 2)) / m.paso;
+      const [xc,yc] = px(a, 19.6);
+      if(off === 0){
+        p.push(`<circle cx="${xc}" cy="${yc}" r="2.4" fill="none" stroke="${enTiempo ? "#E0323C" : "#5A85F0"}" stroke-width=".45"/>`);
+      }
+      p.push(`<text class="num ${enTiempo ? "num-tiempo" : "num-contra"}" x="${xc}" y="${yc}">${off + 1}</text>`);
+    }
   }
 
   // puntos de cada voz, con la forma del golpe
