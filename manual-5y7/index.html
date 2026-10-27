@@ -455,12 +455,16 @@ input[type=range]{width:100%;accent-color:var(--azafran);height:26px}
 .ta-pie{display:block;font-size:.75rem;color:var(--gris-claro);margin:.7rem var(--e3);word-break:break-all}
 
 /* enlace al reproductor, al pie de la familia de 7 */
+.familias > .familia{display:flex;flex-direction:column}
 .btn-reproductor{
-  display:inline-flex;align-items:center;gap:.4rem;margin-top:var(--e4);
+  display:inline-flex;align-items:center;gap:.4rem;align-self:center;
+  margin:var(--e4) 0 0;
   padding:.7rem 1.1rem;border:1.5px solid var(--carmin);border-radius:99px;
   font-family:var(--sans);font-size:.938rem;font-weight:600;color:var(--carmin);
   text-decoration:none;transition:background .18s ease,color .18s ease
 }
+/* en dos columnas baja hasta quedar a la altura del último ritmo de la otra */
+@media(min-width:760px){.btn-reproductor{margin:auto 0 2.5rem}}
 .btn-reproductor:hover{background:var(--carmin);color:#fff}
 .btn-reproductor span{font-size:.8em}
 
