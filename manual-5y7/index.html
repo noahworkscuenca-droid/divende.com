@@ -274,6 +274,15 @@ input[type=range]{width:100%;accent-color:var(--azafran);height:26px}
   background:linear-gradient(90deg,rgba(0,0,0,0),rgba(0,0,0,.34),rgba(0,0,0,0));pointer-events:none
 }
 .pliego.una-hoja::after{display:none}
+/* La portada (y la última hoja impar) ocupan una página, no dos: así el
+   escenario no cambia de alto y la hoja gira siempre sobre el mismo lomo. */
+@media(min-width:720px){
+  .pliego.una-hoja{justify-content:center;background:transparent;box-shadow:none}
+  .pliego.una-hoja .hoja.sola{
+    width:50%;border-radius:2px;
+    box-shadow:0 24px 60px rgba(0,0,0,.55),0 2px 6px rgba(0,0,0,.4)
+  }
+}
 .volante{
   position:absolute;top:0;right:0;width:50%;height:100%;
   transform-origin:left center;transform-style:preserve-3d;
@@ -758,9 +767,6 @@ html{scroll-behavior:smooth;scroll-padding-top:4.6rem}
 .dos-familias h3{font-size:1.25rem;margin-bottom:.2rem}
 .dos-familias p{font-size:.813rem;color:var(--gris);margin:0}
 
-.pill-rueda{border-color:rgba(0,0,0,.3);font-weight:600}
-.pill-rueda span{margin-right:.22em;font-size:.86em}
-.pill-rueda:hover{background:var(--azafran);border-color:var(--azafran);color:var(--tinta)}
 @media(max-width:759px){
   .acciones-ritmo{flex-wrap:wrap}
   .fila-ritmo .txt{min-width:100%}
@@ -898,19 +904,19 @@ html{scroll-behavior:smooth;scroll-padding-top:4.6rem}
       <div class="familia">
         <h3><span class="kal">Kal<span class="o">ö</span>te</span> de Monte</h3>
         <p class="glosa">Bribri: «fiesta en la que se baila». Ritmos en 5.</p>
-        <div class="fila-ritmo"><span class="cifra">1</span><span class="txt"><b>Quinta de clave completa</b><span>Escritura circular 02</span></span><span class="acciones-ritmo"><button class="pill-ritmo pill-rueda" data-metrica-ir="5" data-clave-ir="completa33"><span aria-hidden="true">▶</span> En la rueda</button><button class="pill-ritmo" data-ir="54">Ver en el libro</button><a class="pill-ritmo pill-audio" href="https://kn1ghted.github.io/audiolibro/kalote/quinta-completa" target="_blank" rel="noopener">Oír las pistas</a></span></div>
-        <div class="fila-ritmo"><span class="cifra">1,5</span><span class="txt"><b>Quinta de clave abierta</b><span>Escritura circular 03</span></span><span class="acciones-ritmo"><button class="pill-ritmo pill-rueda" data-metrica-ir="5" data-clave-ir="abierta32"><span aria-hidden="true">▶</span> En la rueda</button><button class="pill-ritmo" data-ir="64">Ver en el libro</button><a class="pill-ritmo pill-audio" href="https://kn1ghted.github.io/audiolibro/kalote/quinta-abierta" target="_blank" rel="noopener">Oír las pistas</a></span></div>
-        <div class="fila-ritmo"><span class="cifra">2</span><span class="txt"><b>Quinto</b><span>Variación 5 de 4 y variación 4 de 5</span></span><span class="acciones-ritmo"><button class="pill-ritmo pill-rueda" data-metrica-ir="5" data-clave-ir="completa33"><span aria-hidden="true">▶</span> En la rueda</button><button class="pill-ritmo" data-ir="76">Ver en el libro</button><a class="pill-ritmo pill-audio" href="https://kn1ghted.github.io/audiolibro/kalote/quinto" target="_blank" rel="noopener">Oír las pistas</a></span></div>
-        <div class="fila-ritmo"><span class="cifra">3</span><span class="txt"><b>Quintí</b><span>Doce variantes, de 4:2 a la cáscara de timbal</span></span><span class="acciones-ritmo"><button class="pill-ritmo pill-rueda" data-metrica-ir="5" data-clave-ir="mont422"><span aria-hidden="true">▶</span> En la rueda</button><button class="pill-ritmo" data-ir="94">Ver en el libro</button><a class="pill-ritmo pill-audio" href="https://kn1ghted.github.io/audiolibro/kalote/quinti" target="_blank" rel="noopener">Oír las pistas</a></span></div>
-        <div class="fila-ritmo"><span class="cifra">4</span><span class="txt"><b>Quinté</b><span>Escritura circular 16</span></span><span class="acciones-ritmo"><button class="pill-ritmo pill-rueda" data-metrica-ir="5" data-clave-ir="completa33"><span aria-hidden="true">▶</span> En la rueda</button><button class="pill-ritmo" data-ir="174">Ver en el libro</button><a class="pill-ritmo pill-audio" href="https://kn1ghted.github.io/audiolibro/kalote/quinte" target="_blank" rel="noopener">Oír las pistas</a></span></div>
-        <div class="fila-ritmo"><span class="cifra">5</span><span class="txt"><b>Quintú</b><span>Escritura circular 17</span></span><span class="acciones-ritmo"><button class="pill-ritmo pill-rueda" data-metrica-ir="5" data-clave-ir="c34"><span aria-hidden="true">▶</span> En la rueda</button><button class="pill-ritmo" data-ir="184">Ver en el libro</button><a class="pill-ritmo pill-audio" href="https://kn1ghted.github.io/audiolibro/kalote/quintu" target="_blank" rel="noopener">Oír las pistas</a></span></div></div>
+        <div class="fila-ritmo"><span class="cifra">1</span><span class="txt"><b>Quinta de clave completa</b><span>Escritura circular 02</span></span><span class="acciones-ritmo"><button class="pill-ritmo" data-ir="54">Ver en el libro</button><a class="pill-ritmo pill-audio" href="https://kn1ghted.github.io/audiolibro/kalote/quinta-completa" target="_blank" rel="noopener">Oír las pistas</a></span></div>
+        <div class="fila-ritmo"><span class="cifra">1,5</span><span class="txt"><b>Quinta de clave abierta</b><span>Escritura circular 03</span></span><span class="acciones-ritmo"><button class="pill-ritmo" data-ir="64">Ver en el libro</button><a class="pill-ritmo pill-audio" href="https://kn1ghted.github.io/audiolibro/kalote/quinta-abierta" target="_blank" rel="noopener">Oír las pistas</a></span></div>
+        <div class="fila-ritmo"><span class="cifra">2</span><span class="txt"><b>Quinto</b><span>Variación 5 de 4 y variación 4 de 5</span></span><span class="acciones-ritmo"><button class="pill-ritmo" data-ir="76">Ver en el libro</button><a class="pill-ritmo pill-audio" href="https://kn1ghted.github.io/audiolibro/kalote/quinto" target="_blank" rel="noopener">Oír las pistas</a></span></div>
+        <div class="fila-ritmo"><span class="cifra">3</span><span class="txt"><b>Quintí</b><span>Doce variantes, de 4:2 a la cáscara de timbal</span></span><span class="acciones-ritmo"><button class="pill-ritmo" data-ir="94">Ver en el libro</button><a class="pill-ritmo pill-audio" href="https://kn1ghted.github.io/audiolibro/kalote/quinti" target="_blank" rel="noopener">Oír las pistas</a></span></div>
+        <div class="fila-ritmo"><span class="cifra">4</span><span class="txt"><b>Quinté</b><span>Escritura circular 16</span></span><span class="acciones-ritmo"><button class="pill-ritmo" data-ir="174">Ver en el libro</button><a class="pill-ritmo pill-audio" href="https://kn1ghted.github.io/audiolibro/kalote/quinte" target="_blank" rel="noopener">Oír las pistas</a></span></div>
+        <div class="fila-ritmo"><span class="cifra">5</span><span class="txt"><b>Quintú</b><span>Escritura circular 17</span></span><span class="acciones-ritmo"><button class="pill-ritmo" data-ir="184">Ver en el libro</button><a class="pill-ritmo pill-audio" href="https://kn1ghted.github.io/audiolibro/kalote/quintu" target="_blank" rel="noopener">Oír las pistas</a></span></div></div>
       <div class="familia">
         <h3>Convite de Diriá</h3>
         <p class="glosa">Convite: invitación a la fiesta. Diriá, en chorotega: «colina pequeña». Ritmos en 7.</p>
-        <div class="fila-ritmo"><span class="cifra">6</span><span class="txt"><b>Clave completa en 7</b><span>Escritura circular 19</span></span><span class="acciones-ritmo"><button class="pill-ritmo pill-rueda" data-metrica-ir="7" data-clave-ir="completa7"><span aria-hidden="true">▶</span> En la rueda</button><button class="pill-ritmo" data-ir="202">Ver en el libro</button><a class="pill-ritmo pill-audio" href="https://kn1ghted.github.io/audiolibro/diria/completa-7" target="_blank" rel="noopener">Oír las pistas</a></span></div>
-        <div class="fila-ritmo"><span class="cifra">7</span><span class="txt"><b>Clave abierta en 7</b><span>Escritura circular 20</span></span><span class="acciones-ritmo"><button class="pill-ritmo pill-rueda" data-metrica-ir="7" data-clave-ir="abierta7"><span aria-hidden="true">▶</span> En la rueda</button><button class="pill-ritmo" data-ir="216">Ver en el libro</button><a class="pill-ritmo pill-audio" href="https://kn1ghted.github.io/audiolibro/diria/abierta-7" target="_blank" rel="noopener">Oír las pistas</a></span></div>
-        <div class="fila-ritmo"><span class="cifra">8</span><span class="txt"><b>Séptima</b><span>4 - 3 y 3 - 4, de clave completa y abierta</span></span><span class="acciones-ritmo"><button class="pill-ritmo pill-rueda" data-metrica-ir="7" data-clave-ir="c43_7"><span aria-hidden="true">▶</span> En la rueda</button><button class="pill-ritmo" data-ir="226">Ver en el libro</button><a class="pill-ritmo pill-audio" href="https://kn1ghted.github.io/audiolibro/diria/septima" target="_blank" rel="noopener">Oír las pistas</a></span></div>
-        <div class="fila-ritmo"><span class="cifra">9</span><span class="txt"><b>Séptimo</b><span>4 - 3 y 3 - 4, de clave completa y abierta</span></span><span class="acciones-ritmo"><button class="pill-ritmo pill-rueda" data-metrica-ir="7" data-clave-ir="c34_7"><span aria-hidden="true">▶</span> En la rueda</button><button class="pill-ritmo" data-ir="260">Ver en el libro</button><a class="pill-ritmo pill-audio" href="https://kn1ghted.github.io/audiolibro/diria/septimo" target="_blank" rel="noopener">Oír las pistas</a></span></div>
+        <div class="fila-ritmo"><span class="cifra">6</span><span class="txt"><b>Clave completa en 7</b><span>Escritura circular 19</span></span><span class="acciones-ritmo"><button class="pill-ritmo" data-ir="202">Ver en el libro</button><a class="pill-ritmo pill-audio" href="https://kn1ghted.github.io/audiolibro/diria/completa-7" target="_blank" rel="noopener">Oír las pistas</a></span></div>
+        <div class="fila-ritmo"><span class="cifra">7</span><span class="txt"><b>Clave abierta en 7</b><span>Escritura circular 20</span></span><span class="acciones-ritmo"><button class="pill-ritmo" data-ir="216">Ver en el libro</button><a class="pill-ritmo pill-audio" href="https://kn1ghted.github.io/audiolibro/diria/abierta-7" target="_blank" rel="noopener">Oír las pistas</a></span></div>
+        <div class="fila-ritmo"><span class="cifra">8</span><span class="txt"><b>Séptima</b><span>4 - 3 y 3 - 4, de clave completa y abierta</span></span><span class="acciones-ritmo"><button class="pill-ritmo" data-ir="226">Ver en el libro</button><a class="pill-ritmo pill-audio" href="https://kn1ghted.github.io/audiolibro/diria/septima" target="_blank" rel="noopener">Oír las pistas</a></span></div>
+        <div class="fila-ritmo"><span class="cifra">9</span><span class="txt"><b>Séptimo</b><span>4 - 3 y 3 - 4, de clave completa y abierta</span></span><span class="acciones-ritmo"><button class="pill-ritmo" data-ir="260">Ver en el libro</button><a class="pill-ritmo pill-audio" href="https://kn1ghted.github.io/audiolibro/diria/septimo" target="_blank" rel="noopener">Oír las pistas</a></span></div>
         <a class="btn-reproductor" href="https://kn1ghted.github.io/audiolibro/" target="_blank" rel="noopener">Reproductor completo <span aria-hidden="true">↗</span></a></div>
       </div>
     </div>
@@ -1702,7 +1708,9 @@ let girando = false;
 function avanzar(dir){
   if(girando) return;
   const solo = estrecho() || pos === 0;
-  const nuevo = pos + dir * (solo ? 1 : 2);
+  let nuevo = pos + dir * (solo ? 1 : 2);
+  /* Desde el primer pliego, el paso atrás cae en -1: ahí va la portada. */
+  if(dir < 0 && nuevo < 0 && pos > 0) nuevo = 0;
   if(nuevo < 0 || nuevo >= listaPaginas.length) return;
   girando = true;
 
@@ -2469,21 +2477,6 @@ dibujarRueda(); dibujarCifradoActual();
   secs.forEach(s => obs.observe(s));
 })();
 
-/* Desde la lista de ritmos: abre esa clave en "Escuchar" y la toca. */
-document.querySelectorAll("[data-clave-ir]").forEach(b => b.addEventListener("click", () => {
-  const met = +b.dataset.metricaIr, cl = b.dataset.claveIr;
-  if(estado.sonando) parar();
-  if(vista.pestana !== "escuchar"){ vista.pestana = "escuchar"; pintarPestanas(); }
-  estado.metrica = met;
-  document.querySelectorAll("[data-metrica]").forEach(o =>
-    o.setAttribute("aria-pressed", String(+o.dataset.metrica === met)));
-  pintarClaves();
-  if(METRICAS[met].claves.some(c => c.id === cl)) estado.claveId = cl;
-  pintarClaves(); pintarVoces(); pintarPlantillas();
-  dibujarRueda(); dibujarCifradoActual(); pintarFuente();
-  document.getElementById("claves").scrollIntoView({behavior:"smooth", block:"start"});
-  setTimeout(tocar, 650);
-}));
 
 </script>
 </body>
